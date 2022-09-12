@@ -3,8 +3,8 @@ export type Status = 'ativo'|'inativo'
 
 @Entity({name:"clientes"})
 export class Cliente {
-    @PrimaryGeneratedColumn ({})
-    idcliente: number 
+    @PrimaryGeneratedColumn ()
+    id: number 
 
     @Column({length: 80, nullable: false})
     nome: string

@@ -3,18 +3,18 @@ import { Request, Response } from 'express'
 import { Cliente } from '../entity/Cliente'
 
 class ClienteController {
-  /*public async find(req: Request, res: Response): Promise<Response> {
-    const { mail, senha } = req.body
-    const usuario = await AppDataSource.manager.findOneBy(Usuario, { mail, senha })
-    if (usuario)
-      return res.json(usuario)
+  public async find(req: Request, res: Response): Promise<Response> {
+    const { nome, cnpj } = req.body
+    const cliente = await AppDataSource.manager.findOneBy(Cliente, { nome, cnpj })
+    if (cliente)
+      return res.json(cliente)
     return res.json({ error: "Dados inválidos" })
-  }*/
+  }
 
   public async create(req: Request, res: Response): Promise<Response> {
     const { nome, cnpj } = req.body
     const cliente = await AppDataSource.manager.save(Cliente, { nome, cnpj }).catch((e) => {
-      // testa se o e-mail é repetido
+      // testa se o cnpj é repetido
       if (/(cnpj)[\s\S]+(already exists)/.test(e.detail)) {
         return { error: 'CNPJ já existe' }
       }
@@ -24,53 +24,53 @@ class ClienteController {
     return res.json(cliente)
   }
 
-  /*public async update(req: Request, res: Response): Promise<Response> {
-    const { id, mail, senha } = req.body
-    const usuario: any = await AppDataSource.manager.findOneBy(Usuario, { id }).catch((e) => {
+  public async update(req: Request, res: Response): Promise<Response> {
+    const { id, nome, cnpj } = req.body
+    const cliente: any = await AppDataSource.manager.findOneBy(Cliente, { id }).catch((e) => {
       return { error: "Identificador inválido" }
     })
-    if (usuario && usuario.id) {
-      usuario.mail = mail
-      usuario.senha = senha
-      const r = await AppDataSource.manager.save(Usuario, usuario).catch((e) => {
-        // testa se o e-mail é repetido
-        if (/(mail)[\s\S]+(already exists)/.test(e.detail)) {
-          return ({ error: 'e-mail já existe' })
+    if (cliente && cliente.id) {
+      cliente.nome = nome
+      cliente.cnpj = cnpj
+      const r = await AppDataSource.manager.save(Cliente, cliente).catch((e) => {
+        // testa se o cnpj é repetido
+        if (/(cnpj)[\s\S]+(already exists)/.test(e.detail)) {
+          return ({ error: 'CNPJ já existe' })
         }
         return e
       })
       return res.json(r)
     }
-    else if (usuario && usuario.error) {
-      return res.json(usuario)
+    else if (cliente && cliente.error) {
+      return res.json(cliente)
     }
     else {
-      return res.json({ error: "Usuário não localizado" })
+      return res.json({ error: "Cliente não localizado" })
     }
   }
 
   public async delete(req: Request, res: Response): Promise<Response> {
     const { id } = req.body
-    const usuario: any = await AppDataSource.manager.findOneBy(Usuario, { id }).catch((e) => {
+    const cliente: any = await AppDataSource.manager.findOneBy(Cliente, { id }).catch((e) => {
       return { error: "Identificador inválido" }
     })
-    if (usuario && usuario.id) {
-      const r = await AppDataSource.manager.remove(Usuario, usuario).catch((e) => e.message)
+    if (cliente && cliente.id) {
+      const r = await AppDataSource.manager.remove(Cliente, cliente).catch((e) => e.message)
       return res.json(r)
     }
-    else if (usuario && usuario.error) {
-      return res.json(usuario)
+    else if (cliente && cliente.error) {
+      return res.json(cliente)
     }
     else {
-      return res.json({ error: "Usuário não localizado" })
+      return res.json({ error: "Cliente não localizado" })
     }
   }
 
   public async list(req: Request, res: Response): Promise<Response> {
-    const usuarios = await AppDataSource.manager.find(Usuario)
+    const clientes = await AppDataSource.manager.find(Cliente)
 
-    return res.json(usuarios)
-  }*/
+    return res.json(clientes)
+  }
 }
 
 export default new ClienteController()
