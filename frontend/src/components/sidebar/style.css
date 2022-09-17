@@ -6,6 +6,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  justify-content:space-between;
+  margin-bottom: 120px;
 }
 
 .menu-bars {
@@ -74,3 +76,16 @@
 span {
   margin-left: 16px;
 }
+
+.div-img {
+  position: relative;
+  min-height: 100%;
+  align-self: flex-end;
+}
+
+.logo-2rp {
+  margin-right: 2rem;
+  width: 90px;
+  height: 60px;
+}
+/* padding: 5px !import */
