@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Pag_Cadastro from "../../components/Pag_Cadastro";
 
 function Cliente(){
   const [nome, setNome] = useState("");
@@ -31,7 +32,7 @@ function Cliente(){
     }
   }
   return(
-    <div className="cadastro_cliente">
+      <div className="cadastro_cliente">
       <div className="containerCliente">
         <h1 className="titulo">Cadastro de Clientes</h1>
         <div className="cadastro">
