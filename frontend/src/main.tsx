@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 import Cliente from './pages/cadastro_cliente';
 import Home from './pages/home';
 
-
 const Main = () => (
   <Container>
     <Routes>
