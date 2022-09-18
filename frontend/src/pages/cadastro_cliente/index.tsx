@@ -1,61 +1,85 @@
-import { useForm } from "react-hook-form";
-import React from "react";
-import {FormLabel,FormControl,Input,Button} from '@chakra-ui/react';
+import React, { useState } from "react";
+import {Button, TextField } from '@mui/material';
+import useStyles from "./style";
 
-export default function Cliente() {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting }
-  } = useForm();
+function Cliente(){
+  const classes = useStyles();
+  const [nome, setNome] = useState("");
+  const [cnpj, setCnpj] = useState("");
 
 
-  const onSubmit = async (data: any) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+  async function handleSubmit(event: { preventDefault: () => void; }){
+    event.preventDefault();
+    const dado = {
+      nome: nome,
+      cnpj: cnpj,
+
     };
+      try{
+        await fetch('http://localhost:3001/cliente', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dado),
+        });
 
-    const response = await fetch('http://localhost:3001/cliente', requestOptions);
-    const jsonData = await response.json();
+        setNome("");
+        setCnpj("");
 
-    console.log(jsonData);
-}
+        return;
+      } catch (error) {
+        let message = 'Erro desconhecido'
+        if (error instanceof Error) message = error.message
+        reportError({message})
+      }
+    }
 
-  return (
-    
-    <form onSubmit={handleSubmit(onSubmit)}>
-     
-      <FormControl isInvalid={errors.name}>
-          <FormLabel htmlFor="nome">Razão Social</FormLabel>
-            <Input
-                id="nome"
-                type="text"
-                placeholder="Nome"
-                {...register("nome", {
-                required: true,
-                })}
+    return(
+      <div className="cadastro_cliente">
+        <div className="containerCliente">
+          <h1  className="titulo">Cadastro de Clientes</h1>
+            <form name="cadastroCliente" className={classes.root} onSubmit={handleSubmit}>
+            <div className={classes.campo}>
+              <TextField
+              label= "Razão Social"
+              id="nome"
+              type="text"
+              required={true}
+              placeholder="Digite a Razão Social"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              className="input"
               />
-
-        <FormLabel htmlFor="cnpj">CNPJ</FormLabel>
-            <Input
-                id="cnpj"
-                type="text"
-                required={true}
-                placeholder="XX.XXX.XXX/XXXX-XX"
-                {...register("cnpj", {
-                required: true,
-                })}
+              </div>
+              <div className={classes.campo}>
+              <TextField
+                label ="CNPJ"
+              id="cnpj"
+              type="text" 
+              required={true}
+              placeholder="XX.XXX.XXX/XXXX-XX"
+              value={cnpj}
+              onChange={(e)=> setCnpj(e.target.value)}
+              className="input"
               />
+              </div>
+              <div className="bt-container">
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                size="large"
+                >
+                ENVIAR
+               </Button>
+              </div>
+            </form>
 
-      <Button w= '80px' h = '40px' mt={50} color="#00000" bg="#1a83ff" isLoading={isSubmitting} type="submit">
-        Enviar
-      </Button>
-        </FormControl>
+          </div>
+        </div>
+    );
+  }
 
-
-    </form>
-
-  );
-}
+  export default Cliente;

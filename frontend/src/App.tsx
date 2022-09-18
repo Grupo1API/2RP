@@ -1,27 +1,25 @@
-import { Box, Center, ChakraProvider, CSSReset } from "@chakra-ui/react";
+import Box from '@mui/material/Box';
 import React, { Component } from 'react';
-
 import Sidebar from './components/sidebar';
 import Main from './main';
 import {BrowserRouter as Router} from 'react-router-dom';
-
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <ChakraProvider>
+        <React.StrictMode>
           <div>
           <Sidebar />
-          <Center>
-          <CSSReset />
-          <Box alignItems="center" p={24}>
+          <Box 
+            display="flex"
+            justifyContent="center"
+            alignItems="center" >
               <Main />
           </Box>
-          </Center>
           </div>
-        </ChakraProvider>
+        </React.StrictMode>
       </Router>
     );
   }
