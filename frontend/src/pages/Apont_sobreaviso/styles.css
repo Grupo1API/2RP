@@ -1,0 +1,38 @@
+body {
+  background-color: rgb(255, 250, 250);
+}
+.pagina{
+  background-color: white;
+  width: 50em;
+  box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+  border-radius: 10px;
+  padding: 10px;
+}
+.pagina h2{
+  text-align: center;
+  color: rgb(97, 96, 96);
+}
+.form-floating.mb-3{
+  margin-top: 3em;
+}
+.form-floating.mb-3 #floatingInput2{
+  width:  13em;
+}  
+#floatingTextarea2{
+  height: 100px;
+}
+.btn.btn-success{
+  margin-top: 15px;
+ text-align: center;
+}
+.form-select{
+  width: 20em;
+  margin-top: 3em;
+}
+option{  
+  color: #FF0000;
+}
