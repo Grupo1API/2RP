@@ -1,23 +1,28 @@
-import React from 'react';
-import Cliente from './pages/cadastro_cliente';
-import Apont_hora_extra  from './pages/Apont_hora_extra/index'
-import Apont_sobreaviso  from './pages/Apont_sobreaviso/index'
+import Box from '@mui/material/Box';
+import React, { Component } from 'react';
+import Sidebar from './components/sidebar';
+import Main from './main';
+import {BrowserRouter as Router} from 'react-router-dom';
 import './App.css';
-import { Router } from 'express';
-import {BrowserRouter, Route, Routes as Switch, Navigate} from "react-router-dom"
 
-export const App = () =>  {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path='/Cliente' element={<Cliente/>}/>
-        <Route path='/HoraExtra' element={<Apont_hora_extra/>}/>
-        <Route path='/Sobreaviso' element={<Apont_sobreaviso/>}/>
-        
-      </Switch>
-    </BrowserRouter>
-  
-  );
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <React.StrictMode>
+          <div>
+          <Sidebar />
+          <Box 
+            display="flex"
+            justifyContent="center"
+            alignItems="center" >
+              <Main />
+          </Box>
+          </div>
+        </React.StrictMode>
+      </Router>
+    );
+  }
 }
 
 export default App;
