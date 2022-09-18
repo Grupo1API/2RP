@@ -10,14 +10,9 @@ class App extends Component {
     return (
       <Router>
         <React.StrictMode>
-          <div>
-          <Sidebar />
-          <Box 
-            display="flex"
-            justifyContent="center"
-            alignItems="center" >
-              <Main />
-          </Box>
+          <div >
+            <Sidebar />
+            <Main />
           </div>
         </React.StrictMode>
       </Router>

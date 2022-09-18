@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import {Button, TextField } from '@mui/material';
-import useStyles from "./style";
 
 function Cliente(){
-  const classes = useStyles();
   const [nome, setNome] = useState("");
   const [cnpj, setCnpj] = useState("");
 
@@ -36,49 +33,47 @@ function Cliente(){
     }
 
     return(
-      <div className="cadastro_cliente">
-        <div className="containerCliente">
-          <h1  className="titulo">Cadastro de Clientes</h1>
-            <form name="cadastroCliente" className={classes.root} onSubmit={handleSubmit}>
-            <div className={classes.campo}>
-              <TextField
-              label= "Razão Social"
-              id="nome"
+      <body>
+      <div className="pagina">
+        
+          <h2>Cadastro de Clientes</h2>
+          {/*  nome */}
+          <div className="form-floating mb-3">
+              <input
               type="text"
-              required={true}
-              placeholder="Digite a Razão Social"
+              className="form-control"
+              id="floatingInput"
+              placeholder= "Digite a Razão Social"
               value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              className="input"
-              />
-              </div>
-              <div className={classes.campo}>
-              <TextField
-                label ="CNPJ"
-              id="cnpj"
-              type="text" 
               required={true}
-              placeholder="XX.XXX.XXX/XXXX-XX"
-              value={cnpj}
-              onChange={(e)=> setCnpj(e.target.value)}
-              className="input"
-              />
-              </div>
-              <div className="bt-container">
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                size="large"
-                >
-                ENVIAR
-               </Button>
-              </div>
-            </form>
-
+              onChange={(e) => setNome(e.target.value)}
+          />
+          <label htmlFor="floatingInput">Razão Social</label>
+           </div>
+           {/* cnpj */}
+          <div className="form-floating mb-3">
+          <input
+            type="number"
+            className="form-control"
+            id="floatingInput2"
+            placeholder="XX.XXX.XXX/XXXX-XX"
+            value={cnpj}
+            required={true}
+            onChange={(e) => setCnpj(e.target.value)}
+          />
+          <label htmlFor="floatingInput2">CNPJ</label>
           </div>
+
+          <a
+            className="btn btn-success"
+            href=""
+            role="button"
+            onClick={handleSubmit}
+          >
+            Enviar
+          </a>
         </div>
+        </body>
     );
   }
 
