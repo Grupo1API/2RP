@@ -1,6 +1,6 @@
-import React from "react";
-import './styles.css'
-import {useState} from "react";
+import React, {useState} from "react";
+import './style.css'
+
 
 export const Apont_hora_extra =() =>{ 
   const [nome, setNome] = useState("")
@@ -110,13 +110,11 @@ export const Apont_hora_extra =() =>{
 
 
         {/* Botão */}
-        {/* <center> */}
-          <a className="btn btn-success" href="#" role="button"onClick={cadastrarHora}>Enviar</a>
-        {/*</center>*/}
+        <div className ="form-btn">
+          <button className="btn btn-success" role="button"onClick={cadastrarHora}>Enviar</button>
+        </div>
 
-         </div>
-
-
+      </div>
     </body>
    
   )

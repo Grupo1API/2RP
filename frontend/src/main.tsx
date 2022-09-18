@@ -4,8 +4,9 @@ import { Route, Routes } from 'react-router-dom';
 import Cliente from './pages/cadastro_cliente';
 import Apont_hora_extra from './pages/Apont_hora_extra';
 import Apont_sobreaviso from './pages/Apont_sobreaviso';
-import Projeto from './pages/cadastro_projeto';
+import CentroResultado from './pages/cadastro_centro_resultado';
 import Home from './pages/home';
+
 
 const Main = () => (
   <Container>
@@ -14,7 +15,7 @@ const Main = () => (
       <Route path="/cliente" element={<Cliente />} />
       <Route path="/hora-extra" element={<Apont_hora_extra />} />
       <Route path="/hora-sobreaviso" element={<Apont_sobreaviso />} />
-      <Route path="/projeto" element={<Projeto />} />
+      <Route path="/centro-resultado" element={<CentroResultado />} />
     </Routes>
   </Container>
 );

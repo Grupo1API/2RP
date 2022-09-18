@@ -1,12 +1,12 @@
 import { Router, Request, Response } from "express"
-import projeto  from "./projeto"
+import centro_resultado  from "./centro_resultado"
 import cliente from './cliente'
 
 
 const routes = Router()
 
 routes.use("/cliente", cliente)
-routes.use("/projeto", projeto)
+routes.use("/centro-resultado", centro_resultado)
 //routes.use("/hora_extra", hora_extra)
 //routes.use("/hora_sobreaviso", hora_sobreaviso)
 

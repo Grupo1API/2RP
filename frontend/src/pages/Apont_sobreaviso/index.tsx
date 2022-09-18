@@ -1,6 +1,5 @@
-import React from "react";
-import './styles.css'
-import {useState} from "react";
+import React, {useState} from "react";
+import './style.css'
 
 export const Apont_sobreaviso =() =>{ 
   const [nome, setNome] = useState("")
@@ -43,11 +42,11 @@ export const Apont_sobreaviso =() =>{
     <body>
       <div className="pagina">
        <h2> Apontamento Sobreaviso</h2>
-       <select className="form-select" aria-label="Default select example">
+       {/*<select className="form-select" aria-label="Default select example">
           <option selected>Selecione o Tipo</option>
           <option value="1">Sobreaviso</option>
           <option value="2">Hora Extra</option>
-      </select>
+      </select> */}
        {/* entrada nome */}
         <div className="form-floating mb-3">
           <input type="text" className="form-control" id="floatingInput" placeholder="Nome Completo" value={nome}onChange={e => setNome(e.target.value)}/>
@@ -57,8 +56,8 @@ export const Apont_sobreaviso =() =>{
 
         {/* Matrícula */}
         <div className="form-floating mb-3">
-          <input type="number" className="form-control" id="floatingInput2" placeholder="Matrícula" value={matricula}onChange={e => setMatricula(e.target.value)}/>
-          <label htmlFor="floatingInput2">Matrícula</label>
+          <input type="number" className="form-control" id="floatingInput" placeholder="Matrícula" value={matricula}onChange={e => setMatricula(e.target.value)}/>
+          <label htmlFor="floatingInput">Matrícula</label>
         </div>
 
 
@@ -115,13 +114,10 @@ export const Apont_sobreaviso =() =>{
 
 
         {/* Botão */}
-        {/* <center> */}
-        <a>
-          <a className="btn btn-success" href="#" role="button"onClick={cadastrarHora}>Enviar</a>
-        </a>
-         {/*</center>*/}
-
-         </div>
+        <div className ="form-btn">
+          <button className="btn btn-success" role="button"onClick={cadastrarHora}>Enviar</button>
+        </div>
+      </div>
 
 
     </body>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import './style.css'
 
 function Cliente(){
   const [nome, setNome] = useState("");
@@ -38,20 +39,21 @@ function Cliente(){
         
           <h2>Cadastro de Clientes</h2>
           {/*  nome */}
-          <div className="form-floating mb-3">
+          <div className="form-floating mb-4">
               <input
               type="text"
               className="form-control"
-              id="floatingInput"
+              id="floatingInput2"
               placeholder= "Digite a Razão Social"
               value={nome}
               required={true}
               onChange={(e) => setNome(e.target.value)}
-          />
-          <label htmlFor="floatingInput">Razão Social</label>
-           </div>
+              />
+          <label htmlFor="floatingInput2">Razão Social</label>
+          </div>
+
            {/* cnpj */}
-          <div className="form-floating mb-3">
+          <div className="form-floating mb-4">
           <input
             type="number"
             className="form-control"
@@ -64,16 +66,14 @@ function Cliente(){
           <label htmlFor="floatingInput2">CNPJ</label>
           </div>
 
-          <a
-            className="btn btn-success"
-            href=""
-            role="button"
-            onClick={handleSubmit}
-          >
+          {/* Botão */}
+          <div className ="form-btn">
+          <button className="btn btn-success" role="button" onClick={handleSubmit}>
             Enviar
-          </a>
-        </div>
-        </body>
+          </button>
+          </div>
+      </div>
+      </body>
     );
   }
 
