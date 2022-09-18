@@ -6,7 +6,7 @@ dotenv.config()
 
 import routes from './routes'
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3002
 
 const app = express() // cria o servidor
 app.use(express.json()) // suporta parâmetros JSON no body da requisição
