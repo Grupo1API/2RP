@@ -34,46 +34,43 @@ function Cliente(){
     }
 
     return(
-      <body>
       <div className="pagina">
-        
-          <h2>Cadastro de Clientes</h2>
-          {/*  nome */}
-          <div className="form-floating mb-4">
-              <input
-              type="text"
-              className="form-control"
-              id="floatingInput2"
-              placeholder= "Digite a Razão Social"
-              value={nome}
-              required={true}
-              onChange={(e) => setNome(e.target.value)}
-              />
-          <label htmlFor="floatingInput2">Razão Social</label>
-          </div>
-
-           {/* cnpj */}
-          <div className="form-floating mb-4">
-          <input
-            type="number"
+        <h2>Cadastro de Clientes</h2>
+        {/*  nome */}
+        <div className="form-floating mb-4">
+            <input
+            type="text"
             className="form-control"
             id="floatingInput2"
-            placeholder="XX.XXX.XXX/XXXX-XX"
-            value={cnpj}
+            placeholder= "Digite a Razão Social"
+            value={nome}
             required={true}
-            onChange={(e) => setCnpj(e.target.value)}
-          />
-          <label htmlFor="floatingInput2">CNPJ</label>
-          </div>
+            onChange={(e) => setNome(e.target.value)}
+            />
+        <label htmlFor="floatingInput2">Razão Social</label>
+        </div>
 
-          {/* Botão */}
-          <div className ="form-btn">
-          <button className="btn btn-success" role="button" onClick={handleSubmit}>
-            Enviar
-          </button>
-          </div>
+          {/* cnpj */}
+        <div className="form-floating mb-4">
+        <input
+          type="number"
+          className="form-control"
+          id="floatingInput2"
+          placeholder="XX.XXX.XXX/XXXX-XX"
+          value={cnpj}
+          required={true}
+          onChange={(e) => setCnpj(e.target.value)}
+        />
+        <label htmlFor="floatingInput2">CNPJ</label>
+        </div>
+
+        {/* Botão */}
+        <div className ="form-btn">
+        <button className="btn btn-success" role="button" onClick={handleSubmit}>
+          Enviar
+        </button>
+        </div>
       </div>
-      </body>
     );
   }
 

@@ -39,89 +39,84 @@ export const Apont_sobreaviso =() =>{
   }
 
   return (
-    <body>
-      <div className="pagina">
-       <h2> Apontamento Sobreaviso</h2>
-       {/*<select className="form-select" aria-label="Default select example">
-          <option selected>Selecione o Tipo</option>
-          <option value="1">Sobreaviso</option>
-          <option value="2">Hora Extra</option>
-      </select> */}
-       {/* entrada nome */}
-        <div className="form-floating mb-3">
-          <input type="text" className="form-control" id="floatingInput" placeholder="Nome Completo" value={nome}onChange={e => setNome(e.target.value)}/>
-          <label htmlFor="floatingInput">Nome Completo</label>
-        </div>
-        
-
-        {/* Matrícula */}
-        <div className="form-floating mb-3">
-          <input type="number" className="form-control" id="floatingInput" placeholder="Matrícula" value={matricula}onChange={e => setMatricula(e.target.value)}/>
-          <label htmlFor="floatingInput">Matrícula</label>
-        </div>
-
-
-
-        {/* Entrada 1 */}
-        <div className="row g-2">
-        <div className="col-md">
-           <div className="form-floating">
-           <input type="datetime-local" className="form-control" id="floatingInputGrid" value={entrada1}onChange={e => setEntrada1(e.target.value)} />
-            <label htmlFor="floatingInputGrid">Entrada 1</label>
-      </div>
-      </div>
-        {/* Saída 1 */}
-        <div className="col-md">
-        <div className="form-floating">
-        <input type="datetime-local" className="form-control" id="floatingInputGrid" value={saida1}onChange={e => setSaida1(e.target.value)}/>
-      <label htmlFor="floatingSelectGrid">Saída 1</label>
-      </div>
-      </div>
-      </div>
-
-
-          <p></p>
-         {/* Entrada 2 */}
-         <div className="row g-2">
-        <div className="col-md">
-           <div className="form-floating">
-           <input type="datetime-local" className="form-control" id="floatingInputGrid2" value={entrada2}onChange={e => setEntrada2(e.target.value)} />
-            <label htmlFor="floatingInputGrid2">Entrada 2</label>
-      </div>
-      </div>
-        {/* Saída 2 */}
-        <div className="col-md">
-        <div className="form-floating">
-        <input type="datetime-local" className="form-control" id="floatingInputGrid2" value={saida2}onChange={e => setSaida2(e.target.value)}/>
-      <label htmlFor="floatingSelectGrid2">Saída 2</label>
-      </div>
-      </div>
-      </div>
-
-
-      {/* Nome Gestor */}
+    <div className="pagina">
+      <h2> Apontamento Sobreaviso</h2>
+      {/*<select className="form-select" aria-label="Default select example">
+        <option selected>Selecione o Tipo</option>
+        <option value="1">Sobreaviso</option>
+        <option value="2">Hora Extra</option>
+    </select> */}
+      {/* entrada nome */}
       <div className="form-floating mb-3">
-          <input type="text" className="form-control" id="floatingInput3" placeholder="Nome Gestor" value={gestor}onChange={e => setGestor(e.target.value)}/>
-          <label htmlFor="floatingInput3">Nome Gestor</label>
-        </div>
+        <input type="text" className="form-control" id="floatingInput" placeholder="Nome Completo" value={nome}onChange={e => setNome(e.target.value)}/>
+        <label htmlFor="floatingInput">Nome Completo</label>
+      </div>
+      
 
-
-      {/* Justificativa */}
-        <div className="form-floating">
-         <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" value={justificativa}onChange={e => setJustificativa(e.target.value)}></textarea>
-        <label htmlFor="floatingTextarea2">Justificativa</label>
-         </div>
-
-
-        {/* Botão */}
-        <div className ="form-btn">
-          <button className="btn btn-success" role="button"onClick={cadastrarHora}>Enviar</button>
-        </div>
+      {/* Matrícula */}
+      <div className="form-floating mb-3">
+        <input type="number" className="form-control" id="floatingInput" placeholder="Matrícula" value={matricula}onChange={e => setMatricula(e.target.value)}/>
+        <label htmlFor="floatingInput">Matrícula</label>
       </div>
 
 
-    </body>
-   
+
+      {/* Entrada 1 */}
+      <div className="row g-2">
+      <div className="col-md">
+          <div className="form-floating">
+          <input type="datetime-local" className="form-control" id="floatingInputGrid" value={entrada1}onChange={e => setEntrada1(e.target.value)} />
+          <label htmlFor="floatingInputGrid">Entrada 1</label>
+    </div>
+    </div>
+      {/* Saída 1 */}
+      <div className="col-md">
+      <div className="form-floating">
+      <input type="datetime-local" className="form-control" id="floatingInputGrid" value={saida1}onChange={e => setSaida1(e.target.value)}/>
+    <label htmlFor="floatingSelectGrid">Saída 1</label>
+    </div>
+    </div>
+    </div>
+
+
+        <p></p>
+        {/* Entrada 2 */}
+        <div className="row g-2">
+      <div className="col-md">
+          <div className="form-floating">
+          <input type="datetime-local" className="form-control" id="floatingInputGrid2" value={entrada2}onChange={e => setEntrada2(e.target.value)} />
+          <label htmlFor="floatingInputGrid2">Entrada 2</label>
+    </div>
+    </div>
+      {/* Saída 2 */}
+      <div className="col-md">
+      <div className="form-floating">
+      <input type="datetime-local" className="form-control" id="floatingInputGrid2" value={saida2}onChange={e => setSaida2(e.target.value)}/>
+    <label htmlFor="floatingSelectGrid2">Saída 2</label>
+    </div>
+    </div>
+    </div>
+
+
+    {/* Nome Gestor */}
+    <div className="form-floating mb-3">
+        <input type="text" className="form-control" id="floatingInput3" placeholder="Nome Gestor" value={gestor}onChange={e => setGestor(e.target.value)}/>
+        <label htmlFor="floatingInput3">Nome Gestor</label>
+      </div>
+
+
+    {/* Justificativa */}
+      <div className="form-floating">
+        <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" value={justificativa}onChange={e => setJustificativa(e.target.value)}></textarea>
+      <label htmlFor="floatingTextarea2">Justificativa</label>
+        </div>
+
+
+      {/* Botão */}
+      <div className ="form-btn">
+        <button className="btn btn-success" role="button"onClick={cadastrarHora}>Enviar</button>
+      </div>
+    </div>
   )
 }
 

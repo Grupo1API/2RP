@@ -33,45 +33,41 @@ function CentroResultado () {
   }
 
   return (
-    
-    <body>
-      <div className="pagina">
-        <h2> Cadastro de Centro de Resultado </h2>
-        {/*  nome */}
-        <div className="form-floating mb-4">
-          <input
-            type="text"
-            className="form-control"
-            id="floatingInput2"
-            placeholder="Nome Completo"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-          />
-          <label htmlFor="floatingInput2">Nome do CR</label>
-        </div>
+    <div className="pagina">
+      <h2> Cadastro de Centro de Resultado </h2>
+      {/*  nome */}
+      <div className="form-floating mb-4">
+        <input
+          type="text"
+          className="form-control"
+          id="floatingInput2"
+          placeholder="Nome Completo"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+        />
+        <label htmlFor="floatingInput2">Nome do CR</label>
+      </div>
 
-        {/* numero */}
-        <div className="form-floating mb-4">
-          <input
-            type="number"
-            className="form-control"
-            id="floatingInput2"
-            placeholder="Matrícula"
-            value={numero}
-            onChange={(e) => setNumero(e.target.value)}
-          />
-          <label htmlFor="floatingInput2">Número do CR</label>
-        </div>
+      {/* numero */}
+      <div className="form-floating mb-4">
+        <input
+          type="number"
+          className="form-control"
+          id="floatingInput2"
+          placeholder="Matrícula"
+          value={numero}
+          onChange={(e) => setNumero(e.target.value)}
+        />
+        <label htmlFor="floatingInput2">Número do CR</label>
+      </div>
 
-        {/* Botão */}
-        <div className ="form-btn">
-          <button className="btn btn-success"role="button"onClick={cadastrarcentro}>
-            Enviar
-          </button>
-        </div>
-      </div>  
-    </body>
-    
+      {/* Botão */}
+      <div className ="form-btn">
+        <button className="btn btn-success"role="button"onClick={cadastrarcentro}>
+          Enviar
+        </button>
+      </div>
+    </div>
   );
 };
 
