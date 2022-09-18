@@ -17,20 +17,20 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Centro de Resultados',
-    path: '/squad',
+    title: 'Projetos',
+    path: '/projeto',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
   {
     title: 'Hora Extra',
-    path: '/messages',
+    path: '/hora-extra',
     icon: <GoIcons.GoPerson />,
     cName: 'nav-text'
   },
   {
-    title: 'Support',
-    path: '/support',
+    title: 'Hora Sobreaviso',
+    path: '/hora-sobreaviso',
     icon: <IoIcons.IoMdHelpCircle />,
     cName: 'nav-text'
   }

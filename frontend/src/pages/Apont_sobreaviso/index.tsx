@@ -16,7 +16,7 @@ export const Apont_sobreaviso =() =>{
     e.preventDefault();
     try {
       const body = {nome, matricula, entrada1, saida1, entrada2, saida2, gestor, justificativa};
-      const response = await fetch('http://localhost:3000/hora', {
+      const response = await fetch('http://localhost:3001/hora-sobreaviso', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
@@ -115,9 +115,11 @@ export const Apont_sobreaviso =() =>{
 
 
         {/* Botão */}
-        <center>
+        {/* <center> */}
+        <a>
           <a className="btn btn-success" href="#" role="button"onClick={cadastrarHora}>Enviar</a>
-        </center>
+        </a>
+         {/*</center>*/}
 
          </div>
 
