@@ -1,8 +1,8 @@
-import Box from '@mui/material/Box';
 import React, { Component } from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 import Sidebar from './components/sidebar';
 import Main from './main';
-import {BrowserRouter as Router} from 'react-router-dom';
+
 import './App.css';
 
 class App extends Component {
@@ -10,14 +10,9 @@ class App extends Component {
     return (
       <Router>
         <React.StrictMode>
-          <div>
-          <Sidebar />
-          <Box 
-            display="flex"
-            justifyContent="center"
-            alignItems="center" >
-              <Main />
-          </Box>
+          <div >
+            <Sidebar />
+            <Main />
           </div>
         </React.StrictMode>
       </Router>
