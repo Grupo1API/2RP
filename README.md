@@ -32,9 +32,10 @@
 ## 🎯 Proposta
 
 ### **Desenvolver um sistema WEB que atenda as necessidades da empresa:**<br><br>
+
 ### **Requisitos funcionais**
 
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Apontamento de horas extras e classificação das horas;
+- <img src = "./readme/elementos/a_fazer.jpeg" /> apontamento de horas extras e classificação das horas;
 - <img src = "./readme/elementos/a_fazer.jpeg" /> Lançamento de horas de sobreaviso;
 - <img src = "./readme/elementos/a_fazer.jpeg" /> Cadastro de clientes e CRs;
 - <img src = "./readme/elementos/a_fazer.jpeg" /> Integração com o login 2RP;
@@ -74,7 +75,7 @@
 
 - **Banco de Dados:** PostgreSQL;
 - **Back-end:** TypeORM;
-- **Front-end:**  HTML, CSS, TypeScript, React;
+- **Front-end:** HTML, CSS, TypeScript, React;
 - **Ferramentas:** Visual Studio Code, Figma, Git e Github;
 
 <h1 align="center"> 

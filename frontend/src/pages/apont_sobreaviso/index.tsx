@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './style.css'
 
-export const Apont_sobreaviso =() =>{ 
+export const apont_sobreaviso =() =>{ 
   const [nome, setNome] = useState("")
   const [matricula, setMatricula] = useState("")
   const [entrada1, setEntrada1] = useState("")
@@ -40,7 +40,7 @@ export const Apont_sobreaviso =() =>{
 
   return (
     <div className="pagina">
-      <h2> Apontamento Sobreaviso</h2>
+      <h2> apontamento Sobreaviso</h2>
       {/*<select className="form-select" aria-label="Default select example">
         <option selected>Selecione o Tipo</option>
         <option value="1">Sobreaviso</option>
@@ -120,4 +120,4 @@ export const Apont_sobreaviso =() =>{
   )
 }
 
-export default Apont_sobreaviso;
+export default apont_sobreaviso;
