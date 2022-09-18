@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { IconContext } from 'react-icons/lib';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import './style.css';
-import { IconContext } from 'react-icons/lib';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
+import './style.css';
 
 function Sidebar() {
   const [sidebar, setSidebar] = useState(false);

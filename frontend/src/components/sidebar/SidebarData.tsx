@@ -28,7 +28,7 @@ export const SidebarData = [
   },
   {
     title: 'Sobreaviso',
-    path: '/sobreaviso',
+    path: '/hora-sobreaviso',
     icon: <RiIcons.RiTimeFill />,
     cName: 'nav-text'
   },
@@ -57,8 +57,8 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Projeto',
-    path: '/projeto',
+    title: 'Centro de Resultado',
+    path: '/centro-resultado',
     icon: <AiIcons.AiFillProject />,
     cName: 'nav-text'
   },

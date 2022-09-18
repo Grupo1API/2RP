@@ -4,6 +4,7 @@ body {
 .pagina{
   background-color: white;
   width: 50em;
+  text-align: center;
   box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
   display: block;
   margin-left: auto;
@@ -15,18 +16,32 @@ body {
 .pagina h2{
   text-align: center;
   color: rgb(97, 96, 96);
+  padding-top: 1em;
+  padding-bottom:1em;
 }
 .form-floating.mb-3{
-  margin-top: 3em;
+  width: 100%;
 }
-.form-floating.mb-3 #floatingInput2{
-  width:  13em;
-}  
+/*campos centralizados*/
+.form-floating.mb-4{
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
 #floatingTextarea2{
   height: 100px;
 }
+.form-btn{
+  text-align: center;
+}
 .btn.btn-success{
   margin-top: 15px;
- text-align: center;
 }
-
+.form-select{
+  width: 20em;
+  margin-top:3em;
+}
+option{  
+  color: #FF0000;
+}
