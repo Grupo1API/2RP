@@ -57,7 +57,7 @@
 ## 📆 Cronograma das Sprints
 
 - <img src = "./readme/elementos/feito.jpeg" /> Kick-Off - 16/08/2022
-- <img src = "./readme/elementos/a_fazer.jpeg" />Sprint 1 - 29/08/2022 a 18/09/2022
+- <img src = "./readme/elementos/a_fazer.jpeg" /><a href="https://github.com/Grupo1API/2RP/tree/main/readme/sprint1" target="_blank">Sprint 1 </a>- 29/08/2022 a 18/09/2022
 - <img src = "./readme/elementos/a_fazer.jpeg" />Sprint 2 - 19/09/2022 a 09/10/2022
 - <img src = "./readme/elementos/a_fazer.jpeg" />Sprint 3 - 13/10/2022 a 06/11/2022
 - <img src = "./readme/elementos/a_fazer.jpeg" />Sprint 4 - 07/11/2022 a 27/11/2022
