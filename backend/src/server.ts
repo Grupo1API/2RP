@@ -1,11 +1,18 @@
-import * as express from "express";
-import * as dotenv from "dotenv";
-import {Request, Response} from "express";
 
-const app = express();
+import * as express from 'express';
+import * as cors from 'cors'
+import * as dotenv from 'dotenv'
+dotenv.config()
 
-dotenv.config();
-const PORT = process.env.PORT || 3002;
-app.listen(PORT, () => console.log(`Rodando em localhost:${PORT}`));
+import routes from './routes'
 
-app.get("/", (req:Request, res:Response) => res.send("Bom dia =)"));
+const PORT = process.env.PORT || 3002
+
+const app = express() // cria o servidor
+app.use(express.json()) // suporta parâmetros JSON no body da requisição
+app.use(cors()) // suporta requisições de qualquer domínio
+
+// inicializa o servidor na porta especificada
+app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`))
+
+app.use(routes)
