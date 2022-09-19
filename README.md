@@ -20,7 +20,7 @@
 <h1 align="center"> 
 <img src = "./readme/figma/objetivo.png" width="600"/></h1>
 
-<br id="product-bakclog">
+<br id="product-backlog">
 
 ## 📋 Product Backlog
 
@@ -126,14 +126,14 @@
         <td>Desenvolvedor</td>
         <td><a href="https://www.linkedin.com/in/eduardo-carvalho-0a1411213/">@LinkedIn</a></td>
         <td><a href="https://github.com/EduardoPereiraCarvalho">@GitHub</a></td>
-        <td><!--<img src = "./readme/team/eduardo.jpeg" width="40">--></td>
+        <td><img src = "./readme/team/eduardo.jpeg" width="40"></td>
       </tr>
       <tr id="linha_table">
         <td>Guilherme Alves Cursino</td>
         <td>Desenvolvedor</td>
         <td><a href="https://www.linkedin.com/in/guilherme-cursino-679410213/">@LinkedIn</a></td>
         <td><a href="https://github.com/guilherme0066">@GitHub</a></td>
-        <td><!--<img src = "./readme/team/guilherme.jpeg" width="40">--></td>
+        <td><img src = "./readme/team/guilherme.jpeg" width="40"></td>
       </tr>
     </table>
   </div>
