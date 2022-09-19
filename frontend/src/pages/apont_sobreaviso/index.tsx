@@ -15,14 +15,14 @@ function Apont_sobreaviso (){
     e.preventDefault();
     try {
       const body = {nome, matricula, entrada1, saida1, entrada2, saida2, gestor, justificativa};
-      const response = await fetch('http://localhost:3001/hora-sobreaviso', {
+      const response = await fetch('http://localhost:3001/sobreaviso', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
         });
         console.log(response.json)
         // definir rota
-        window.location.href='/hora-sobreaviso'
+        window.location.href='/sobreaviso'
     } catch (err:any) {
       console.error(err.message)
     }

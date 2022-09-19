@@ -28,7 +28,7 @@ export const SidebarData = [
   },
   {
     title: 'Sobreaviso',
-    path: '/hora-sobreaviso',
+    path: '/sobreaviso',
     icon: <RiIcons.RiTimeFill />,
     cName: 'nav-text'
   },

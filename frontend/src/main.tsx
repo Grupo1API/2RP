@@ -14,7 +14,7 @@ const Main = () => (
       <Route path="/" element={<Home />} />
       <Route path="/cliente" element={<Cliente />} />
       <Route path="/hora-extra" element={<Apont_hora_extra />} />
-      <Route path="/hora-sobreaviso" element={<Apont_sobreaviso />} />
+      <Route path="/sobreaviso" element={<Apont_sobreaviso />} />
       <Route path="/centro-resultado" element={<CentroResultado />} />
     </Routes>
   </Container>
