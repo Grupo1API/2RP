@@ -16,33 +16,33 @@
 <h1 id="dor">Definition of Ready</h1>
 <br>
 
-<div id="backlog_sprint_1" align="center"><img src="./sprint1/DoR/sprint1-backlog.png" width="700"></h1></div>
+<div id="backlog_sprint_1" align="center"><img src="./DoR/sprint1-backlog.png" width="700"></h1></div>
 
 <br>
 
 <h2 id="modelo_de_dados">Modelo de dados</h2>
 
-<div align="center"><img src="./sprint1/DoR/modelo_de_dados.png" width="800"/></div>
+<div align="center"><img src="./DoR/modelo_de_dados.png" width="800"/></div>
 
 <br>
 
 <h2 id="mockups">Mockups</h2>
 
 <h3 align="center">Página Home e Menu com as Funcionalidades                        
-<img src="./sprint1/DoR/telas/home.png" width="800"></h3> 
+<img src="./DoR/telas/home.png" width="800"></h3> 
        
 
 <h3 align="center"> Cadastro de Cliente </h3>
-<h3 align="center"><img src="./sprint1/DoR/telas/cadastro_cliente.png" width="800">
+<h3 align="center"><img src="./DoR/telas/cadastro_cliente.png" width="800">
 
 <h3 align="center">Cadastro de Centro de Resultado                              
-<img src="./sprint1/DoR/telas/cadastro_centro_resultado.png" width="800"></h3>
+<img src="./DoR/telas/cadastro_centro_resultado.png" width="800"></h3>
 
 <h3 align="center">Apontamento de Hora Extra                                  
-<img src="./sprint1/DoR/telas/hora_extra.png" width="800"></h3>
+<img src="./DoR/telas/hora_extra.png" width="800"></h3>
 
 <h3 align="center">Apontamento de Hora Sobreaviso                  
-<img src="./sprint1/DoR/telas/hora_sobreaviso.png" width="800"></h3>
+<img src="./DoR/telas/hora_sobreaviso.png" width="800"></h3>
 
 
 <br>
@@ -50,7 +50,7 @@
 <h2 id="burndown_sprint_1">Burndown da Sprint<h2>
 
 <h3 align="center">
-<img align="center" src="./sprint1/DoD/burndown.png" width="600"/></h3>
+<img align="center" src="./DoD/burndown.png" width="600"/></h3>
 
 <br>
 
@@ -58,29 +58,29 @@
 
 <h2 id="funcionalidades_sprint_1">Funcionalidades da Sprint</h2>
 
-<br>
+
 
 <h3 align="center">Página Home + Menu com as Funcionalidades</h3>
-<img align="center" src="./sprint1/DoD/home_menu.gif"/>
+<img align="center" src="./DoD/home_menu.gif"/>
 
 <br>
 
 <h3 align="center">Cadastro de Clientes</h3>
-<img align="center" src="./sprint1/DoD/cadastro_cliente.gif"/>
+<img align="center" src="./DoD/cadastro_cliente.gif"/>
 
 <br>
 
 <h3 align="center">Cadastro de Centro de Resultado</h3>
-<img align="center" src="./sprint1/DoD/cadastro_cr.gif"/>
+<img align="center" src="./DoD/cadastro_cr.gif"/>
 
 <br>
 
 <h3 align="center">Apontamento de Hora Extra</h3>
-<img align="center" src="./sprint1/DoD/apontamento_hora_extra.gif"/>
+<img align="center" src="./DoD/apontamento_hora_extra.gif"/>
 
 <br>
 
 <h3 align="center">Apontamento de Hora Sobreaviso</h3>
-<img align="center" src="./sprint1/DoD/apontamento_sobreaviso.gif"/>
+<img align="center" src="./DoD/apontamento_sobreaviso.gif"/>
 
 <br>
