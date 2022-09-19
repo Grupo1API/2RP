@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import './style.css'
 
-
-export const apont_hora_extra =() =>{ 
+function Apont_hora_extra () { 
   const [nome, setNome] = useState("")
   const [matricula, setMatricula] = useState("")
   const [entrada1, setEntrada1] = useState("")
@@ -23,7 +22,7 @@ export const apont_hora_extra =() =>{
         });
         console.log(response.json)
         // definir rota
-        window.location.href='/Cliente'
+        window.location.href='/hora-extra'
     } catch (err:any) {
       console.error(err.message)
     }
@@ -41,7 +40,7 @@ export const apont_hora_extra =() =>{
 
   return (
     <div className="pagina">
-      <h2> apontamento Hora Extra</h2>
+      <h2> Apontamento Hora Extra</h2>
       {/* entrada nome */}
       <div className="form-floating mb-3">
         <input type="text" className="form-control" id="floatingInput" placeholder="Nome Completo" value={nome}onChange={e => setNome(e.target.value)}/>
@@ -118,4 +117,4 @@ export const apont_hora_extra =() =>{
   )
 }
 
-export default apont_hora_extra;
+export default Apont_hora_extra;

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './style.css'
 
-export const apont_sobreaviso =() =>{ 
+function Apont_sobreaviso (){ 
   const [nome, setNome] = useState("")
   const [matricula, setMatricula] = useState("")
   const [entrada1, setEntrada1] = useState("")
@@ -22,7 +22,7 @@ export const apont_sobreaviso =() =>{
         });
         console.log(response.json)
         // definir rota
-        window.location.href='/Cliente'
+        window.location.href='/hora-sobreaviso'
     } catch (err:any) {
       console.error(err.message)
     }
@@ -40,7 +40,7 @@ export const apont_sobreaviso =() =>{
 
   return (
     <div className="pagina">
-      <h2> apontamento Sobreaviso</h2>
+      <h2> Apontamento Sobreaviso</h2>
       {/*<select className="form-select" aria-label="Default select example">
         <option selected>Selecione o Tipo</option>
         <option value="1">Sobreaviso</option>
@@ -120,4 +120,4 @@ export const apont_sobreaviso =() =>{
   )
 }
 
-export default apont_sobreaviso;
+export default Apont_sobreaviso;

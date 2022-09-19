@@ -9,16 +9,16 @@ export class HoraExtra {
     @Column({length: 80, nullable: false})
     nome_completo: string
 
-    @Column({length:20,nullable: false,unique:true})
+    @Column({nullable: false,unique:true})
     entrada1: Date
 
-    @Column({length:20,nullable: false,unique:true})
+    @Column({nullable: false,unique:true})
     saida1: Date
 
-    @Column({length:20,nullable: false,unique:true})
+    @Column({nullable: false,unique:true})
     entrada2: Date
 
-    @Column({length:20,nullable: false,unique:true})
+    @Column({nullable: false,unique:true})
     saida2: Date
 
     @Column({length: 80, nullable: false})
