@@ -1,6 +1,6 @@
 import { AppDataSource } from "../app-data-source"
 import { Request, Response } from 'express'
-import { Sobreaviso } from '../entity/Sobreaviso'
+import { Sobreaviso } from '../models/Sobreaviso'
 
 class SobreavisoController {
   public async find(req: Request, res: Response): Promise<Response> {

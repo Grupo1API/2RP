@@ -1,6 +1,6 @@
 import { AppDataSource } from "../app-data-source";
 import { Request, Response } from "express";
-import { HoraExtra } from "../entity/HoraExtra";
+import { HoraExtra } from "../models/HoraExtra";
 
 class HoraExtraController {
     public async find(req: Request, res: Response): Promise<Response> {

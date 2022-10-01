@@ -1,5 +1,5 @@
 import { Router } from "express"
-import HoraExtraController from "../controller/HoraExtraController"
+import HoraExtraController from "../controllers/HoraExtraController"
 
 const routes = Router()
 

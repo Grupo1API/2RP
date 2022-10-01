@@ -1,5 +1,5 @@
 import { Router } from "express"
-import SobreavisoController from "../controller/SobreavisoController"
+import SobreavisoController from "../controllers/SobreavisoController"
 
 const routes = Router()
 

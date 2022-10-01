@@ -1,6 +1,6 @@
 import { AppDataSource } from "../app-data-source"
 import { Request, Response } from 'express'
-import { Cliente } from '../entity/Cliente'
+import { Cliente } from '../models/Cliente'
 
 class ClienteController {
   public async find(req: Request, res: Response): Promise<Response> {

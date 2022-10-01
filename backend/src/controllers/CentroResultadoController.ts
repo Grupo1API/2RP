@@ -1,6 +1,6 @@
 import { AppDataSource } from "../app-data-source";
 import { Request, Response } from "express";
-import { CentroResultado } from "../entity/CentroResultado";
+import { CentroResultado } from "../models/CentroResultado";
 
 class CentroResultadoController {
   public async find(req: Request, res: Response): Promise<Response> {
