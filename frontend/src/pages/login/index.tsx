@@ -1,16 +1,27 @@
 import React, {useState} from "react";
+import { useAuth } from "../../hooks";
 import './style.css'
 
 
 export const Login =() =>{
-    const [email, setEmail] = useState("")
+    const [mail, setMail] = useState("")
     const [senha, setSenha] = useState("")
+    const [error, setError] = useState("");
+    const {login} = useAuth();
 
+    const enviar = async () => {
+      setError("");
+      const r = await login({mail, senha});
+      if (r.error !== ""){
+        setError(r.error);
+      }
+    }
+  
     const entrar = async (e:any) => {
         e.preventDefault();
         try {
-          const body = {email, senha};
-          const response = await fetch('http://localhost:3001/login', {
+          const body = {mail, senha};
+          const response = await fetch('http://localhost:3001/Login', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(body)
@@ -23,7 +34,7 @@ export const Login =() =>{
         }
       };
       const cancelar=()=>{
-        setEmail("")
+        setMail("")
         setSenha("")
       }
 
@@ -36,14 +47,15 @@ export const Login =() =>{
             <div className="form-floating mb-3">
             <form>
                   <div className="mb-3">
-                    <input type="email" className="form-control" id="InputEmail" placeholder="Login:"/>
+                    <input value={mail} type="email" className="form-control" id="InputEmail" placeholder="Login:" onChange={(e) => setMail(e.target.value) }/>
                   </div>
 
                   {/*senha */}
                   <div className="mb-3">
-                    <input type="password" className="form-control" id="InputPassword" placeholder="Senha:"/>
+                    <input value={senha} type="password" className="form-control" id="InputPassword" placeholder="Senha:" onChange={(e) => setSenha(e.target.value)}/>
                   </div>
-                  <button type="submit" className="btn btn-primary">Entrar</button>
+                  {error !== "" && <div>{error}</div>}
+                  <button onClick={entrar} type="submit" className="btn btn-primary">Entrar</button>
                 </form>
                 <p> ou </p>
                 <a href="">Esqueceu a senha?</a>

@@ -14,6 +14,7 @@
     "@types/jest": "^27.5.2",
     "@types/react-dom": "^18.0.6",
     "@types/webrtc": "^0.0.32",
+    "axios": "^1.1.2",
     "framer-motion": "^7.3.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
