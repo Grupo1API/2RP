@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { ClienteModel } from '../database/models/ClienteModel';
+import ClientesModel from '../database/models/ClientesModel';
 
-class ClienteController {
+class ClientesController {
   async findAll(req: Request, res: Response) {
-    const clientes = await ClienteModel.findAll();
+    const clientes = await ClientesModel.findAll();
 
     return clientes.length > 0
       ? res.status(200).json(clientes)
@@ -11,7 +11,7 @@ class ClienteController {
   }
   async findOne(req: Request, res: Response) {
     const { clienteId } = req.params;
-    const cliente = await ClienteModel.findOne({
+    const cliente = await ClientesModel.findOne({
       where: {
         id: clienteId,
       }
@@ -24,7 +24,7 @@ class ClienteController {
 
   async create(req: Request, res: Response) {
     const { nome, cnpj, contato } = req.body;
-    const cliente = await ClienteModel.create({nome, cnpj, contato});
+    const cliente = await ClientesModel.create({nome, cnpj, contato});
 
     return res.status(201).json(cliente);
   }
@@ -32,7 +32,7 @@ class ClienteController {
   async update(req: Request, res: Response) {
     const { clienteId } = req.params;
 
-    await ClienteModel.update(req.body, {where: {id: clienteId }});
+    await ClientesModel.update(req.body, {where: {id: clienteId }});
 
     return res.status(201).send();
   }
@@ -40,10 +40,10 @@ class ClienteController {
   async destroy(req: Request, res: Response) {
     const { clienteId } = req.params;
 
-    await ClienteModel.update({status: 'inativo'}, {where: {id: clienteId }});
+    await ClientesModel.update({status: 'inativo'}, {where: {id: clienteId }});
 
     return res.status(201).send();
   }
 }
 
-export default new ClienteController;
+export default new ClientesController;

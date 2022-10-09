@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../db';
 
-export const CentroResultadoModel = db.define('centro_resultados', {
+const GestoresModel = db.define('gestores', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -10,15 +10,13 @@ export const CentroResultadoModel = db.define('centro_resultados', {
   },
   nome: {
     type: DataTypes.STRING,
-    allowNull: false
-  },
-  numero: {
-    type: DataTypes.STRING,
     allowNull: false,
-    unique: true
   },
   status: {
     type: DataTypes.ENUM({values: ['ativo', 'inativo']}),
+    allowNull: false,
     defaultValue: 'ativo'
   }
 });
+
+export default GestoresModel;
