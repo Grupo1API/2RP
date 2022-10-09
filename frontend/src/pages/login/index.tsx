@@ -28,7 +28,7 @@ export const Login =() =>{
             });
             console.log(response.json)
             // definir rota
-            window.location.href='/Login'
+            window.location.href='/'
         } catch (err:any) {
           console.error(err.message)
         }
