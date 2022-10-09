@@ -1,90 +1,67 @@
-import { AppDataSource } from "../app-data-source";
-import { Request, Response } from "express";
-import { HoraExtra } from "../entity/HoraExtra";
+import { Request, Response } from 'express';
+import { HoraExtraModel } from '../database/models/HoraExtraModel';
 
 class HoraExtraController {
-    public async find(req: Request, res: Response): Promise<Response> {
-      const { nome_completo, matricula, entrada1, saida1, entrada2,saida2, nome_gestor, justificativa  } = req.body;
-      const hora_extra = await AppDataSource.manager.findOneBy(HoraExtra, {
-        nome_completo,
-        matricula,
-        entrada1,
-        saida1,
-        entrada2,
-        saida2,
-        nome_gestor,
-        justificativa,
-      });
-      if (hora_extra) 
-        return res.json(hora_extra);
-      return res.json({ error: "Dados incorretos" });
-    }
+  async findAll(req: Request, res: Response) {
+    const horasExtras = await HoraExtraModel.findAll();
 
-    public async create(req: Request, res: Response): Promise<Response> {
-        const { nome_completo, matricula, entrada1, saida1, entrada2,saida2, nome_gestor, justificativa } = req.body
-        const hora_extra = await AppDataSource.manager.save(HoraExtra, { nome_completo, matricula, entrada1, saida1, entrada2,saida2, nome_gestor, justificativa }).catch((e) => {
-
-          if (/(matricula)[\s\S]+(already exists)/.test(e.detail)) {
-            return { error: 'matricula já existe' }
-          }
-          return e
-        })
-    
-        return res.json(hora_extra)
+    return horasExtras.length > 0
+      ? res.status(200).json(horasExtras)
+      : res.status(204).send();
+  }
+  async findOne(req: Request, res: Response) {
+    const { horaExtraId } = req.params;
+    const horaExtra = await HoraExtraModel.findOne({
+      where: {
+        id: horaExtraId,
       }
+    });
 
-      public async update(req: Request, res: Response): Promise<Response> {
-    const { nome_completo, matricula, entrada1, saida1, entrada2,saida2, nome_gestor, justificativa } = req.body
-    const hora_extra: any = await AppDataSource.manager.findOneBy(HoraExtra, { matricula }).catch((e) => {
-      return { error: "Identificador inválido" }
-    })
-    if (hora_extra && hora_extra.id) {
-      hora_extra.nome_completo = nome_completo
-      hora_extra.matricula = matricula
-      hora_extra.entrada1 = entrada1
-      hora_extra.saida1 = saida1
-      hora_extra.entrada2 = entrada2
-      hora_extra.cnpj = saida2
-      hora_extra.nome_gestor = nome_gestor
-      hora_extra.justificativa = justificativa
-      const r = await AppDataSource.manager.save(hora_extra, hora_extra).catch((e) => {
-        if (/(matricula)[\s\S]+(already exists)/.test(e.detail)) {
-          return ({ error: 'Matrícula já existe' })
-        }
-        return e
-      })
-      return res.json(r)
-    }
-    else if (hora_extra && hora_extra.error) {
-      return res.json(hora_extra)
-    }
-    else {
-      return res.json({ error: "Hora extra não localizada" })
-    }
+    return horaExtra
+      ? res.status(200).json(horaExtra)
+      : res.status(204).send();
   }
 
-  public async delete(req: Request, res: Response): Promise<Response> {
-    const {matricula } = req.body
-    const hora_extra: any = await AppDataSource.manager.findOneBy(HoraExtra, { matricula }).catch((e) => {
-      return { error: "Identificador inválido" }
-    })
-    if (hora_extra && hora_extra.matricula) {
-      const r = await AppDataSource.manager.remove(HoraExtra, hora_extra).catch((e) => e.message)
-      return res.json(r)
-    }
-    else if (hora_extra && hora_extra.error) {
-      return res.json(hora_extra)
-    }
-    else {
-      return res.json({ error: "Hora extra não localizada" })
-    }
+  async create(req: Request, res: Response) {
+    const {
+      nome_completo,
+      matricula,
+      entrada_1,
+      saida_1,
+      entrada_2,
+      saida_2,
+      nome_gestor,
+      justificativa
+    } = req.body;
+    const horaExtra = await HoraExtraModel.create({
+      nome_completo,
+      matricula,
+      entrada_1,
+      saida_1,
+      entrada_2,
+      saida_2,
+      nome_gestor,
+      justificativa
+    });
+
+    return res.status(201).json(horaExtra);
   }
 
-  public async list(req: Request, res: Response): Promise<Response> {
-    const hora_extras = await AppDataSource.manager.find(HoraExtra)
+  async update(req: Request, res: Response) {
+    const { horaExtraId } = req.params;
 
-    return res.json(hora_extras)
+    await HoraExtraModel.update(req.body, {where: {id: horaExtraId }});
+
+    return res.status(201).send();
+  }
+
+  async destroy(req: Request, res: Response) {
+    const { horaExtraId } = req.params;
+
+    await HoraExtraModel.update({status: 'inativo'}, {where: {id: horaExtraId }});
+
+    return res.status(201).send();
   }
 }
 
-export default new HoraExtraController()
+export default new HoraExtraController;

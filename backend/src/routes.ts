@@ -16,22 +16,22 @@ router.delete('/clientes/:clienteId', ClienteController.destroy);
 // Centro de rasultados
 router.post('/centro-de-resultados', CentroResultadoController.create);
 router.get('/centro-de-resultados', CentroResultadoController.findAll);
-router.get('/centro-de-resultados', CentroResultadoController.findOne);
-router.put('/centro-de-resultados', CentroResultadoController.update);
-router.delete('/centro-de-resultados', CentroResultadoController.destroy);
+router.get('/centro-de-resultados/:centroResultadoId', CentroResultadoController.findOne);
+router.put('/centro-de-resultados/:centroResultadoId', CentroResultadoController.update);
+router.delete('/centro-de-resultados/:centroResultadoId', CentroResultadoController.destroy);
 
 // Horas extras
 router.post('/horas-extras', HoraExtraController.create);
 router.get('/horas-extras', HoraExtraController.findAll);
-router.get('/horas-extras', HoraExtraController.findOne);
-router.put('/horas-extras', HoraExtraController.update);
-router.delete('/horas-extras', HoraExtraController.destroy);
+router.get('/horas-extras/:horaExtraId', HoraExtraController.findOne);
+router.put('/horas-extras/:horaExtraId', HoraExtraController.update);
+router.delete('/horas-extras/:horaExtraId', HoraExtraController.destroy);
 
 // Sobreavisos
 router.post('/sobreavisos', SobreavisoController.create);
 router.get('/sobreavisos', SobreavisoController.findAll);
-router.get('/sobreavisos', SobreavisoController.findOne);
-router.put('/sobreavisos', SobreavisoController.update);
-router.delete('/sobreavisos', SobreavisoController.destroy);
+router.get('/sobreavisos/:sobreavisoId', SobreavisoController.findOne);
+router.put('/sobreavisos/:sobreavisoId', SobreavisoController.update);
+router.delete('/sobreavisos/:sobreavisoId', SobreavisoController.destroy);
 
 export { router };

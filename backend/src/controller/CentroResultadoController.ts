@@ -1,85 +1,50 @@
-import { AppDataSource } from "../app-data-source";
-import { Request, Response } from "express";
-import { CentroResultado } from "../entity/CentroResultado";
+import { Request, Response } from 'express';
+import { CentroResultadoModel } from '../database/models/CentroResultadoModel';
 
 class CentroResultadoController {
-  public async find(req: Request, res: Response): Promise<Response> {
-    const { nome, numero } = req.body;
-    const centro_resultado = await AppDataSource.manager.findOneBy(CentroResultado, {
-      nome,
-      numero,
+  async findAll(req: Request, res: Response) {
+    const centroResultados = await CentroResultadoModel.findAll();
+
+    return centroResultados.length > 0
+      ? res.status(200).json(centroResultados)
+      : res.status(204).send();
+  }
+
+  async findOne(req: Request, res: Response) {
+    const { centroResultadoId } = req.params;
+    const centroResultado = await CentroResultadoModel.findOne({
+      where: {
+        id: centroResultadoId
+      }
     });
-    if (centro_resultado) 
-      return res.json(centro_resultado);
-    return res.json({ error: "Dados inválidos" });
+
+    return centroResultado
+      ? res.status(200).json(centroResultado)
+      : res.status(204).send();
   }
 
-  public async create(req: Request, res: Response): Promise<Response> {
+  async create(req: Request, res: Response) {
     const { nome, numero } = req.body;
-    const centro_resultado = await AppDataSource.manager
-      .save(CentroResultado, { nome, numero }).catch((e) => {
-        // testa se o numero é repetido
-        if (/(numero)[\s\S]+(already exists)/.test(e.detail)) {
-          return { error: 'O número já existe' }
-        }
-        return e
-      })
-    
-    return res.json(centro_resultado);
+    const centroResultado = await CentroResultadoModel.create({nome, numero});
+
+    return res.status(201).json(centroResultado);
   }
 
-  public async update(req: Request, res: Response): Promise<Response> {
-    const { id, nome, numero } = req.body;
-    const centro_resultado: any = await AppDataSource.manager
-      .findOneBy(CentroResultado, { id })
-      .catch((e) => {
-        return { error: "Identificador inválido" };
-      });
-    if (centro_resultado && centro_resultado.id) {
-      centro_resultado.nome = nome;
-      centro_resultado.numero = numero;
-      const r = await AppDataSource.manager
-        .save(CentroResultado, centro_resultado).catch((e) => {
-          // testa se o numero é repetido
-          if (/(numero)[\s\S]+(already exists)/.test(e.detail)) {
-            return ({ error: 'O número já existe' })
-          }
-          return e
-        })
+  async update(req: Request, res: Response) {
+    const { centroResultadoId } = req.params;
 
+    await CentroResultadoModel.update(req.body, {where: {id: centroResultadoId }});
 
-      return res.json(r);
-    } else if (centro_resultado && centro_resultado.error) {
-      return res.json(centro_resultado);
-    } else {
-      return res.json({ error: "CentroResultado não localizado" });
-    }
+    return res.status(201).send();
   }
 
-  public async delete(req: Request, res: Response): Promise<Response> {
-    const { id } = req.body;
-    const centro_resultado: any = await AppDataSource.manager
-      .findOneBy(CentroResultado, { id })
-      .catch((e) => {
-        return { error: "Identificador inválido" };
-      });
-    if (centro_resultado && centro_resultado.id) {
-      const r = await AppDataSource.manager
-        .remove(CentroResultado, centro_resultado)
-        .catch((e) => e.message);
-      return res.json(r);
-    } else if (centro_resultado && centro_resultado.error) {
-      return res.json(centro_resultado);
-    } else {
-      return res.json({ error: "CentroResultado não localizado" });
-    }
-  }
+  async destroy(req: Request, res: Response) {
+    const { centroResultadoId } = req.params;
 
-  public async list(req: Request, res: Response): Promise<Response> {
-    const centro_resultados = await AppDataSource.manager.find(CentroResultado);
+    await CentroResultadoModel.update({status: 'inativo'}, {where: {id: centroResultadoId }});
 
-    return res.json(centro_resultados);
+    return res.status(201).send();
   }
 }
 
-export default new CentroResultadoController();
+export default new CentroResultadoController

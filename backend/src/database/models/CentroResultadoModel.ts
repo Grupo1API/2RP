@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../db';
 
-export const CentroResultado = db.define('centro-resultados', {
+export const CentroResultadoModel = db.define('centro-resultados', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
