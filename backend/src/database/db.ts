@@ -9,11 +9,11 @@ export const db = new Sequelize(
     dialectModule: pg,
     dialect: 'postgres',
     protocol: 'postgres',
-    // dialectOptions: {
-    //   ssl: {
-    //     require: true, // This will help you. But you will see nwe error
-    //     rejectUnauthorized: false // This line will fix new error
-    //   }
-    // },
+    dialectOptions: {
+      ssl: {
+        require: true, // This will help you. But you will see nwe error
+        rejectUnauthorized: false // This line will fix new error
+      }
+    },
   }
 );

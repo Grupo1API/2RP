@@ -4,7 +4,8 @@ Content-Type: application/json
 
 {
   "nome": "proejto 44",
-  "numero_projeto": 18
+  "numero_projeto": 18,
+  "clienteId": 1
 }
 
 ### Buscar todos os projetos

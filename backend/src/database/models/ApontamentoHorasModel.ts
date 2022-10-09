@@ -37,6 +37,6 @@ const ApontamentoHorasModel = db.define('apontamento_horas', {
 
 ApontamentoHorasModel.belongsTo(ColaboradoresModel, {foreignKey: 'colaboradorId'});
 ApontamentoHorasModel.belongsTo(GestoresModel, {foreignKey: 'gestorId'});
-ApontamentoHorasModel.belongsTo(ProjetosModel, {foreignKey: 'projetoId'});
+ApontamentoHorasModel.belongsTo(ProjetosModel);
 
 export default ApontamentoHorasModel;

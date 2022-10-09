@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../db';
-import CentroDeResultados from "./CentroDeResultadosModel";
-import ClientesModel from "./ClientesModel";
+import CentroDeResultados from './CentroDeResultadosModel';
+import ClientesModel from './ClientesModel';
 
 const ProjetosModel = db.define('projetos', {
   id: {
@@ -26,7 +26,6 @@ const ProjetosModel = db.define('projetos', {
   }
 });
 
-ProjetosModel.hasOne(CentroDeResultados, {foreignKey: 'centroDeResultadoId'});
-CentroDeResultados.belongsTo(ProjetosModel);
+ProjetosModel.belongsTo(ClientesModel);
 
 export default ProjetosModel;
