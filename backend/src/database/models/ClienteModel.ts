@@ -1,11 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../db';
 
-enum statusType {
-  ACTIVE = 'active',
-  DISABLED = 'disabled'
-}
-
 export const ClienteModel = db.define('clientes', {
   id: {
     type: DataTypes.INTEGER,
