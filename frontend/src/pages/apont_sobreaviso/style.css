@@ -39,9 +39,9 @@ body {
   margin-top: 15px;
 }
 .form-select{
-  width: 20em;
+  width: 100%;
   margin-top:3em;
 }
 option{  
-  color: #FF0000;
+  color:  rgb(97, 96, 96);
 }

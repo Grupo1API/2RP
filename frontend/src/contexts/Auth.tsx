@@ -22,9 +22,9 @@ export const AuthProvider = ({ children }: any) => {
     if (storage) {
       const token = JSON.parse(storage);
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      const mail = localStorage.getItem("@mail");
-      if (mail) {
-        setMailLogin(JSON.parse(mail));
+      const email = localStorage.getItem("@mail");
+      if (email) {
+        setMailLogin(JSON.parse(email));
       }
       setLogado(true);
     }
@@ -35,10 +35,10 @@ export const AuthProvider = ({ children }: any) => {
     const response: any = await auth.login(usuario);
     if (response.token) {
       localStorage.setItem("@token", JSON.stringify(response.token));
-      localStorage.setItem("@mail", JSON.stringify(response.mail));
+      localStorage.setItem("@mail", JSON.stringify(response.email));
       // coloca o token no header das requisições do Axios
       api.defaults.headers.common["Authorization"] = `Bearer ${response.token}`;
-      setMailLogin(response.mail);
+      setMailLogin(response.email);
       setLogado(true);
       return { error: "" };
     }
@@ -59,10 +59,10 @@ export const AuthProvider = ({ children }: any) => {
     const response: any = await auth.create(usuario);
     if (response.token) {
       localStorage.setItem("@token", JSON.stringify(response.token));
-      localStorage.setItem("@mail", JSON.stringify(response.mail));
+      localStorage.setItem("@mail", JSON.stringify(response.email));
       // coloca o token no header das requisições do Axios
       api.defaults.headers.common["Authorization"] = `Bearer ${response.token}`;
-      setMailLogin(response.mail);
+      setMailLogin(response.email);
       setLogado(true);
       return { error: "" };
     }
@@ -75,9 +75,9 @@ export const AuthProvider = ({ children }: any) => {
   ): Promise<{ error: string }> => {
     const response: any = await auth.update(usuario);
     if (response.id) {
-      if (response.mail) {
-        setMailLogin(response.mail);
-        localStorage.setItem("@mail", JSON.stringify(response.mail));
+      if (response.email) {
+        setMailLogin(response.email);
+        localStorage.setItem("@mail", JSON.stringify(response.email));
       }
       return { error: "" };
     }
