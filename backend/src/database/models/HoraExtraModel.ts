@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../db';
 
-export const HoraExtraModel = db.define('horas-extras', {
+export const HoraExtraModel = db.define('horas_extras', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
