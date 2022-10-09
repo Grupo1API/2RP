@@ -1,14 +1,19 @@
 import * as pg from 'pg';
 import { Sequelize } from 'sequelize';
 
+const database_url = process.env.DATABASE_URL
+
 export const db = new Sequelize(
-  process.env.DATABASE_NAME || 'dois_rp',
-  process.env.DATABASE_USER || 'postgres',
-  process.env.DATABASE_PASS || 'postgres',
+  `${database_url}`,
   {
     dialectModule: pg,
     dialect: 'postgres',
-    host: process.env.DATABASE_HOST || 'localhost',
-    port: 5432
+    protocol: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true, // This will help you. But you will see nwe error
+        rejectUnauthorized: false // This line will fix new error
+      }
+    },
   }
 );
