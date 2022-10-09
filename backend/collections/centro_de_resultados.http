@@ -1,0 +1,26 @@
+### Criar centro de resultado
+POST http://localhost:3002/centro-de-resultados
+Content-Type: application/json
+
+{
+  "nome": "Ciclano Beltrano",
+  "numero": "1230"
+}
+
+### Buscar todos os centro de resultados
+GET http://localhost:3002/centro-de-resultados
+
+### Buscar centro de resultado por id
+GET http://localhost:3002/centro-de-resultados/1
+
+### Atualizar centro de resultado
+PUT http://localhost:3002/centro-de-resultados/1
+Content-Type: application/json
+
+{
+  "nome": "Fulano Beltrano",
+  "numero": "1234"
+}
+
+### Deletar centro de resultado (Não apaga do banco, apenas inativa o usuário)
+DELETE http://localhost:3002/centro-de-resultados/1
