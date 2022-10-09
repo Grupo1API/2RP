@@ -9,19 +9,19 @@ const TurnosModel = db.define('turnos', {
     primaryKey: true,
   },
   entrada_1: {
-    type: DataTypes.DATE,
+    type: DataTypes.TIME,
     allowNull: false,
   },
   saida_1: {
-    type: DataTypes.DATE,
+    type: DataTypes.TIME,
     allowNull: false,
   },
   entrada_2: {
-    type: DataTypes.DATE,
+    type: DataTypes.TIME,
     allowNull: false,
   },
   saida_2: {
-    type: DataTypes.DATE,
+    type: DataTypes.TIME,
     allowNull: false,
   }
 });

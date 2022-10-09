@@ -25,5 +25,5 @@ Content-Type: application/json
   "contato": "ciclano@email.com"
 }
 
-### Deletar cliente (Não apaga do banco, apenas inativa o usuário)
+### Deletar cliente (Não apaga do banco, apenas inativa o cliente)
 DELETE http://localhost:3002/clientes/1

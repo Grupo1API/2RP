@@ -23,8 +23,8 @@ class TurnosController {
   }
 
   async create(req: Request, res: Response) {
-    const { nome, numero_turno } = req.body;
-    const turno = await TurnosModel.create({nome, numero_turno});
+    const { entrada_1, saida_1,  entrada_2, saida_2 } = req.body;
+    const turno = await TurnosModel.create({entrada_1, saida_1,  entrada_2, saida_2});
 
     return res.status(201).json(turno);
   }

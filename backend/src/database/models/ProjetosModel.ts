@@ -26,7 +26,6 @@ const ProjetosModel = db.define('projetos', {
   }
 });
 
-ClientesModel.belongsTo(ProjetosModel);
-
+ProjetosModel.belongsTo(ClientesModel);
 
 export default ProjetosModel;

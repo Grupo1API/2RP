@@ -3,8 +3,8 @@ POST http://localhost:3002/centro-de-resultados
 Content-Type: application/json
 
 {
-  "nome": "Ciclano Beltrano",
-  "numero": "1230"
+  "nome": "Projeto 333",
+  "numero": "12"
 }
 
 ### Buscar todos os centro de resultados
@@ -18,9 +18,9 @@ PUT http://localhost:3002/centro-de-resultados/1
 Content-Type: application/json
 
 {
-  "nome": "Fulano Beltrano",
-  "numero": "1234"
+  "nome": "Projeto 333",
+  "numero": "15"
 }
 
-### Deletar centro de resultado (Não apaga do banco, apenas inativa o usuário)
+### Deletar centro de resultado (Não apaga do banco, apenas inativa o centro de resultados)
 DELETE http://localhost:3002/centro-de-resultados/1

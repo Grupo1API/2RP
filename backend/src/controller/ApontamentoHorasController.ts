@@ -3,10 +3,10 @@ import ApontamentoHorasModel from '../database/models/ApontamentoHorasModel';
 
 class ApontamentoHorasController {
   async findAll(req: Request, res: Response) {
-    const horasExtras = await ApontamentoHorasModel.findAll();
+    const apontamentoHoras = await ApontamentoHorasModel.findAll();
 
-    return horasExtras.length > 0
-      ? res.status(200).json(horasExtras)
+    return apontamentoHoras.length > 0
+      ? res.status(200).json(apontamentoHoras)
       : res.status(204).send();
   }
   async findOne(req: Request, res: Response) {
@@ -26,13 +26,13 @@ class ApontamentoHorasController {
     const {
       tipo_apontamento,
       horario_inicio,
-      hotatio_fim,
+      horario_fim,
       justificativa
     } = req.body;
     const horaExtra = await ApontamentoHorasModel.create({
       tipo_apontamento,
       horario_inicio,
-      hotatio_fim,
+      horario_fim,
       justificativa
     });
 

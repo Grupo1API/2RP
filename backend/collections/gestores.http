@@ -1,0 +1,24 @@
+### Criar gestor
+POST http://localhost:3002/gestores
+Content-Type: application/json
+
+{
+  "nome": "Joana"
+}
+
+### Buscar todos as gestores
+GET http://localhost:3002/gestores
+
+### Buscar gestor por id
+GET http://localhost:3002/gestores/1
+
+### Atualizar gestor
+PUT http://localhost:3002/gestores/1
+Content-Type: application/json
+
+{
+  "nome": "Cristina"
+}
+
+### Deletar gestor (Não apaga do banco, apenas inativa o gestor)
+DELETE http://localhost:3002/gestores/1

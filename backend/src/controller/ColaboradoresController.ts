@@ -23,8 +23,8 @@ class ColaboradoresController {
   }
 
   async create(req: Request, res: Response) {
-    const { nome, cnpj, contato } = req.body;
-    const colaborador = await ColaboradoresModel.create({nome, cnpj, contato});
+    const { nome, matricula, tipo } = req.body;
+    const colaborador = await ColaboradoresModel.create({nome, matricula, tipo});
 
     return res.status(201).json(colaborador);
   }
