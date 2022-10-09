@@ -23,8 +23,8 @@ class UsuariosController {
   }
 
   async create(req: Request, res: Response) {
-    const { email, senha } = req.body;
-    const usuario = await UsuariosModel.create({email, senha});
+    const { email, senha, colaboradorId } = req.body;
+    const usuario = await UsuariosModel.create({email, senha, colaboradorId});
 
     return res.status(201).json(usuario);
   }

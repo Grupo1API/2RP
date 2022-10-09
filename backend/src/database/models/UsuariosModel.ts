@@ -25,6 +25,6 @@ const UsuariosModel = db.define('usuarios', {
   },
 });
 
-ColaboradoresModel.belongsTo(UsuariosModel);
+UsuariosModel.belongsTo(ColaboradoresModel, {foreignKey: 'colaboradorId'});
 
 export default UsuariosModel;

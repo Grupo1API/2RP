@@ -5,7 +5,8 @@ Content-Type: application/json
 {
   "nome": "Maria",
   "matricula": "111111111",
-  "tipo": true
+  "tipo": true,
+  "turnoId": 1
 }
 
 ### Buscar todos os colaboradores

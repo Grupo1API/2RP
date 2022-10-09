@@ -23,8 +23,8 @@ class ProjetosController {
   }
 
   async create(req: Request, res: Response) {
-    const { nome, numero_projeto } = req.body;
-    const projeto = await ProjetosModel.create({nome, numero_projeto});
+    const { nome, numero_projeto, centroDeResultadoId } = req.body;
+    const projeto = await ProjetosModel.create({nome, numero_projeto, centroDeResultadoId});
 
     return res.status(201).json(projeto);
   }

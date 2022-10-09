@@ -5,7 +5,8 @@ Content-Type: application/json
 {
   "role": "administrador",
   "email": "maria@email.com",
-  "senha":"123456"
+  "senha":"123456",
+  "colaboradorId": 1
 }
 
 ### Buscar todos os usuarios

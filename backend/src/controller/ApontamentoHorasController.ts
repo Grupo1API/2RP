@@ -11,14 +11,14 @@ class ApontamentoHorasController {
   }
   async findOne(req: Request, res: Response) {
     const { apontamentoHoraId } = req.params;
-    const horaExtra = await ApontamentoHorasModel.findOne({
+    const apontamentoHora = await ApontamentoHorasModel.findOne({
       where: {
         id: apontamentoHoraId,
       }
     });
 
-    return horaExtra
-      ? res.status(200).json(horaExtra)
+    return apontamentoHora
+      ? res.status(200).json(apontamentoHora)
       : res.status(204).send();
   }
 
@@ -27,16 +27,22 @@ class ApontamentoHorasController {
       tipo_apontamento,
       horario_inicio,
       horario_fim,
-      justificativa
+      justificativa,
+      colaboradorId,
+      gestorId,
+      projetoId
     } = req.body;
-    const horaExtra = await ApontamentoHorasModel.create({
+    const apontamentoHora = await ApontamentoHorasModel.create({
       tipo_apontamento,
       horario_inicio,
       horario_fim,
-      justificativa
+      justificativa,
+      colaboradorId,
+      gestorId,
+      projetoId
     });
 
-    return res.status(201).json(horaExtra);
+    return res.status(201).json(apontamentoHora);
   }
 
   async update(req: Request, res: Response) {

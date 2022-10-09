@@ -5,7 +5,8 @@ Content-Type: application/json
 {
   "codigo": "teste",
   "fator": 111,
-  "descricao_verba": "sei lá"
+  "descricao_verba": "sei lá",
+  "apontamentoHoraId": 1
 }
 
 ### Buscar todos as verbas

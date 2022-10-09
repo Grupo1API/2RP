@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../db';
-import GestoresModel from './GestoresModel';
 import ColaboradoresModel from './ColaboradoresModel';
+import GestoresModel from './GestoresModel';
 import ProjetosModel from './ProjetosModel';
 
 const ApontamentoHorasModel = db.define('apontamento_horas', {
@@ -35,8 +35,8 @@ const ApontamentoHorasModel = db.define('apontamento_horas', {
   }
 });
 
-ColaboradoresModel.belongsTo(ApontamentoHorasModel);
-GestoresModel.belongsTo(ApontamentoHorasModel);
-ProjetosModel.belongsTo(ApontamentoHorasModel);
+ApontamentoHorasModel.belongsTo(ColaboradoresModel, {foreignKey: 'colaboradorId'});
+ApontamentoHorasModel.belongsTo(GestoresModel, {foreignKey: 'gestorId'});
+ApontamentoHorasModel.belongsTo(ProjetosModel, {foreignKey: 'projetoId'});
 
 export default ApontamentoHorasModel;

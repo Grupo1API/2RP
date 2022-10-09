@@ -25,7 +25,7 @@ const VerbasModel = db.define('verbas', {
   }
 });
 
-ApontamentoHorasModel.belongsTo(VerbasModel);
+VerbasModel.belongsTo(ApontamentoHorasModel);
 
 
 export default VerbasModel;

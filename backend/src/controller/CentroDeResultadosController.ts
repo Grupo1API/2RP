@@ -24,8 +24,8 @@ class CentroDeResultadosController {
   }
 
   async create(req: Request, res: Response) {
-    const { nome, numero } = req.body;
-    const centroResultado = await CentroDeResultados.create({nome, numero});
+    const { nome, numero, colaboradorId, gestorId, projetoId } = req.body;
+    const centroResultado = await CentroDeResultados.create({nome, numero, colaboradorId, gestorId, projetoId});
 
     return res.status(201).json(centroResultado);
   }

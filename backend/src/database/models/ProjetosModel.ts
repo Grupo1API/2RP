@@ -26,6 +26,7 @@ const ProjetosModel = db.define('projetos', {
   }
 });
 
-ProjetosModel.belongsTo(ClientesModel);
+ProjetosModel.hasOne(CentroDeResultados, {foreignKey: 'centroDeResultadoId'});
+CentroDeResultados.belongsTo(ProjetosModel);
 
 export default ProjetosModel;

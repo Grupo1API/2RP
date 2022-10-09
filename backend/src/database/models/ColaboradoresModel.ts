@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../db';
-import TurnosModel from "./TurnosModel";
+import TurnosModel from './TurnosModel';
 
 const ColaboradoresModel = db.define('colaboradores', {
   id: {
@@ -24,6 +24,6 @@ const ColaboradoresModel = db.define('colaboradores', {
   }
 });
 
-TurnosModel.belongsTo(ColaboradoresModel);
+ColaboradoresModel.belongsTo(TurnosModel);
 
 export default ColaboradoresModel;

@@ -6,7 +6,10 @@ Content-Type: application/json
   "tipo_apontamento": "hora extra",
   "horario_inicio": "2022-01-01 13:00:00",
   "horario_fim": "2022-01-01 15:00:00",
-  "justificativa": "blá blá blá"
+  "justificativa": "blá blá blá",
+  "colaboradorId": 1,
+  "gestorId": 1 ,
+  "projetoId": 1
 }
 
 ### Buscar todos as apontamento-horas
