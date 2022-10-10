@@ -4,20 +4,27 @@
 
 <h1>Sumário</h1>
 <a href="#dor">DoR (Definition of Ready)</a>   <br>
-<a href="#backlog_sprint_1">Backlog Sprint 1</a>   <br>
+<a href="#backlog_sprint">Backlog Sprint 1</a>   <br>
+<a href="#backlog_sprint_priorizacao">Backlog Sprint 1 - Ordem de Prioridade</a>   <br>
 <a href="#use_cases">Use Cases</a>   <br>
 <a href="#modelo_de_dados">Modelo de dados</a>   <br>
 <a href="#mockups">Mockups</a>   <br>
-<a href="#burndown_sprint_1">Burndowm Sprint 1</a>   <br>
+<a href="#burndown_sprint">Burndowm Sprint 1</a>   <br>
 <a href="#dod">DoD (Definition of Done)</a>   <br>
-<a href="#funcionalidades_sprint_1">Funcionalidades implementadas</a>
+<a href="#funcionalidades_sprint">Funcionalidades implementadas</a>
 
 <br>
 <h1 id="dor">Definition of Ready</h1>
 
-<h2 id="backlog_sprint_1">Backlog Sprint 1</h2>
+<h2 id="backlog_sprint">Backlog Sprint 1</h2>
 
-<div id="backlog_sprint_1" align="center"><img src="./DoR/sprint1-backlog.png" width="700"></h1></div>
+<div id="backlog_sprint" align="center"><img src="./DoR/sprint1-backlog.png" width="700"></h1></div>
+
+<br>
+
+<h2 id="backlog_sprint_priorizacao">Backlog Sprint 1 - Ordem de Prioridade</h2>
+
+<div id="backlog_sprint_priorizacao" align="center"><img src="./DoR/sprint1-priorizacao.png" width="700"></h1></div>
 
 <br>
 
@@ -27,45 +34,45 @@
   <table align="justify">
     <tr>
       <th>User Story id</th>
-      <th>Como um ...</th>
-      <th>Eu quero ...</th>
-      <th>Para que seja possível ...</th>
+      <th>Como (ator)</th>
+      <th>Eu quero (ação)</th>
+      <th>Para que seja possível (funcionalidade)</th>
       <th>Prioridade</th>
     </tr>
     <tr>
-      <td>1</td>
+      <td>6</td>
       <td>Gestor e Colaborador</td>
       <td>Apontar o lançamento de Hora Extra</td>
       <td>Criar página de apontamento de Hora Extra </td>
       <td>1</td>
     </tr>
     <tr>
-      <td>2</td>
+      <td>7</td>
       <td>Gestor e Colaborador</td>
       <td>Apontar o lançamento de Horas Sobreaviso</td>
       <td>Criar página de apontamento Hora Sobreaviso</td>
       <td>2</td>
     </tr>
     <tr>
-      <td>3</td>
+      <td>11</td>
       <td>Administrador</td>
       <td>Cadastrar Clientes</td>
       <td>Formulário de cadastro de clientes </td>
-      <td>4</td>
+      <td>9</td>
     </tr>
     <tr> 
-      <td>4</td>
+      <td>12</td>
       <td>Administrador</td>
       <td>Cadastrar Centro de Resultados - Squads</td>
       <td>Formulário de cadastro de Centro de Resultaldo (Squad)</td>
-      <td>5</td>
+      <td>10</td>
     </tr>
     <tr>
-      <td>9</td>
+      <td>16</td>
       <td>Administrador, Gestor e Colaborador </td>
       <td>Página principal (Home) e navegação pelas funcionalidades através de um Menu</td>
       <td>Criar a página home e o menu funcional</td>
-      <td>14</td>
+      <td>16</td>
     </tr>
   </table>
 </div>
@@ -97,7 +104,7 @@
 
 <br>
 
-<h2 id="burndown_sprint_1">Burndown da Sprint<h2>
+<h2 id="burndown_sprint">Burndown da Sprint<h2>
 <div align="center">
 <img align="center" src="./DoD/burndown.png" width="600"/>
 </div>
@@ -106,7 +113,7 @@
 
 <h1 id="dod">Definition of Done<h1>
 
-<h2 id="funcionalidades_sprint_1">Funcionalidades da Sprint</h2>
+<h2 id="funcionalidades_sprint">Funcionalidades da Sprint</h2>
 
 <h3 align="center">Página Home + Menu com as Funcionalidades</h3>
 <img align="center" src="./DoD/home_menu.gif"/>
