@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../../../hooks";
 
 export default function UsuarioUpdate() {
@@ -7,23 +6,8 @@ export default function UsuarioUpdate() {
   const [senha, setSenha] = useState("");
   const [perfil, setPerfil] = useState("");
   //const [msg, setMsg] = useState("");
-  const { usuarioUpdate, mailLogin } = useAuth();
+  //const { usuarioUpdate, mailLogin } = useAuth();
 
-  //useEffect(() => {
-  //  setMail(mailLogin);
-  //}, [mailLogin]);
-
-  /*const salvar = async () => {
-    setMsg("");
-    if (email !== "" || senha !== "") {
-      const r = await usuarioUpdate({ email, senha });
-      if (r.error !== "") {
-        setMsg(r.error);
-      } else {
-        setMsg("Atualizado com sucesso");
-      }
-    }
-  };*/
 
   async function salvar (event: { preventDefault: () => void; }) {
     event.preventDefault();
@@ -59,17 +43,17 @@ export default function UsuarioUpdate() {
   return (
     <div>
       <div className="pagina">
-      <h2>Atualização de Usuário</h2>
+      <h2>Gerenciar Usuário</h2>
       {/*  email */}
       <div className="form-floating mb-4">
         <input
           className="form-control"
           id="floatingInput2"
-          placeholder= "Digite o e-mail"
           value={email}
+          required={true}
           onChange={(e) => setMail(e.target.value)}
         />
-        <label htmlFor="floatingInput2">e-mail</label>
+        <label htmlFor="floatingInput2">E-mail</label>
       </div>
 
       {/*  senha */}
@@ -79,20 +63,20 @@ export default function UsuarioUpdate() {
           className="form-control"
           id="floatingInput2"
           value={senha}
-          placeholder= "Digite senha"
           onChange={(e) => setSenha(e.target.value)}
         />
         <label htmlFor="floatingInput2">Senha</label>
       </div>
 
-            {/*  perfil */}
-            <div className="form-floating mb-4">
+      {/*  perfil */}
+      <div className="form-floating mb-4">
           <select
           className="form-select" 
           id="floatingSelect"
           placeholder="Escolha o perfil"
           onChange={(e)=> setPerfil(e.target.value)}
           value={perfil}
+          required={true}
           >
               <option value='colaborador'>Colaborador</option>
               <option value='gestor'>Gestor</option>

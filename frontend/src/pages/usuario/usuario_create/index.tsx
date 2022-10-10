@@ -4,8 +4,8 @@ import React, { useState } from "react";
 export default function UsuarioCreate() {
   const [email, setMail] = useState("");
   const [senha, setSenha] = useState("");
-  const perfilDefault = 'colaborador';
-  const [perfil, setPerfil] = useState(perfilDefault);
+  //const perfilDefault = 'colaborador';
+  const [perfil, setPerfil] = useState("");
 
   //const { usuarioCreate } = useAuth();
 
@@ -49,7 +49,6 @@ export default function UsuarioCreate() {
         <input
           className="form-control"
           id="floatingInput2"
-          placeholder= "email@2rp.com"
           value={email}
           required={true}
           onChange={(e) => setMail(e.target.value)}
@@ -63,7 +62,6 @@ export default function UsuarioCreate() {
           type="password"
           className="form-control"
           id="floatingInput2"
-          placeholder= "Digite a senha"
           value={senha}
           required={true}
           onChange={(e) => setSenha(e.target.value)}
@@ -79,6 +77,7 @@ export default function UsuarioCreate() {
           placeholder="Escolha o perfil"
           onChange={(e)=> setPerfil(e.target.value)}
           value={perfil}
+          required={true}
           >
               <option value='colaborador'>Colaborador</option>
               <option value='gestor'>Gestor</option>
