@@ -54,8 +54,6 @@ function Apont_hora_extra () {
         <label htmlFor="floatingInput2">Matrícula</label>
       </div>
 
-
-
       {/* Entrada 1 */}
       <div className="row g-2">
       <div className="col-md">
@@ -85,7 +83,7 @@ function Apont_hora_extra () {
     </div>
       {/* Saída 2 */}
       <div className="col-md">
-      <div className="form-floating">
+      <div className="form-floating mb-3">
       <input type="datetime-local" className="form-control" id="floatingInputGrid2" value={saida2}onChange={e => setSaida2(e.target.value)}/>
     <label htmlFor="floatingSelectGrid2">Saída 2</label>
     </div>
@@ -109,9 +107,8 @@ function Apont_hora_extra () {
 
       {/* Botão */}
       <div className ="form-btn">
-        <button className="btn btn-success" role="button"onClick={cadastrarHora}>Enviar</button>
+        <button className="btn btn-success" role="button" onClick={cadastrarHora}>Enviar</button>
       </div>
-
     </div>
    
   )
