@@ -5,10 +5,10 @@ LDAP (Lightweight Directory Access Protocol). </p>
 
 <h1>Sumário</h1>
 <a href="#dor">DoR (Definition of Ready)</a>   <br>
-<a href="#backlog_sprint">Backlog Sprint 1</a>   <br>
+<a href="#backlog_sprint">Backlog Sprint 2</a>   <br>
+<a href="#backlog_sprint_priorizacao">Backlog Sprint 2 - Ordem de Prioridade</a>   <br>
 <a href="#use_cases">Use Cases</a>   <br>
 <a href="#modelo_de_dados">Modelo de dados</a>   <br>
-<a href="#mockups">Mockups</a>   <br>
 <a href="#burndown_sprint">Burndowm Sprint 2</a>   <br>
 <a href="#dod">DoD (Definition of Done)</a>   <br>
 <a href="#funcionalidades_sprint">Funcionalidades implementadas</a>
@@ -16,9 +16,15 @@ LDAP (Lightweight Directory Access Protocol). </p>
 <br>
 <h1 id="dor">Definition of Ready</h1>
 
-<h2 id="backlog_sprint>Backlog Sprint 1</h2>
+<h2 id="backlog_sprint">Backlog Sprint 2</h2>
 
 <div id="backlog_sprint" align="center"><img src="./DoR/sprint2-backlog.png" width="700"></h1></div>
+
+<br>
+
+<h2 id="backlog_sprint_priorizacao">Backlog Sprint 2 - Ordem de Prioridade</h2>
+
+<div id="backlog_sprint_priorizacao" align="center"><img src="./DoR/sprint2-priorizacao.png" width="700"></h1></div>
 
 <br>
 
@@ -43,8 +49,8 @@ LDAP (Lightweight Directory Access Protocol). </p>
     <tr>
       <td>19</td>
       <td>Administrador</td>
-      <td>No lançamento das horas deve ser especificado o gestor,cliente, CR (centro de resultado) e projeto</td>
-      <td>Relacionamento do banco de dados para que essas especificações sejam feitas com Select e/ou automaticamente </td>
+      <td>Nos cadastros e apontamentos alguns dados de outras tabelas devem ser especificados (turno, verbas, cliente, projeto, centro de resultado)</td>
+      <td>Relacionamento do banco de dados para que seja possível que essas especificações sejam feitas automaticamente </td>
       <td>11</td>
     </tr>	
     <tr>
@@ -115,12 +121,14 @@ LDAP (Lightweight Directory Access Protocol). </p>
 <br>
 
 <h3 align="center">Relacionamento do Banco de Dados</h3>
-<img align="center" src="./DoD/req_relacionamento.mp4"/>
-- Cadastro de Colaborador utilizando Id do turno;
-- Cadastro de Usuário com o Id do colaborador;
-- Cadastro de Centro de Resultado incluindo Id do colaborador, Id do gestor e Id do Projeto.
-- Cadastro de Projeto com o Id do Cliente;
-- Apontamento de Hora incluindo Id do colaborador, Id do gestor e Id do Projeto e Relacionamento da Verba com o Apontamento através do Id.
+<img align="center" src="./DoD/req_relacionamento.gif"/>
+<br>
+<h4>Requests evidenciando o relacionamento do banco de dados:</h4><br>
+- Cadastro de Colaborador utilizando Id do turno; <br>
+- Cadastro de Usuário com o Id do colaborador; <br>
+- Cadastro de Centro de Resultado incluindo Id do colaborador, Id do gestor e Id do Projeto. <br>
+- Cadastro de Projeto com o Id do Cliente; <br>
+- Apontamento de Hora incluindo Id do colaborador, Id do gestor e Id do Projeto e Relacionamento da Verba com o Apontamento através do Id. <br>
 
 <br>
 
