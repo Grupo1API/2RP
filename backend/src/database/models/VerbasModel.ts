@@ -10,14 +10,16 @@ const VerbasModel = db.define('verbas', {
     primaryKey: true,
   },
   codigo: {
-    type: DataTypes.ENUM({values: ['teste']}),
+    // códigos da regra de negócio para classificação de horas extras e sobreviso
+    type: DataTypes.ENUM({values: ['1601', '1602', '3000', '3001', '1809', '3016']}),
     allowNull: false,
-    defaultValue: 'teste'
+    defaultValue: ''
   },
   fator: {
-    type: DataTypes.INTEGER,
-    // como existe um fator de multiplicação correspondente a um unico código verificar se pode haver um defaulte value e ou o fator pode ser setado caso o código seja o certo 
+    // fator de multiplicação existe somente para horas extra noturnas correspondente aos códigos 300 e 3001
+    type: DataTypes.ENUM({values: ['1.1428571']}),
     allowNull: false,
+    defaultValue: ''
   },
   descricao_verba: {
     type: DataTypes.STRING,
@@ -26,6 +28,5 @@ const VerbasModel = db.define('verbas', {
 });
 
 VerbasModel.belongsTo(ApontamentoHorasModel);
-
 
 export default VerbasModel;

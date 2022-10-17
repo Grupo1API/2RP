@@ -18,9 +18,10 @@ const ColaboradoresModel = db.define('colaboradores', {
     allowNull: false,
     unique: true,
   },
-  tipo: {
-    type: DataTypes.BOOLEAN,
+  role:  {
+    type: DataTypes.ENUM({values: ['administrador', 'gestor', 'colaborador']}),
     allowNull: false,
+    defaultValue: 'colaborador'
   }
 });
 

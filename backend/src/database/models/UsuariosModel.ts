@@ -10,7 +10,7 @@ const UsuariosModel = db.define('usuarios', {
     primaryKey: true,
   },
   role: {
-    type: DataTypes.ENUM({values: ['admin', 'gestor', 'colaborador']}),
+    type: DataTypes.ENUM({values: ['administrador', 'gestor', 'colaborador']}),
     allowNull: false,
     defaultValue: 'colaborador'
   },
