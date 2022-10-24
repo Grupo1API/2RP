@@ -1,7 +1,8 @@
 import React from 'react';
-import Main from '../main';
 import Loading from '../components/Loading'
 import {useAuth} from '../hooks';
+import AuthRoutes from './AuthRoutes';
+import AppRoutes from './AppRoutes';
 
 export default function Routes() {
   const { logado, isLoading } = useAuth();
@@ -10,5 +11,5 @@ export default function Routes() {
     return <Loading />;
   }
 
-  return !logado ? <Main /> : <Main />;
+  return !logado ? <AppRoutes /> : <AppRoutes />;
 }
