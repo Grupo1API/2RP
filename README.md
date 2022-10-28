@@ -41,12 +41,16 @@
 
 ## 📆 Cronograma das Sprints
 
+<div align="center">
+
 | Sprint | Previsão de entrega | Status           | Histórico |
 |:--:|:----------:|:-------------------|:-------------------------------------------------:|
 | 01 | 18/09/2022 | ✔️ Concluída    | [Relatório](https://github.com/Grupo1API/2RP/blob/main/readme/sprint1/README.md) |
 | 02 | 09/10/2022 | ✔️ Concluída    | [Relatório](https://github.com/Grupo1API/2RP/tree/main/readme/sprint2/README.md) |
 | 03 | 06/11/2022 | 🚧 Em andamento    | -- |
 | 04 | 27/11/2022 | 🛑 Não iniciada    | -- |
+
+</div>
 
 → [Voltar ao topo](#topo)
 
@@ -68,6 +72,7 @@
 ## 👨‍💻 Equipe
 
 <span id="equipe">
+<div align="center">
 
 |    Nome     | Função    |      LinkedIn                |      GitHub    |
 |:-----------: |:------|:----------------------------|---------------:|
@@ -76,5 +81,7 @@
 | Vitória Moura | Dev Team | [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vit%C3%B3ria-moura-6393391b0/) | [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vitoriasaturnino) | 
 | Eduardo Carvalho | Dev Team | [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eduardo-carvalho-0a1411213/) | [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/EduardoPereiraCarvalho) | 
 | Guilherme Cursino | Dev Team | [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/guilherme-cursino-679410213/) | [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/guilherme0066) | 
+
+</div>
 
 → [Voltar ao topo](#topo)
