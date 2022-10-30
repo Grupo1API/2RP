@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { db } from '../db';
+import { db } from '../database/db';
 import ColaboradoresModel from "./ColaboradoresModel";
 
 const UsuariosModel = db.define('usuarios', {

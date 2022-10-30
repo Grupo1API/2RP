@@ -1,19 +1,12 @@
 import { DataTypes } from 'sequelize';
-import { db } from '../db';
-import CentroDeResultados from "./CentroDeResultadosModel";
-import ClientesModel from "./ClientesModel";
+import { db } from '../database/db';
 
-const ProjetosModel = db.define('projetos', {
+const GestoresModel = db.define('gestores', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
-  },
-  numero_projeto: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    unique: true,
   },
   nome: {
     type: DataTypes.STRING,
@@ -26,6 +19,4 @@ const ProjetosModel = db.define('projetos', {
   }
 });
 
-ProjetosModel.belongsTo(ClientesModel);
-
-export default ProjetosModel;
+export default GestoresModel;

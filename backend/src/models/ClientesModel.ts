@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import { db } from '../db';
+import { db } from '../database/db';
 
-const GestoresModel = db.define('gestores', {
+const ClientesModel = db.define('clientes', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -12,11 +12,20 @@ const GestoresModel = db.define('gestores', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  cnpj: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    unique: true,
+  },
   status: {
     type: DataTypes.ENUM({values: ['ativo', 'inativo']}),
     allowNull: false,
     defaultValue: 'ativo'
+  },
+  contato: {
+    type: DataTypes.STRING,
+    allowNull: false,
   }
 });
 
-export default GestoresModel;
+export default ClientesModel;

@@ -1,7 +1,8 @@
 import { DataTypes } from 'sequelize';
-import { db } from '../db';
+import { db } from '../database/db';
+import TurnosModel from "./TurnosModel";
 
-const ClientesModel = db.define('clientes', {
+const ColaboradoresModel = db.define('colaboradores', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -12,20 +13,17 @@ const ClientesModel = db.define('clientes', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  cnpj: {
+  matricula: {
     type: DataTypes.INTEGER,
     allowNull: false,
     unique: true,
   },
-  status: {
-    type: DataTypes.ENUM({values: ['ativo', 'inativo']}),
-    allowNull: false,
-    defaultValue: 'ativo'
-  },
-  contato: {
-    type: DataTypes.STRING,
+  tipo: {
+    type: DataTypes.BOOLEAN,
     allowNull: false,
   }
 });
 
-export default ClientesModel;
+TurnosModel.belongsTo(ColaboradoresModel);
+
+export default ColaboradoresModel;

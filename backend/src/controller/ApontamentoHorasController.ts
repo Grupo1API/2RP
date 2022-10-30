@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ApontamentoHorasModel from '../database/models/ApontamentoHorasModel';
+import ApontamentoHorasModel from '../models/ApontamentoHorasModel';
 
 class ApontamentoHorasController {
   async findAll(req: Request, res: Response) {

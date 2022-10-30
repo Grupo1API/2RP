@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import VerbasModel from '../database/models/VerbasModel';
+import VerbasModel from '../models/VerbasModel';
 
 class verbasController {
   async findAll(req: Request, res: Response) {

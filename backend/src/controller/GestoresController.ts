@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import GestoresModel from '../database/models/GestoresModel';
+import GestoresModel from '../models/GestoresModel';
 
 class GestoresController {
   async findAll(req: Request, res: Response) {

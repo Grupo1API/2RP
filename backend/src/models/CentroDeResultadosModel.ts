@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { db } from '../db';
+import { db } from '../database/db';
 import GestoresModel from "./GestoresModel";
 import ColaboradoresModel from "./ColaboradoresModel";
 import ProjetosModel from './ProjetosModel';

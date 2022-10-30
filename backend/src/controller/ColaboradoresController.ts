@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ColaboradoresModel from '../database/models/ColaboradoresModel';
+import ColaboradoresModel from '../models/ColaboradoresModel';
 
 class ColaboradoresController {
   async findAll(req: Request, res: Response) {
