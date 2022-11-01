@@ -7,6 +7,7 @@ import Apont_sobreaviso from './pages/apont_sobreaviso';
 import CentroResultado from './pages/cadastro_centro_resultado';
 import Login from './pages/login';
 import Home from './pages/home';
+import Quadro_cliente from './pages/quadro_cliente';
 import UsuarioCreate from './pages/usuario/usuario_create';
 import UsuarioUpdate from './pages/usuario/usuario_update';
 
@@ -19,6 +20,7 @@ const Main = () => (
       <Route path="/hora-extra" element={<Apont_hora_extra />} />
       <Route path="/sobreaviso" element={<Apont_sobreaviso />} />
       <Route path="/centro-resultado" element={<CentroResultado />} />
+      <Route path="/quadro-clientes" element={<Quadro_cliente />} />
       <Route path="/login" element={<Login />} />
       <Route path="/usuario/create" element ={<UsuarioCreate/>}/>
       <Route path="/usuario/update" element ={<UsuarioUpdate/>}/>

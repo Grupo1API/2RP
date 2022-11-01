@@ -13,7 +13,7 @@ function CentroResultado () {
     };
 
     try{
-      await fetch('http://localhost:3001/centro-resultado', {
+      await fetch('http://localhost:3001/centro-de-resultados', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

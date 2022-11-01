@@ -1,0 +1,77 @@
+body{
+    background-color: #3B7EC4;
+}
+
+.pagina#pagina-login{
+    background-color: #060b26;
+    width: 40%;
+    min-height: 27em;
+    text-align: center;
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.pagina h2#titulo{
+    text-align: center;
+    color:rgb(255, 255, 255);
+    padding-top: 1em;
+    padding-bottom:1em;
+  }
+/*
+#InputEmail{
+    font-size: 20px;
+    color: black;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 80% !important;
+    height: 55px !important;
+}
+#InputPassword{
+    font-size: 20px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 80% !important;
+    height: 55px !important;
+}
+input::placeholder{
+    color: rgba(0, 0, 0, 0.74) !important;
+    font-weight: bolder;
+}*/
+
+.form-floating.mb-3#floating-login{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.form-btn{
+    text-align: center;
+}
+
+.btn.btn-success{
+    margin-top: 15px;
+}
+
+button{
+    margin-bottom: 15px;
+    font-size: 20px !important;
+    width: 35%;
+    height: 50px;
+}
+
+button:hover{
+    transition-duration: 3s linear;
+    box-shadow: 2px 2px 2px 2px #3b7dc49d;
+    background-color:#214f80;
+    color: #3b7dc4;
+}
+/*
+p{
+    font-size: 20px;
+    color: #fffefe93 ;
+}*/
