@@ -1,4 +1,6 @@
+import TextField from "@mui/material/TextField";
 import React, {useState} from "react";
+import {ColorButton} from '../../components/Button/styles';
 import './style.css'
 
 function Cliente(){
@@ -38,54 +40,53 @@ function Cliente(){
 
     return(
       <div className="pagina">
+
         <h2>Cadastro de Clientes</h2>
+
         {/*  nome */}
         <div className="form-floating mb-4">
-            <input
-            type="text"
-            className="form-control"
-            id="floatingInput2"
-            placeholder= "Digite a Razão Social"
-            value={nome}
-            required={true}
-            onChange={(e) => setNome(e.target.value)}
-            />
-        <label htmlFor="floatingInput2">Razão Social</label>
+        <TextField fullWidth
+          id="outlined-basic" 
+          label="Razão Social"
+          value={nome}
+          required={true}
+          onChange={(e) => setNome(e.target.value)}>
+        </TextField>
         </div>
 
-          {/* cnpj */}
+        {/* cnpj */}
         <div className="form-floating mb-4">
-        <input
+          <TextField fullWidth
           type="number"
-          className="form-control"
-          id="floatingInput2"
+          id="outlined-basic" 
+          label="CNPJ" 
+          variant="outlined"
           placeholder="XX.XXX.XXX/XXXX-XX"
           value={cnpj}
           required={true}
-          onChange={(e) => setCnpj(e.target.value)}
-        />
-        <label htmlFor="floatingInput2">CNPJ</label>
+          onChange={(e) => setCnpj(e.target.value)}>
+          </TextField>
         </div>
 
         {/* contato */}
         <div className="form-floating mb-4">
-        <input
-          type="texto"
-          className="form-control"
-          id="floatingInput2"
-          placeholder="Contato"
+        <TextField fullWidth
+          id="outlined-basic" 
+          label="Contato" 
+          variant="outlined"
           value={contato}
-          required={true}
-          onChange={(e) => setContato(e.target.value)}
-        />
-        <label htmlFor="floatingInput2">Contato</label>
+          onChange={(e) => setContato(e.target.value)}>
+          </TextField>
         </div>
 
         {/* Botão */}
         <div className ="form-btn">
-        <button className="btn btn-success" role="button" onClick={handleSubmit}>
-          Enviar
-        </button>
+          <ColorButton 
+            variant="contained"
+            onClick={handleSubmit}
+          >
+            Enviar
+          </ColorButton>
         </div>
       </div>
     );
