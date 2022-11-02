@@ -16,7 +16,7 @@ export const SidebarData = [
   },
   {
     title: 'Controle de Ponto',
-    path: '/controle-de-ponto',
+    path: '/apontamento-horas',
     icon: <BsIcons.BsFillCalendarFill />,
     cName: 'nav-text'
   },
