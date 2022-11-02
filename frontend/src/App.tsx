@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <Router>
         <React.StrictMode>
-          <div >
+          <div id="app" >
             <Sidebar />
             <Routes />
           </div>
