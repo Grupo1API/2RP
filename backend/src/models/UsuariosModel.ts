@@ -4,9 +4,9 @@ import ColaboradoresModel from "./ColaboradoresModel";
 
 interface UserAttributes {
   id: Number;
-  role: String;
-  email: String;
-  senha: String;
+  role: string;
+  email: string;
+  senha: string;
 }
 
 interface UserCreationAttributes
@@ -40,7 +40,7 @@ const UsuariosModel = db.define<UserInstance>(
   senha: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
+  }
 });
 
 ColaboradoresModel.belongsTo(UsuariosModel);
