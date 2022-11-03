@@ -24,25 +24,10 @@ class UsuariosController {
       : res.status(204).send();
   }
 
-  async create(req: Request, res: Response) {
-    const { email, senha } = req.body;
-    const usuario = await UsuariosModel.create({email, senha});
-
-    return res.status(201).json(usuario);
-  }
-
   async update(req: Request, res: Response) {
     const { usuarioId } = req.params;
 
     await UsuariosModel.update(req.body, {where: {id: usuarioId }});
-
-    return res.status(201).send();
-  }
-
-  async destroy(req: Request, res: Response) {
-    const { usuarioId } = req.params;
-
-    await UsuariosModel.update({status: 'inativo'}, {where: {id: usuarioId }});
 
     return res.status(201).send();
   }
@@ -53,9 +38,9 @@ class UsuariosController {
     
       type Data = {
         id: Number;
-        role: String;
-        email: String;
-        senha: String;
+        role: string;
+        email: string;
+        senha: string;
       }
     
        const data: Data = {
@@ -88,7 +73,8 @@ class UsuariosController {
   async login(req: Request, res: Response) {
     try {
     const { email, senha } = req.body;
-    const user = await UsuariosModel.findOne({ email });
+    const user = await UsuariosModel.findOne({ where: { email } });
+
 
     if (user) {
       const isSame = await bcrypt.compare(senha, user.senha);
