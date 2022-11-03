@@ -62,11 +62,9 @@ router.put('/turnos/:turnoId', TurnosController.update);
 router.delete('/turnos/:turnoId', TurnosController.destroy);
 
 // Usuarios
-router.post('/usuarios', UsuariosController.create);
 router.get('/usuarios', UsuariosController.findAll);
 router.get('/usuarios/:usuarioId', UsuariosController.findOne);
 router.put('/usuarios/:usuarioId', UsuariosController.update);
-router.delete('/usuarios/:usuarioId', UsuariosController.destroy);
 
 // Verbas
 router.post('/verbas', VerbasController.create);
