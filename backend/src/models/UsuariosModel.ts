@@ -1,8 +1,26 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes,  Model, Optional } from 'sequelize';
 import { db } from '../database/db';
 import ColaboradoresModel from "./ColaboradoresModel";
 
-const UsuariosModel = db.define('usuarios', {
+interface UserAttributes {
+  id: Number;
+  role: String;
+  email: String;
+  senha: String;
+}
+
+interface UserCreationAttributes
+  extends Optional<UserAttributes, 'id'> {}
+
+interface UserInstance
+  extends Model<UserAttributes, UserCreationAttributes>,
+    UserAttributes {
+      createdAt?: Date;
+      updatedAt?: Date;
+    }
+
+const UsuariosModel = db.define<UserInstance>(
+  'usuarios', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
