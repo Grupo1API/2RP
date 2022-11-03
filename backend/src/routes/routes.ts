@@ -8,7 +8,7 @@ import ProjetosController from '../controller/ProjetosController';
 import TurnosController from '../controller/TurnosController';
 import UsuariosController from '../controller/UsuariosController';
 import VerbasController from '../controller/VerbasController';
-import UserAuth from '../middlewares/UserAuth';
+import UsuariosAuth from '../middlewares/UsuariosAuth';
 
 const router = Router();
 
@@ -76,7 +76,7 @@ router.put('/verbas/:verbaId', VerbasController.update);
 router.delete('/verbas/:verbaId', VerbasController.destroy);
 
 // Login
-router.post('/signup', UserAuth, UsuariosController.singup);
+router.post('/signup', UsuariosAuth, UsuariosController.singup);
 router.post('/login', UsuariosController.login );
 
 export { router };
