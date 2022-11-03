@@ -1,13 +1,14 @@
 import { Router } from 'express';
-import ApontamentoHorasController from './controller/ApontamentoHorasController';
-import CentroDeResultadosController from './controller/CentroDeResultadosController';
-import ClientesController from './controller/ClientesController';
-import ColaboradoresController from './controller/ColaboradoresController';
-import GestoresController from './controller/GestoresController';
-import ProjetosController from './controller/ProjetosController';
-import TurnosController from './controller/TurnosController';
-import UsuariosController from './controller/UsuariosController';
-import VerbasController from './controller/VerbasController';
+import ApontamentoHorasController from '../controller/ApontamentoHorasController';
+import CentroDeResultadosController from '../controller/CentroDeResultadosController';
+import ClientesController from '../controller/ClientesController';
+import ColaboradoresController from '../controller/ColaboradoresController';
+import GestoresController from '../controller/GestoresController';
+import ProjetosController from '../controller/ProjetosController';
+import TurnosController from '../controller/TurnosController';
+import UsuariosController from '../controller/UsuariosController';
+import VerbasController from '../controller/VerbasController';
+import UserAuth from '../middlewares/UserAuth';
 
 const router = Router();
 
@@ -73,5 +74,9 @@ router.get('/verbas', VerbasController.findAll);
 router.get('/verbas/:verbaId', VerbasController.findOne);
 router.put('/verbas/:verbaId', VerbasController.update);
 router.delete('/verbas/:verbaId', VerbasController.destroy);
+
+// Login
+router.post('/signup', UserAuth, UsuariosController.singup);
+router.post('/login', UsuariosController.login );
 
 export { router };
