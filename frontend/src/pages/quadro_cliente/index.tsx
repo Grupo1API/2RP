@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./style.css";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -11,7 +10,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
-import InfoCliente from "../../components/InformacaoCli/InfoCliente";
+import InfoCliente from "../../components/InfoEditCli/InfoCliente";
+import EditCliente from "../../components/InfoEditCli/EditCliente";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -40,6 +40,10 @@ const useStyles = makeStyles({
   },
   button: {
     display: "flex",
+    boxShadow:"0",
+  },
+  MuiiconbuttonRoot:{
+
   },
   modal: {
     position: "absolute",
@@ -48,7 +52,7 @@ const useStyles = makeStyles({
     left: "0",
     right: "0",
     backgroundColor: "rgba(0, 0, 0,0.5)",
-    color: "#fff",
+    color: "black",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -56,10 +60,12 @@ const useStyles = makeStyles({
   },
   close: {
     position: "absolute",
-    top: "1em",
-    right: "25em",
-    color: "#fff",
+    top: "3em",
+    right: "7em",
+    color: "red",
+    padding: "5px",
   },
+  
 });
 
 function Quandro_Cliente() {
@@ -98,6 +104,8 @@ function Quandro_Cliente() {
     listaCliente();
   }
 
+ 
+
   function handleClose(event: { preventDefault: () => void }) {
     event.preventDefault();
     setModalEdit(false);
@@ -121,8 +129,8 @@ function Quandro_Cliente() {
         <TableBody className={classes.body}>
           {listaClientes.map((x: any) => (
             <StyledTableRow key={x.id}>
-              {/*mostra o id na tabela*/} 
-               {/* <StyledTableCell>{x.id}</StyledTableCell>  */}
+              {/*mostra o id na tabela*/}
+              {/* <StyledTableCell>{x.id}</StyledTableCell>  */}
               <StyledTableCell component="th" scope="row">
                 {x.nome}
               </StyledTableCell>
@@ -160,7 +168,7 @@ function Quandro_Cliente() {
       {modalEdit && (
         <div className={classes.modal}>
           <IconButton className={classes.close} onClick={handleClose}>
-            <CloseIcon fontSize="large" color="error" />
+            <CloseIcon fontSize="large" />
           </IconButton>
           <EditCliente dados={dados} modalEdit={modalEdit} />
         </div>
@@ -168,7 +176,7 @@ function Quandro_Cliente() {
       {modalInfo && (
         <div className={classes.modal}>
           <IconButton className={classes.close} onClick={handleClose}>
-            <CloseIcon fontSize="small" color="error" />
+            <CloseIcon fontSize="large" />
           </IconButton>
           <InfoCliente dados={dados} />
         </div>
