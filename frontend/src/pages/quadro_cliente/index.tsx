@@ -12,6 +12,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
 import InfoCliente from "../../components/InfoEditCli/InfoCliente";
 import EditCliente from "../../components/InfoEditCli/EditCliente";
+import './style.css'
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -40,11 +41,9 @@ const useStyles = makeStyles({
   },
   button: {
     display: "flex",
-    boxShadow:"0",
+    boxShadow: "0",
   },
-  MuiiconbuttonRoot:{
-
-  },
+ 
   modal: {
     position: "absolute",
     top: "0",
@@ -65,7 +64,6 @@ const useStyles = makeStyles({
     color: "red",
     padding: "5px",
   },
-  
 });
 
 function Quandro_Cliente() {
@@ -90,11 +88,11 @@ function Quandro_Cliente() {
       console.log(error.message);
     }
   }
-  async function handleDelete(id: any) {
+  async function handleDelete(id) {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:3001/clientes`, {
+    await fetch(`http://localhost:3001/clientes/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -103,8 +101,6 @@ function Quandro_Cliente() {
     });
     listaCliente();
   }
-
- 
 
   function handleClose(event: { preventDefault: () => void }) {
     event.preventDefault();

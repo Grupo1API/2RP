@@ -55,18 +55,16 @@ input::placeholder{
 
 .btn.btn-success{
     margin-top: 15px;
-}
-
-button{
     margin-bottom: 15px;
     font-size: 20px !important;
     width: 35%;
     height: 50px;
 }
 
-button:hover{
+
+.btn.btn-success:hover{
     transition-duration: 3s linear;
-    box-shadow: 2px 2px 2px 2px #3b7dc49d;
+    box-shadow: 1px 1px 1px 1px #3b7dc49d;
     background-color:#214f80;
     color: #3b7dc4;
 }

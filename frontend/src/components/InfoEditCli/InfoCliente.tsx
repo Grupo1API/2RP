@@ -1,12 +1,11 @@
 import React from "react";
+import "./style.css";
 
-export default function infoCliente({ dados }) {
-
-
+export default function InfoCliente({ dados }) {
   return (
     <div className="pagina">
       <h2>Informaçoes do Cliente</h2>
-      
+
       {/*  nome */}
       <div className="form-floating mb-4">
         <input
@@ -15,7 +14,7 @@ export default function infoCliente({ dados }) {
           id="floatingInput2"
           placeholder="Digite a Razão Social"
           value={dados.nome}
-         disabled
+          disabled
         />
         <label htmlFor="floatingInput2">Razão Social</label>
       </div>
@@ -32,7 +31,7 @@ export default function infoCliente({ dados }) {
         />
         <label htmlFor="floatingInput2">CNPJ</label>
       </div>
-      
+
       {/*status*/}
       <div className="form-floating mb-4">
         <input
@@ -56,9 +55,8 @@ export default function infoCliente({ dados }) {
           value={dados.contato}
           disabled
         />
-        <label htmlFor="floatingInput4" >Contato</label>
+        <label htmlFor="floatingInput4">Contato</label>
       </div>
     </div>
   );
 }
-
