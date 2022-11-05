@@ -1,9 +1,9 @@
-import { DataTypes } from 'sequelize';
-import { db } from '../db';
-import ClientesModel from './ClientesModel';
-import UsuariosModel from './UsuariosModel';
+import { DataTypes } from "sequelize";
+import { db } from "../database/db";
+import ClientesModel from "./ClientesModel";
+import UsuariosModel from "./UsuariosModel";
 
-const CentroDeResultados = db.define('centro_de_resultados', {
+const CentroDeResultados = db.define("centro_de_resultados", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -20,14 +20,14 @@ const CentroDeResultados = db.define('centro_de_resultados', {
     unique: true,
   },
   status: {
-    type: DataTypes.ENUM({values: ['ativo', 'inativo']}),
+    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
     allowNull: false,
-    defaultValue: 'ativo'
-  }
+    defaultValue: "ativo",
+  },
 });
 
-CentroDeResultados.belongsTo(UsuariosModel, {foreignKey: 'usuarioId'});
-CentroDeResultados.belongsTo(UsuariosModel, {foreignKey: 'gestorId'});
-CentroDeResultados.belongsTo(ClientesModel, {foreignKey:'projetoId'});
+CentroDeResultados.belongsTo(UsuariosModel, { foreignKey: "usuarioId" });
+CentroDeResultados.belongsTo(UsuariosModel, { foreignKey: "gestorId" });
+CentroDeResultados.belongsTo(ClientesModel, { foreignKey: "projetoId" });
 
 export default CentroDeResultados;

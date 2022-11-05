@@ -1,7 +1,7 @@
-import { DataTypes } from 'sequelize';
-import { db } from '../db';
+import { DataTypes } from "sequelize";
+import { db } from "../database/db";
 
-const VerbasModel = db.define('verbas', {
+const VerbasModel = db.define("verbas", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -21,7 +21,7 @@ const VerbasModel = db.define('verbas', {
   percentual: {
     type: DataTypes.STRING,
     allowNull: false,
-  }
+  },
 });
 
 export default VerbasModel;

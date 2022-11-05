@@ -1,30 +1,28 @@
-import { DataTypes,  INTEGER,  Model, Optional } from 'sequelize';
-import { db } from '../db';
-import TurnosModel from './TurnosModel';
+import { DataTypes, INTEGER, Model, Optional } from "sequelize";
+import { db } from "../database/db";
+import TurnosModel from "./TurnosModel";
 
 interface UserAttributes {
   id: Number;
   role: string;
   nome: string;
-  matricula:string;
+  matricula: string;
   email: string;
   senha: string;
-  status:string;
+  status: string;
   turnoId: Number;
 }
 
-interface UserCreationAttributes
-  extends Optional<UserAttributes, 'id'> {}
+interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
 
 interface UserInstance
   extends Model<UserAttributes, UserCreationAttributes>,
     UserAttributes {
-      createdAt?: Date;
-      updatedAt?: Date;
-    }
+  createdAt?: Date;
+  updatedAt?: Date;
+}
 
-const UsuariosModel = db.define<UserInstance>(
-  'usuarios', {
+const UsuariosModel = db.define<UserInstance>("usuarios", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -41,9 +39,9 @@ const UsuariosModel = db.define<UserInstance>(
     unique: true,
   },
   role: {
-    type: DataTypes.ENUM({values: ['admin', 'gestor', 'colaborador']}),
+    type: DataTypes.ENUM({ values: ["admin", "gestor", "colaborador"] }),
     allowNull: false,
-    defaultValue: 'colaborador'
+    defaultValue: "colaborador",
   },
   email: {
     type: DataTypes.STRING,
@@ -55,17 +53,16 @@ const UsuariosModel = db.define<UserInstance>(
     allowNull: false,
   },
   status: {
-    type: DataTypes.ENUM({values: ['ativo', 'inativo']}),
+    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
     allowNull: false,
-    defaultValue: 'ativo'
+    defaultValue: "ativo",
   },
   turnoId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-  }
- }
-);
+  },
+});
 
-UsuariosModel.belongsTo(TurnosModel, {foreignKey: 'turnoId'});
+UsuariosModel.belongsTo(TurnosModel, { foreignKey: "turnoId" });
 
 export default UsuariosModel;
