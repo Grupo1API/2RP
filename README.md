@@ -35,12 +35,13 @@
 
 ### **Requisitos funcionais**
 
-- <img src = "./readme/elementos/a_fazer.jpeg" /> apontamento de horas extras e classificação das horas;
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Lançamento de horas de sobreaviso;
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Cadastro de clientes e CRs;
+- <img src = "./readme/elementos/feito.jpeg" /> Apontamento de horas extras;
+- <img src = "./readme/elementos/a_fazer.jpeg" /> Classificação das horas;
+- <img src = "./readme/elementos/feito.jpeg" /> Lançamento de horas de sobreaviso;
+- <img src = "./readme/elementos/feito.jpeg" /> Cadastro de clientes e CRs;
 - <img src = "./readme/elementos/a_fazer.jpeg" /> Integração com o login 2RP;
 - <img src = "./readme/elementos/a_fazer.jpeg" /> Integração para consumir os dados: matrícula, nome completo, turno;
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Perfis de usuário (administrador, gestor e colaborador);
+- <img src = "./readme/elementos/feito.jpeg" /> Perfis de usuário (administrador, gestor e colaborador);
 - <img src = "./readme/elementos/a_fazer.jpeg" /> Recurso para aprovação de horas extras executadas;
 - <img src = "./readme/elementos/a_fazer.jpeg" /> Tela de parametrização de sistema;
 - <img src = "./readme/elementos/a_fazer.jpeg" /> Aplicar regras de horas extras e sobreavisos na extração (classificação de HEs e cálculo do sobreaviso considerando as HEs conflitantes);
@@ -57,8 +58,8 @@
 ## 📆 Cronograma das Sprints
 
 - <img src = "./readme/elementos/feito.jpeg" /> Kick-Off - 16/08/2022
-- <img src = "./readme/elementos/a_fazer.jpeg" /><a href="https://github.com/Grupo1API/2RP/tree/main/readme/sprint1" target="_blank">Sprint 1 </a>- 29/08/2022 a 18/09/2022
-- <img src = "./readme/elementos/a_fazer.jpeg" />Sprint 2 - 19/09/2022 a 09/10/2022
+- <img src = "./readme/elementos/feito.jpeg" /><a href="https://github.com/Grupo1API/2RP/tree/main/readme/sprint1" target="_blank">Sprint 1 </a>- 29/08/2022 a 18/09/2022
+- <img src = "./readme/elementos/feito.jpeg" /><a href="https://github.com/Grupo1API/2RP/tree/main/readme/sprint2" target="_blank">Sprint 2 </a>- 19/09/2022 a 09/10/2022
 - <img src = "./readme/elementos/a_fazer.jpeg" />Sprint 3 - 13/10/2022 a 06/11/2022
 - <img src = "./readme/elementos/a_fazer.jpeg" />Sprint 4 - 07/11/2022 a 27/11/2022
 - <img src = "./readme/elementos/a_fazer.jpeg" />Feira de Soluções - 08/12/2022
@@ -74,7 +75,7 @@
 ## 🖥️ Tecnologias Utilizadas
 
 - **Banco de Dados:** PostgreSQL;
-- **Back-end:** TypeORM;
+- **Back-end:** Node.js, Sequelize;
 - **Front-end:** HTML, CSS, TypeScript, React;
 - **Ferramentas:** Visual Studio Code, Figma, Git e Github;
 

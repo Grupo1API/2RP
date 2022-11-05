@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.5.0",
+    "react-router-dom": "^6.4.2",
+    "typeorm": "^0.3.10"
+  }
+}
