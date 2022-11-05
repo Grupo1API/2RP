@@ -38,11 +38,11 @@ router.put('/turnos/:turnoId', TurnosController.update);
 router.delete('/turnos/:turnoId', TurnosController.destroy);
 
 // Usuarios
-router.post('/signup',  UsuariosController.create)
+router.post('/signup',  UsuariosController.singup)
 router.get('/usuarios', UsuariosController.findAll);
 router.get('/usuarios/:usuarioId', UsuariosController.findOne);
 router.put('/usuarios/:usuarioId', UsuariosController.update);
-router.delete('/usuarios/:usuarioId', UsuariosController.destroy);
+//router.delete('/usuarios/:usuarioId', UsuariosController.destroy);
 //Gestor
 router.get('/usuarios/gestores', UsuariosController.findAllGestor);
 router.get('/gestores/:gestorId', UsuariosController.findOneGestor);

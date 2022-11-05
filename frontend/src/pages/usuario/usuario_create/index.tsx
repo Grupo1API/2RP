@@ -12,8 +12,6 @@ export default function UsuarioCreate() {
   const [turnos,setTurnos] = useState("");
   const [turnoId, setTurnoId] = useState("");
   const [turno,setTurno] = useState("");
-
-
   //const { usuarioCreate } = useAuth();
 
   async function salvar (event: { preventDefault: () => void; }) {
@@ -82,7 +80,8 @@ async function handleChangeRole(event: SelectChangeEvent) {
 
       {/* Turno */}
       <div className="form-floating mb-4">
-      <FormControl variant="outlined" className="select input">
+      <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth variant="outlined" className="select input">
         <InputLabel id="demo-simple-select-outlined-label">
                   Turno
         </InputLabel>
@@ -100,6 +99,7 @@ async function handleChangeRole(event: SelectChangeEvent) {
              ))}
           </Select>
       </FormControl>
+      </Box>
       </div>
 
       {/*  nome */}
