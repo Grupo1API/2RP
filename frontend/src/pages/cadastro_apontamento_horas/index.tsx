@@ -15,7 +15,6 @@ function ApontamentoHoras () {
   const [justificativa, setJustificativa] = useState("");
   const [tipoApontamento,setTipoApontamento] = useState('');
 
-
   async function handleSubmit(event){
     event.preventDefault();
     const dado = {

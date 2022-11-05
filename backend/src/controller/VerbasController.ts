@@ -23,8 +23,8 @@ class verbasController {
   }
 
   async create(req: Request, res: Response) {
-    const { codigo, fator, percentual, verbaId } = req.body;
-    const verba = await VerbasModel.create({codigo, fator, percentual, verbaId});
+    const { codigo, descricao,fator, percentual, verbaId } = req.body;
+    const verba = await VerbasModel.create({codigo,descricao, fator, percentual, verbaId});
 
     return res.status(201).json(verba);
   }
