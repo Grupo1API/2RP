@@ -9,6 +9,7 @@ import Home from '../pages/home';
 import UsuarioCreate from '../pages/usuario/usuario_create';
 import UsuarioUpdate from '../pages/usuario/usuario_update';
 import Verba from '../pages/cadastro_verba';
+import Turno from '../pages/cadastro_turno';
 
 
 const AppRoutes = () => (
@@ -18,7 +19,8 @@ const AppRoutes = () => (
       <Route path="/cliente" element={<Cliente />} />
       <Route path="/apontamento-horas" element={<ApontamentoHoras />} />
       <Route path="/centro-resultado" element={<CentroResultado />} />
-      <Route path="/verbas" element ={<Verba/>}/>
+      <Route path="/verba" element ={<Verba/>}/>
+      <Route path="/turno" element ={<Turno/>}/>      
       <Route path="/login" element={<Login />} />
       <Route path="/usuario/create" element ={<UsuarioCreate/>}/>
       <Route path="/usuario/update" element ={<UsuarioUpdate/>}/>

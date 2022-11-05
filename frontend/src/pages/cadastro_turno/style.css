@@ -1,0 +1,47 @@
+body {
+    background-color: rgb(255, 250, 250);
+  }
+  .pagina{
+    background-color: white;
+    width: 50em;
+    text-align: center;
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .pagina h2{
+    text-align: center;
+    color: rgb(97, 96, 96);
+    padding-top: 1em;
+    padding-bottom:1em;
+  }
+  
+  /*campos fullWidth*/
+  .form-floating.mb-3{
+    width: 100%;
+    text-align:left;
+  }
+  /*campos centralizados*/
+  .form-floating.mb-4{
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+  /*colunas das datas*/
+  .row.g-2{
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+  }
+  
+  /*botão*/
+  .form-btn{
+    margin-top: 15px;
+    margin-bottom:15px;
+    text-align: center;
+  }
+  
