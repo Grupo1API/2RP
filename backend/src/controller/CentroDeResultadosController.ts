@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
-import CentroDeResultados from '../database/models/CentroDeResultadosModel';
+import CentroDeResultados from '../models/CentroDeResultadosModel';
+import ClientesModel from '../models/ClientesModel';
+import UsuariosModel from '../models/UsuariosModel';
 
 class CentroDeResultadosController {
   async findAll(req: Request, res: Response) {

@@ -1,5 +1,3 @@
-import { BelongsTo, DataTypes, Optional } from 'sequelize';
-import { db } from '../db';
 import { DataTypes } from 'sequelize';
 import { db } from '../database/db';
 

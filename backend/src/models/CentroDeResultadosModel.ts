@@ -1,11 +1,8 @@
 import { DataTypes } from 'sequelize';
-import { db } from '../db';
 import ClientesModel from './ClientesModel';
 import UsuariosModel from './UsuariosModel';
 import { db } from '../database/db';
-import GestoresModel from "./GestoresModel";
-import ColaboradoresModel from "./ColaboradoresModel";
-import ProjetosModel from './ProjetosModel';
+
 
 const CentroDeResultados = db.define('centro_de_resultados', {
   id: {
