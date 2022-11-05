@@ -29,7 +29,7 @@ class ApontamentoHorasController {
       horario_fim,
       justificativa,
       verbaId,
-      colaboradorId,
+      usuarioId,
       gestorId,
       projetoId
     } = req.body;
@@ -39,7 +39,7 @@ class ApontamentoHorasController {
       horario_fim,
       justificativa,
       verbaId,
-      colaboradorId,
+      usuarioId,
       gestorId,
       projetoId
     });
@@ -58,9 +58,14 @@ class ApontamentoHorasController {
   async destroy(req: Request, res: Response) {
     const { apontamentoHoraId } = req.params;
 
-    await ApontamentoHorasModel.update({status: 'inativo'}, {where: {id: apontamentoHoraId }});
+    const excluido = await ApontamentoHorasModel.destroy({
+      where: {
+        id: apontamentoHoraId 
+      }});
 
-    return res.status(201).send();
+    return excluido
+    ? res.status(201).json(excluido)
+    : res.status(204).send();
   }
 }
 
