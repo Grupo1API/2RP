@@ -1,7 +1,7 @@
 
 import * as express from 'express';
 import * as cors from 'cors';
-import { router } from './routes';
+import { router } from './routes/routes';
 import { db } from './database/db';
 
 const PORT = process.env.PORT || 3002

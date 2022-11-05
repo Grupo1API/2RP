@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
-import TurnosModel from '../database/models/TurnosModel';
-import UsuariosModel from '../database/models/UsuariosModel';
+import * as bcrypt from 'bcrypt'
+import * as jwt from "jsonwebtoken";
+import UsuariosModel from '../models/UsuariosModel';
+import TurnosModel from '../models/TurnosModel';
 
 class UsuariosController {
   async findAll(req: Request, res: Response) {
@@ -38,8 +40,23 @@ class UsuariosController {
     return res.status(201).send();
   }
 
-  async destroy(req: Request, res: Response) {
-    const { usuarioId } = req.params;
+  async singup(req: Request, res: Response) {
+    try {
+      const { id, role, email, senha } = req.body;
+    
+      type Data = {
+        id: Number;
+        role: string;
+        email: string;
+        senha: string;
+      }
+    
+       const data: Data = {
+        id,
+        role,
+        email,
+        senha: await bcrypt.hash(senha, 10),
+       };
 
     await UsuariosModel.update({status:'inativo'}, {where: {id: usuarioId }});
 

@@ -3,6 +3,10 @@ import { db } from '../db';
 import ClientesModel from './ClientesModel';
 import UsuariosModel from './UsuariosModel';
 import VerbasModel from './VerbasModel';
+import { db } from '../database/db';
+import GestoresModel from './GestoresModel';
+import ColaboradoresModel from './ColaboradoresModel';
+import ProjetosModel from './ProjetosModel';
 
 const ApontamentoHorasModel = db.define('apontamento_horas', {
   id: {

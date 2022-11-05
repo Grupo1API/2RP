@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import TurnosModel from '../database/models/TurnosModel';
+import TurnosModel from '../models/TurnosModel';
 
 class TurnosController {
   async findAll(req: Request, res: Response) {

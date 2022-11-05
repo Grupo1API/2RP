@@ -1,5 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../db';
+import { db } from '../database/db';
+import ApontamentoHorasModel from "./ApontamentoHorasModel";
 
 const VerbasModel = db.define('verbas', {
   id: {

@@ -7,6 +7,16 @@ import ClientesController from './controller/ClientesController';
 import TurnosController from './controller/TurnosController';
 import UsuariosController from './controller/UsuariosController';
 import VerbasController from './controller/VerbasController';
+import ApontamentoHorasController from '../controller/ApontamentoHorasController';
+import CentroDeResultadosController from '../controller/CentroDeResultadosController';
+import ClientesController from '../controller/ClientesController';
+import ColaboradoresController from '../controller/ColaboradoresController';
+import GestoresController from '../controller/GestoresController';
+import ProjetosController from '../controller/ProjetosController';
+import TurnosController from '../controller/TurnosController';
+import UsuariosController from '../controller/UsuariosController';
+import VerbasController from '../controller/VerbasController';
+import UsuariosAuth from '../middlewares/UsuariosAuth';
 
 const router = Router();
 
@@ -39,7 +49,6 @@ router.put('/turnos/:turnoId', TurnosController.update);
 router.delete('/turnos/:turnoId', TurnosController.destroy);
 
 // Usuarios
-router.post('/usuarios', UsuariosController.create);
 router.get('/usuarios', UsuariosController.findAll);
 router.get('/usuarios/:usuarioId', UsuariosController.findOne);
 router.put('/usuarios/:usuarioId', UsuariosController.update);
@@ -56,5 +65,9 @@ router.get('/verbas', VerbasController.findAll);
 router.get('/verbas/:verbaId', VerbasController.findOne);
 router.put('/verbas/:verbaId', VerbasController.update);
 router.delete('/verbas/:verbaId', VerbasController.destroy);
+
+// Login
+router.post('/signup', UsuariosAuth, UsuariosController.singup);
+router.post('/login', UsuariosController.login );
 
 export { router };
