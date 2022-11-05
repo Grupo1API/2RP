@@ -23,8 +23,8 @@ class verbasController {
   }
 
   async create(req: Request, res: Response) {
-    const { codigo, fator, descricao_verba, apontamentoHoraId } = req.body;
-    const verba = await VerbasModel.create({codigo, fator, descricao_verba, apontamentoHoraId});
+    const { codigo, fator, percentual, verbaId } = req.body;
+    const verba = await VerbasModel.create({codigo, fator, percentual, verbaId});
 
     return res.status(201).json(verba);
   }
@@ -40,9 +40,14 @@ class verbasController {
   async destroy(req: Request, res: Response) {
     const { verbaId } = req.params;
 
-    await VerbasModel.update({status: 'inativo'}, {where: {id: verbaId }});
+    const excluido = await VerbasModel.destroy({
+      where: {
+        id: verbaId 
+      }});
 
-    return res.status(201).send();
+    return excluido
+    ? res.status(201).json(excluido)
+    : res.status(204).send();
   }
 }
 

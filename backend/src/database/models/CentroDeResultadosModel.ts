@@ -1,8 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../db';
-import ColaboradoresModel from './ColaboradoresModel';
-import GestoresModel from './GestoresModel';
-import ProjetosModel from './ProjetosModel';
+import ClientesModel from './ClientesModel';
+import UsuariosModel from './UsuariosModel';
 
 const CentroDeResultados = db.define('centro_de_resultados', {
   id: {
@@ -27,7 +26,8 @@ const CentroDeResultados = db.define('centro_de_resultados', {
   }
 });
 
-CentroDeResultados.belongsTo(ColaboradoresModel, {foreignKey: 'colaboradorId'});
-CentroDeResultados.belongsTo(GestoresModel, {foreignKey: 'gestorId'});
+CentroDeResultados.belongsTo(UsuariosModel, {foreignKey: 'usuarioId'});
+CentroDeResultados.belongsTo(UsuariosModel, {foreignKey: 'gestorId'});
+CentroDeResultados.belongsTo(ClientesModel, {foreignKey:'projetoId'});
 
 export default CentroDeResultados;
