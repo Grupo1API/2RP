@@ -1,4 +1,4 @@
-import { DataTypes } from 'sequelize';
+import { BelongsTo, DataTypes, Optional } from 'sequelize';
 import { db } from '../db';
 
 const TurnosModel = db.define('turnos', {

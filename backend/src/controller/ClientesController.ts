@@ -23,8 +23,8 @@ class ClientesController {
   }
 
   async create(req: Request, res: Response) {
-    const { nome, cnpj, contato } = req.body;
-    const cliente = await ClientesModel.create({nome, cnpj, contato});
+    const { nome, cnpj, contato, nome_projeto, numero_projeto } = req.body;
+    const cliente = await ClientesModel.create({nome, cnpj, contato, nome_projeto, numero_projeto});
 
     return res.status(201).json(cliente);
   }
@@ -40,7 +40,7 @@ class ClientesController {
   async destroy(req: Request, res: Response) {
     const { clienteId } = req.params;
 
-    await ClientesModel.update({status: 'inativo'}, {where: {id: clienteId }});
+    await ClientesModel.update({status: 'inativo', status_projeto:'inativo'}, {where: {id: clienteId }});
 
     return res.status(201).send();
   }

@@ -28,6 +28,7 @@ class ApontamentoHorasController {
       horario_inicio,
       horario_fim,
       justificativa,
+      verbaId,
       colaboradorId,
       gestorId,
       projetoId
@@ -37,6 +38,7 @@ class ApontamentoHorasController {
       horario_inicio,
       horario_fim,
       justificativa,
+      verbaId,
       colaboradorId,
       gestorId,
       projetoId

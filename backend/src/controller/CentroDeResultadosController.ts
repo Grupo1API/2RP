@@ -1,9 +1,11 @@
 import { Request, Response } from 'express';
 import CentroDeResultados from '../database/models/CentroDeResultadosModel';
+import ClientesModel from '../database/models/ClientesModel';
+import UsuariosModel from '../database/models/UsuariosModel';
 
 class CentroDeResultadosController {
   async findAll(req: Request, res: Response) {
-    const centroResultados = await CentroDeResultados.findAll();
+    const centroResultados = await CentroDeResultados.findAll( {include : [ {model: UsuariosModel} ,{model: ClientesModel}] });
 
     return centroResultados.length > 0
       ? res.status(200).json(centroResultados)
@@ -12,7 +14,7 @@ class CentroDeResultadosController {
 
   async findOne(req: Request, res: Response) {
     const { centroDeResultadoId } = req.params;
-    const centroResultado = await CentroDeResultados.findOne({
+    const centroResultado = await CentroDeResultados.findOne({ include: UsuariosModel ,
       where: {
         id: centroDeResultadoId
       }
@@ -24,8 +26,8 @@ class CentroDeResultadosController {
   }
 
   async create(req: Request, res: Response) {
-    const { nome, numero, colaboradorId, gestorId, projetoId } = req.body;
-    const centroResultado = await CentroDeResultados.create({nome, numero, colaboradorId, gestorId, projetoId});
+    const { nome, numero, colaboradorId, gestorId,projetoId} = req.body;
+    const centroResultado = await CentroDeResultados.create({nome, numero, colaboradorId, gestorId,projetoId});
 
     return res.status(201).json(centroResultado);
   }

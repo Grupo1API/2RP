@@ -25,6 +25,19 @@ const ClientesModel = db.define('clientes', {
   contato: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  numero_projeto: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  nome_projeto: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  status_projeto: {
+    type: DataTypes.ENUM({values: ['ativo', 'inativo']}),
+    allowNull: false,
+    defaultValue: 'ativo'
   }
 });
 

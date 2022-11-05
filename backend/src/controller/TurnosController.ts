@@ -38,11 +38,16 @@ class TurnosController {
   }
 
   async destroy(req: Request, res: Response) {
-    const { turnoId } = req.params;
+    const { turnoId } = req.params
+    const excluido = await TurnosModel.destroy(
+      {where: {
+      id: turnoId
+    }
+  });
 
-    await TurnosModel.update({status: 'inativo'}, {where: {id: turnoId }});
-
-    return res.status(201).send();
+    return  excluido
+    ? res.status(201).json(excluido)
+    : res.status(204).send();
   }
 }
 

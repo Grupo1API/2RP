@@ -2,9 +2,8 @@ import { Router } from 'express';
 import ApontamentoHorasController from './controller/ApontamentoHorasController';
 import CentroDeResultadosController from './controller/CentroDeResultadosController';
 import ClientesController from './controller/ClientesController';
-import ColaboradoresController from './controller/ColaboradoresController';
-import GestoresController from './controller/GestoresController';
-import ProjetosController from './controller/ProjetosController';
+
+
 import TurnosController from './controller/TurnosController';
 import UsuariosController from './controller/UsuariosController';
 import VerbasController from './controller/VerbasController';
@@ -32,27 +31,6 @@ router.get('/clientes/:clienteId', ClientesController.findOne);
 router.put('/clientes/:clienteId', ClientesController.update);
 router.delete('/clientes/:clienteId', ClientesController.destroy);
 
-// Colaborados
-router.post('/colaboradores', ColaboradoresController.create);
-router.get('/colaboradores', ColaboradoresController.findAll);
-router.get('/colaboradores/:colaboradorId', ColaboradoresController.findOne);
-router.put('/colaboradores/:colaboradorId', ColaboradoresController.update);
-router.delete('/colaboradores/:colaboradorId', ColaboradoresController.destroy);
-
-// Gestores
-router.post('/gestores', GestoresController.create);
-router.get('/gestores', GestoresController.findAll);
-router.get('/gestores/:gestorId', GestoresController.findOne);
-router.put('/gestores/:gestorId', GestoresController.update);
-router.delete('/gestores/:gestorId', GestoresController.destroy);
-
-// Projetos
-router.post('/projetos', ProjetosController.create);
-router.get('/projetos', ProjetosController.findAll);
-router.get('/projetos/:projetoId', ProjetosController.findOne);
-router.put('/projetos/:projetoId', ProjetosController.update);
-router.delete('/projetos/:projetoId', ProjetosController.destroy);
-
 // Turnos
 router.post('/turnos', TurnosController.create);
 router.get('/turnos', TurnosController.findAll);
@@ -66,6 +44,11 @@ router.get('/usuarios', UsuariosController.findAll);
 router.get('/usuarios/:usuarioId', UsuariosController.findOne);
 router.put('/usuarios/:usuarioId', UsuariosController.update);
 router.delete('/usuarios/:usuarioId', UsuariosController.destroy);
+//Gestor
+router.get('/usuarios/gestores', UsuariosController.findAllGestor);
+router.get('/gestores/:gestorId', UsuariosController.findOneGestor);
+router.put('/usuarios/:gestorId', UsuariosController.updateGestor);
+router.delete('/usuarios/:gestorId', UsuariosController.destroyGestor);
 
 // Verbas
 router.post('/verbas', VerbasController.create);
