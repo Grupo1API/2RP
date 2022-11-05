@@ -7,6 +7,8 @@ function Cliente(){
   const [nome, setNome] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [contato,setContato] = useState("");
+  const [nome_projeto,setNomeProjeto] = useState("");
+  const [numero_projeto,setNumeroProjeto] = useState("");
 
 
   async function handleSubmit(event: { preventDefault: () => void; }){
@@ -14,7 +16,9 @@ function Cliente(){
     const dado = {
       nome: nome,
       cnpj: cnpj,
-      contato: contato
+      contato: contato,
+      nome_projeto: nome_projeto,
+      numero_projeto: numero_projeto
 
     };
       try{
@@ -29,6 +33,8 @@ function Cliente(){
         setNome("");
         setCnpj("");
         setContato("");
+        setNomeProjeto("");
+        setNumeroProjeto("");
 
         return;
       } catch (error) {
@@ -76,6 +82,28 @@ function Cliente(){
           variant="outlined"
           value={contato}
           onChange={(e) => setContato(e.target.value)}>
+          </TextField>
+        </div>
+
+        {/* nome do projeto */}
+        <div className="form-floating mb-4">
+        <TextField fullWidth
+          id="outlined-basic" 
+          label="Nome do Projeto" 
+          variant="outlined"
+          value={nome_projeto}
+          onChange={(e) => setNomeProjeto(e.target.value)}>
+          </TextField>
+        </div>
+
+        {/* número do projeto */}
+        <div className="form-floating mb-4">
+        <TextField fullWidth
+          id="outlined-basic" 
+          label="Número do Projeto" 
+          variant="outlined"
+          value={numero_projeto}
+          onChange={(e) => setNumeroProjeto(e.target.value)}>
           </TextField>
         </div>
 
