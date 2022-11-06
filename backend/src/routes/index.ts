@@ -1,22 +1,30 @@
-import { Router, Request, Response } from "express"
-import centro_resultado  from "./centro_resultado"
-import cliente from './cliente'
-import hora_extra from "./hora_extra"
-import sobreaviso from "./sobreaviso"
-import UsuarioController from "../controller/UsuarioController"
-import usuario from "./usuario"
+import { Router, Request, Response } from "express";
+import UsuariosController from "../controller/UsuariosController";
 
+import apontamentoHorasRoutes from "./ApontamentoHorasRoutes";
+import centroDeResultados from "./CentroDeResultadosRoutes";
+import classificacaoHoras from "./ClassificacaoHorasRoutes";
+import clientes from "./ClientesRoutes";
+import turnos from "./TurnosRoutes";
+import usuarios from "./UsuariosRoutes";
+import verbas from "./VerbasRoutes";
 
-const routes = Router()
+const router = Router();
 
-routes.use("/cliente", cliente)
-routes.use("/centro-resultado", centro_resultado)
-routes.use("/hora-extra", hora_extra)
-routes.use("/sobreaviso", sobreaviso)
-routes.use("/usuario", usuario)
-routes.post("/login",  UsuarioController.login)
+router.use("/apontamento-horas", apontamentoHorasRoutes);
+router.use("/centro-de-resultado", centroDeResultados);
+router.use("/classificacao-horas", classificacaoHoras);
+router.use("/cliente", clientes);
+router.use("/turnos", turnos);
+router.use("/usuarios", usuarios);
+router.post("/verbas", verbas);
+
+// login
+router.post("/login", UsuariosController.login);
 
 //aceita qualquer método HTTP ou URL
-routes.use( (req:Request,res:Response) => res.json({error:"Requisição desconhecida"}) )
+router.use((req: Request, res: Response) =>
+  res.json({ error: "Requisição desconhecida" })
+);
 
-export default routes
+export default router;
