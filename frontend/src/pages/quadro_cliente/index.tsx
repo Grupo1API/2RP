@@ -10,9 +10,11 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import InfoCliente from "../../components/InfoEditCli/InfoCliente";
 import EditCliente from "../../components/InfoEditCli/EditCliente";
-import './style.css'
+import "./style.css";
+import Cliente from "../cadastro_cliente";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -41,9 +43,8 @@ const useStyles = makeStyles({
   },
   button: {
     display: "flex",
-    boxShadow: "0",
   },
- 
+
   modal: {
     position: "absolute",
     top: "0",
@@ -64,6 +65,12 @@ const useStyles = makeStyles({
     color: "red",
     padding: "5px",
   },
+  novo: {
+    top: "50px",
+    position: "absolute",
+    right: "70px",
+    color: "red",
+  },
 });
 
 function Quandro_Cliente() {
@@ -71,6 +78,7 @@ function Quandro_Cliente() {
   const [listaClientes, setListaClientes] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
   const [modalInfo, setModalInfo] = useState(false);
+  const [modalAdd, setModalAdd] = useState(false);
   const [dados, setDados] = useState([]);
 
   useEffect(() => {
@@ -106,6 +114,7 @@ function Quandro_Cliente() {
     event.preventDefault();
     setModalEdit(false);
     setModalInfo(false);
+    setModalAdd(false);
   }
 
   return (
@@ -120,8 +129,17 @@ function Quandro_Cliente() {
             <StyledTableCell align="left">Status</StyledTableCell>
             <StyledTableCell align="left">Contato</StyledTableCell>
             <StyledTableCell align="left"></StyledTableCell>
+
+            <IconButton
+              onClick={() => {
+                setModalAdd(true);
+              }}
+            >
+              <AddCircleIcon />
+            </IconButton>
           </TableRow>
         </TableHead>
+
         <TableBody className={classes.body}>
           {listaClientes.map((x: any) => (
             <StyledTableRow key={x.id}>
@@ -153,6 +171,7 @@ function Quandro_Cliente() {
                 >
                   <EditIcon />
                 </IconButton>
+
                 <IconButton color="primary" onClick={() => handleDelete(x.id)}>
                   <DeleteIcon />
                 </IconButton>
@@ -175,6 +194,14 @@ function Quandro_Cliente() {
             <CloseIcon fontSize="large" />
           </IconButton>
           <InfoCliente dados={dados} />
+        </div>
+      )}
+      {modalAdd && (
+        <div className={classes.modal}>
+          <IconButton className={classes.close} onClick={handleClose}>
+            <CloseIcon fontSize="large" />
+          </IconButton>
+          <Cliente dados={dados} />
         </div>
       )}
     </div>

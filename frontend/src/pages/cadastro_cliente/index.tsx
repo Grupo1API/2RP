@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './style.css'
 
-function Cliente(){
+function Cliente(dados){
   const [nome, setNome] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [contato,setContato] = useState("");
