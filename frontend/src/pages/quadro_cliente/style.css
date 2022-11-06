@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: #3B7EC4;
 }
 .pagina{
   background-color: white;
@@ -31,6 +31,12 @@ body {
 
 #floatingTextarea2{
   height: 100px;
+}
+.form-btn{
+  text-align: center;
+}
+.btn.btn-success{
+  margin-top: 15px;
 }
 .form-select{
   width: 100%;

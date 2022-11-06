@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {ColorButton} from '../../components/Button/styles';
 import './style.css'
 
-function Cliente(){
+function Cliente(dados){
   const [nome, setNome] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [contato,setContato] = useState("");
@@ -106,6 +106,20 @@ function Cliente(){
           onChange={(e) => setNumeroProjeto(e.target.value)}>
           </TextField>
         </div>
+
+{/* contato */}
+      <div className="form-floating mb-4">
+        <input
+          type="texto"
+          className="form-control"
+          id="floatingInput2"
+          placeholder="Contato"
+          value={contato}
+          required={true}
+          onChange={(e) => setContato(e.target.value)}
+        />
+        <label htmlFor="floatingInput2">Contato</label>
+      </div>
 
         {/* Botão */}
         <div className ="form-btn">
