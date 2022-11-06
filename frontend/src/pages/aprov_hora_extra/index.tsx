@@ -1,15 +1,17 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Button from "react-bootstrap/esm/Button";
 import Modal from "react-bootstrap/esm/Modal";
 import { useNavigate } from "react-router";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Apont_hora_extra from "../apont_hora_extra";
 import './style.css'
 
     {/* Funções */}
 
 function Aprov_hora_extra () {
   const history = useNavigate()
+  const [listaAprovs, setListaAprovs] = useState([]);
   const [tipo, setTipo] = useState("") 
   const [nome, setNome] = useState("")
   const [matricula, setMatricula] = useState("")
@@ -20,11 +22,48 @@ function Aprov_hora_extra () {
   const [gestor, setGestor] = useState("")
   const [justificativa, setJustificativa] = useState("")
 
+ useEffect(() => {
+    // listaAprov();
+  }, []);
 
+  async function listaAprov() {
+    handleShow2()
+    try {
+      const response = await fetch(`http://localhost:3001/hora-extra`, {
+        method: "GET",
+      });
+   
+      const data = await response.json();
+      setListaAprovs(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  async function handleDelete(id) {
+    const data = {
+      id: id,
+    };
+    await fetch(`http://localhost:3001/hora-extra/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    listaAprov();
+  }
+
+  
+  /* func dos popups */
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {setShow (true)};
 
+  const [show1, setShow1] = useState(false);
+  const handleClose1 = () => setShow1(false);
+  const handleShow1 = () => setShow1(true);
+
+  
   const [show2, setShow2] = useState(false);
   const handleClose2 = () => {
     setShow2(false)
@@ -40,40 +79,10 @@ function Aprov_hora_extra () {
     setShow(true)
   };     
 
-  
 
-
-  const cadastrarHora = async (e:any) => {
-    e.preventDefault();
-    handleShow2()
-    try {
-      const body = {tipo, nome, matricula, entrada1, saida1, entrada2, saida2, gestor, justificativa};
-      const response = await fetch('http://localhost:3001/aprov-hora-extra', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        });
-        console.log(response.json)
-        // definir rota
-        window.location.href='/aprov-hora-extra'
-    } catch (err:any) {
-      console.error(err.message)
-    }
-  };
-  const cancelar=()=>{
-    setTipo("")
-    setNome("")
-    setMatricula("")
-    setEntrada1("")
-    setSaida1("")
-    setEntrada2("") 
-    setSaida2("")
-    setGestor("")
-    setJustificativa("")
-  }
 
   return <>
-    <div className="pagina">
+       <div className="pagina">
       <h2> Aceitar/Recusar</h2>
 
       {/* Hora-extra/Sobreaviso */}
@@ -150,7 +159,7 @@ function Aprov_hora_extra () {
 
       {/* Botão Recusar */}
         <div className ="form-btn-2">
-            <button className="btn btn-success-2" role="button" onClick={handleShow}>Recusar</button>
+            <button className="btn btn-success-2" role="button" onClick={handleShow1} >Recusar</button>
         </div>
       
 
@@ -161,7 +170,7 @@ function Aprov_hora_extra () {
 </div>
    
 
-      {/* primeiro popup */}
+      {/* primeiro popup, caso clique em aceitar o pedido*/}
      <Modal show={show} onHide={handleClose}>
      <Modal.Header className="sair" closeButton> </Modal.Header>
 
@@ -177,7 +186,7 @@ function Aprov_hora_extra () {
       <Modal.Title className="atencao">Atenção!</Modal.Title>
        <Modal.Body className="confAcao">Confirmar ação?</Modal.Body>
         <Modal.Footer className="footer">
-            <Button variant="primary" onClick={cadastrarHora} className="btnSim">
+            <Button variant="primary" onClick={listaAprov} className="btnSim">
              Sim
             </Button>
              <Button variant="secondary" onClick={handleClose} className="btnNao">
@@ -186,8 +195,33 @@ function Aprov_hora_extra () {
         </Modal.Footer>
        </Modal>
 
+        {/* primeiro popup, caso clique em recusar o pedido*/}
+     <Modal show={show1} onHide={handleClose1}>
+     <Modal.Header className="sair" closeButton> </Modal.Header>
 
-        {/* segundo popup */}
+      <ErrorOutlineIcon className="error" sx={{
+             
+                width: 100,
+                height: 100,
+            
+              color: '#FFD700',
+      }}/> 
+
+      <h3></h3>
+      <Modal.Title className="atencao">Atenção!</Modal.Title>
+       <Modal.Body className="confAcao">Confirmar ação?</Modal.Body>
+        <Modal.Footer className="footer">
+            <Button variant="primary" onClick={handleDelete} className="btnSim">
+             Sim
+            </Button>
+             <Button variant="secondary" onClick={handleClose1} className="btnNao">
+              Não
+            </Button>
+        </Modal.Footer>
+       </Modal>
+
+
+        {/* popup de operação realizada com sucesso */}
        <Modal show={show2} onHide={handleClose2}>
       <Modal.Header className="sair2" closeButton> </Modal.Header>
 

@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import Aprov_hora_extra from "../aprov_hora_extra";
 import './style.css'
 
 function Apont_hora_extra () { 
+  const [tipo, setTipo] = useState("")
   const [nome, setNome] = useState("")
   const [matricula, setMatricula] = useState("")
   const [entrada1, setEntrada1] = useState("")
@@ -11,10 +13,12 @@ function Apont_hora_extra () {
   const [gestor, setGestor] = useState("")
   const [justificativa, setJustificativa] = useState("")
 
+
+
   const cadastrarHora = async (e:any) => {
     e.preventDefault();
     try {
-      const body = {nome, matricula, entrada1, saida1, entrada2, saida2, gestor, justificativa};
+      const body = {tipo, nome, matricula, entrada1, saida1, entrada2, saida2, gestor, justificativa};
       const response = await fetch('http://localhost:3001/hora-extra', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -28,6 +32,7 @@ function Apont_hora_extra () {
     }
   };
   const cancelar=()=>{
+    setTipo("")
     setNome("")
     setMatricula("")
     setEntrada1("")
@@ -39,8 +44,14 @@ function Apont_hora_extra () {
   }
 
   return (
+     
     <div className="pagina">
       <h2> Apontamento Hora Extra</h2>
+
+      <div className="form-floating mb-3">
+        <input type="text" className="form-control" id="floatingInput" placeholder="Tipo" value={tipo}onChange={e => setTipo(e.target.value)}/>
+        <label htmlFor="floatingInput">Tipo de apontamento</label>
+      </div>
       {/* entrada nome */}
       <div className="form-floating mb-3">
         <input type="text" className="form-control" id="floatingInput" placeholder="Nome Completo" value={nome}onChange={e => setNome(e.target.value)}/>
@@ -110,7 +121,6 @@ function Apont_hora_extra () {
         <button className="btn btn-success" role="button" onClick={cadastrarHora}>Enviar</button>
       </div>
     </div>
-   
   )
 }
 
