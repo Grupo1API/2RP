@@ -22,6 +22,11 @@ const VerbasModel = db.define("verbas", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  status: {
+    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+    allowNull: false,
+    defaultValue: "ativo",
+  },
 });
 
 export default VerbasModel;

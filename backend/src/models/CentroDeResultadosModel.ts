@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import { db } from "../database/db";
-import ClientesModel from "./ClientesModel";
 import UsuariosModel from "./UsuariosModel";
 
 const CentroDeResultados = db.define("centro_de_resultados", {
@@ -27,7 +26,5 @@ const CentroDeResultados = db.define("centro_de_resultados", {
 });
 
 CentroDeResultados.belongsTo(UsuariosModel, { foreignKey: "usuarioId" });
-CentroDeResultados.belongsTo(UsuariosModel, { foreignKey: "gestorId" });
-CentroDeResultados.belongsTo(ClientesModel, { foreignKey: "projetoId" });
 
 export default CentroDeResultados;

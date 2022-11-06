@@ -1,4 +1,4 @@
-import { DataTypes, INTEGER, Model, Optional } from "sequelize";
+import { DataTypes, Model, Optional } from "sequelize";
 import { db } from "../database/db";
 import TurnosModel from "./TurnosModel";
 
@@ -39,7 +39,9 @@ const UsuariosModel = db.define<UserInstance>("usuarios", {
     unique: true,
   },
   role: {
-    type: DataTypes.ENUM({ values: ["admin", "gestor", "colaborador"] }),
+    type: DataTypes.ENUM({
+      values: ["administrador", "gestor", "colaborador"],
+    }),
     allowNull: false,
     defaultValue: "colaborador",
   },

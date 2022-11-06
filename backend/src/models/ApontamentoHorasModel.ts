@@ -28,10 +28,15 @@ const ApontamentoHorasModel = db.define("apontamento_horas", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  status: {
-    type: DataTypes.ENUM({ values: ["aprovado", "reprovado"] }),
+  statusApontamento: {
+    type: DataTypes.BOOLEAN,
     allowNull: false,
-    defaultValue: "reprovado",
+    defaultValue: false,
+  },
+  status: {
+    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+    allowNull: false,
+    defaultValue: "ativo",
   },
 });
 
