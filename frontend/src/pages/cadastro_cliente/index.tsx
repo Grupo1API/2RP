@@ -22,13 +22,16 @@ function Cliente(dados){
 
     };
       try{
-        await fetch('http://localhost:3001/clientes', {
+        await fetch('http://localhost:3001/cliente/', {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(dado),
         });
+
+        // definir rota
+        window.location.href='/quadro-clientes'
 
         setNome("");
         setCnpj("");
@@ -106,20 +109,6 @@ function Cliente(dados){
           onChange={(e) => setNumeroProjeto(e.target.value)}>
           </TextField>
         </div>
-
-{/* contato */}
-      <div className="form-floating mb-4">
-        <input
-          type="texto"
-          className="form-control"
-          id="floatingInput2"
-          placeholder="Contato"
-          value={contato}
-          required={true}
-          onChange={(e) => setContato(e.target.value)}
-        />
-        <label htmlFor="floatingInput2">Contato</label>
-      </div>
 
         {/* Botão */}
         <div className ="form-btn">

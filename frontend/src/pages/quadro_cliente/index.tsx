@@ -10,7 +10,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircle";
 import InfoCliente from "../../components/InfoEditCli/InfoCliente";
 import EditCliente from "../../components/InfoEditCli/EditCliente";
 import "./style.css";
@@ -66,14 +66,13 @@ const useStyles = makeStyles({
     padding: "5px",
   },
   novo: {
-    top: "50px",
-    position: "absolute",
-    right: "70px",
-    color: "red",
+    position:"absolute",
+    marginLeft:"-90px",
+    color: "#03FD90",
   },
 });
 
-function Quandro_Cliente() {
+function Quadro_Cliente() {
   const classes = useStyles();
   const [listaClientes, setListaClientes] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
@@ -87,7 +86,7 @@ function Quandro_Cliente() {
 
   async function listaCliente() {
     try {
-      const response = await fetch(`http://localhost:3001/clientes`, {
+      const response = await fetch(`http://localhost:3001/cliente/`, {
         method: "GET",
       });
       const data = await response.json();
@@ -100,7 +99,7 @@ function Quandro_Cliente() {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:3001/clientes/${id}`, {
+    await fetch(`http://localhost:3001/cliente/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -130,17 +129,14 @@ function Quandro_Cliente() {
             <StyledTableCell align="left">Contato</StyledTableCell>
             <StyledTableCell align="left">Projeto</StyledTableCell>
             <StyledTableCell align="left">Nº do Projeto</StyledTableCell>
-            <StyledTableCell align="left"></StyledTableCell>
-          </TableRow>
-        </TableHead>
-            <StyledTableCell align="left"></StyledTableCell>
-
-            <IconButton
+            <StyledTableCell align="center"></StyledTableCell>
+          
+            <IconButton className={classes.novo}
               onClick={() => {
                 setModalAdd(true);
               }}
             >
-              <AddCircleIcon />
+              <AddCircleOutlinedIcon fontSize="large"/>
             </IconButton>
           </TableRow>
         </TableHead>
