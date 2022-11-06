@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import UsuariosController from "../controller/UsuariosController";
-
+import UsuariosAuth from "../middlewares/UsuariosAuth";
 import apontamentoHorasRoutes from "./ApontamentoHorasRoutes";
 import centroDeResultados from "./CentroDeResultadosRoutes";
 import classificacaoHoras from "./ClassificacaoHorasRoutes";

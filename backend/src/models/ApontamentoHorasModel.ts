@@ -1,11 +1,10 @@
-import { DataTypes } from 'sequelize';
-import { db } from '../database/db';
-import ClientesModel from './ClientesModel';
-import UsuariosModel from './UsuariosModel';
-import VerbasModel from './VerbasModel';
+import { DataTypes } from "sequelize";
+import { db } from "../database/db";
+import ClientesModel from "./ClientesModel";
+import UsuariosModel from "./UsuariosModel";
+import VerbasModel from "./VerbasModel";
 
-
-const ApontamentoHorasModel = db.define('apontamento_horas', {
+const ApontamentoHorasModel = db.define("apontamento_horas", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -13,9 +12,9 @@ const ApontamentoHorasModel = db.define('apontamento_horas', {
     primaryKey: true,
   },
   tipo_apontamento: {
-    type: DataTypes.ENUM({values: ['hora extra', 'sobreaviso']}),
+    type: DataTypes.ENUM({ values: ["hora extra", "sobreaviso"] }),
     allowNull: false,
-    defaultValue: 'hora extra'
+    defaultValue: "hora extra",
   },
   horario_inicio: {
     type: DataTypes.DATE,
@@ -29,16 +28,21 @@ const ApontamentoHorasModel = db.define('apontamento_horas', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  status: {
-    type: DataTypes.ENUM({values: ['aprovado', 'reprovado']}),
+  statusApontamento: {
+    type: DataTypes.BOOLEAN,
     allowNull: false,
-    defaultValue: 'reprovado'
-  }
+    defaultValue: false,
+  },
+  status: {
+    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+    allowNull: false,
+    defaultValue: "ativo",
+  },
 });
 
-ApontamentoHorasModel.belongsTo(VerbasModel, {foreignKey:'verbaId'});
-ApontamentoHorasModel.belongsTo(UsuariosModel, {foreignKey: 'usuarioId'});
-ApontamentoHorasModel.belongsTo(UsuariosModel, {foreignKey: 'gestorId'});
-ApontamentoHorasModel.belongsTo(ClientesModel, {foreignKey:'projetoId'});
+ApontamentoHorasModel.belongsTo(VerbasModel, { foreignKey: "verbaId" });
+ApontamentoHorasModel.belongsTo(UsuariosModel, { foreignKey: "usuarioId" });
+ApontamentoHorasModel.belongsTo(UsuariosModel, { foreignKey: "gestorId" });
+ApontamentoHorasModel.belongsTo(ClientesModel, { foreignKey: "projetoId" });
 
 export default ApontamentoHorasModel;

@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import ApontamentoHorasModel from '../models/ApontamentoHorasModel';
+import { Request, Response } from "express";
+import ApontamentoHorasModel from "../models/ApontamentoHorasModel";
 
 class ApontamentoHorasController {
   async findAll(req: Request, res: Response) {
@@ -11,46 +11,34 @@ class ApontamentoHorasController {
   }
   async findOne(req: Request, res: Response) {
     const { apontamentoHoraId } = req.params;
-    const apontamentoHora = await ApontamentoHorasModel.findOne({
+    const horaExtra = await ApontamentoHorasModel.findOne({
       where: {
         id: apontamentoHoraId,
-      }
+      },
     });
 
-    return apontamentoHora
-      ? res.status(200).json(apontamentoHora)
-      : res.status(204).send();
+    return horaExtra ? res.status(200).json(horaExtra) : res.status(204).send();
   }
 
   async create(req: Request, res: Response) {
-    const {
+    const { tipo_apontamento, horario_inicio, horario_fim, justificativa } =
+      req.body;
+    const horaExtra = await ApontamentoHorasModel.create({
       tipo_apontamento,
       horario_inicio,
       horario_fim,
       justificativa,
-      verbaId,
-      usuarioId,
-      gestorId,
-      projetoId
-    } = req.body;
-    const apontamentoHora = await ApontamentoHorasModel.create({
-      tipo_apontamento,
-      horario_inicio,
-      horario_fim,
-      justificativa,
-      verbaId,
-      usuarioId,
-      gestorId,
-      projetoId
     });
 
-    return res.status(201).json(apontamentoHora);
+    return res.status(201).json(horaExtra);
   }
 
   async update(req: Request, res: Response) {
     const { apontamentoHoraId } = req.params;
 
-    await ApontamentoHorasModel.update(req.body, {where: {id: apontamentoHoraId }});
+    await ApontamentoHorasModel.update(req.body, {
+      where: { id: apontamentoHoraId },
+    });
 
     return res.status(201).send();
   }
@@ -58,15 +46,13 @@ class ApontamentoHorasController {
   async destroy(req: Request, res: Response) {
     const { apontamentoHoraId } = req.params;
 
-    const excluido = await ApontamentoHorasModel.destroy({
-      where: {
-        id: apontamentoHoraId 
-      }});
+    await ApontamentoHorasModel.update(
+      { status: "inativo" },
+      { where: { id: apontamentoHoraId } }
+    );
 
-    return excluido
-    ? res.status(201).json(excluido)
-    : res.status(204).send();
+    return res.status(201).send();
   }
 }
 
-export default new ApontamentoHorasController;
+export default new ApontamentoHorasController();

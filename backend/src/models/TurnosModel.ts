@@ -1,7 +1,7 @@
-import { DataTypes } from 'sequelize';
-import { db } from '../database/db';
+import { DataTypes } from "sequelize";
+import { db } from "../database/db";
 
-const TurnosModel = db.define('turnos', {
+const TurnosModel = db.define("turnos", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -23,7 +23,12 @@ const TurnosModel = db.define('turnos', {
   saida_2: {
     type: DataTypes.STRING,
     allowNull: false,
-  }
+  },
+  status: {
+    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+    allowNull: false,
+    defaultValue: "ativo",
+  },
 });
 
 export default TurnosModel;
