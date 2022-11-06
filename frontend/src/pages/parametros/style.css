@@ -1,0 +1,23 @@
+.area{
+    width: 40em;
+    margin-top: 10%;
+    margin-left: 20%;
+    border: 1px solid rgba(0, 0, 0, 0);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.062);
+}
+.area h2{
+    margin-bottom: 30px !important; 
+    margin-left: 60px !important;
+}
+
+.tabela{
+    width: 30em;
+    margin-top: 50px;
+
+}
+.tabela thead{
+    background-color: rgba(5, 5, 5, 0.041);
+    
+}

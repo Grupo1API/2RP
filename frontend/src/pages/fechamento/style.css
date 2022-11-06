@@ -21,14 +21,12 @@ body {
   }
   .form-floating.mb-3{
     width: 100%;
-    text-align:left;
   }
   /*campos centralizados*/
   .form-floating.mb-4{
     margin-left: auto;
     margin-right: auto;
     width: 70%;
-    text-align:left;
   }
   
   #floatingTextarea2{

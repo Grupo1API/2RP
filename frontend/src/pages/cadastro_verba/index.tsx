@@ -50,6 +50,15 @@ function Verba(){
         setDescricao(event.target.value as string);
       };
 
+      const [show,setShow]=useState(false)
+  const [show2,setShow2]=useState(true)
+  const handleClose=()=>{
+    setShow(false)
+    setShow2(true)}
+  const handleShow=()=>{
+    setShow(true)
+    setShow2(false)}
+
     return(
       <div className="pagina">
 
@@ -57,23 +66,13 @@ function Verba(){
 
         {/*Descrição da verba*/}
         <div className="form-floating mb-4">
-            <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label" >Escolha o tipo de verba</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={descricao}
-                    label="Escolha o tipo de verba"
-                    onChange={handleChange}
-                >
-                    <MenuItem value={'hora extra'}>Hora extra</MenuItem>
-                    <MenuItem value={'sobreaviso'}>Sobreaviso</MenuItem>
-                    <MenuItem value={'hora extra noturna'}>Hora extra noturna</MenuItem>
-                    <MenuItem value={'adicional noturno'}>Adicional noturno</MenuItem>
-                </Select>
-            </FormControl>
-            </Box>
+        <TextField fullWidth
+          id="outlined-basic" 
+          label="Descriçao da Verba"
+          value={descricao}
+          required={true}
+          onChange={(e) => setDescricao(e.target.value)}>
+        </TextField>
         </div>
 
         {/*  código da verba */}
@@ -114,10 +113,15 @@ function Verba(){
         <div className ="form-btn">
           <ColorButton 
             variant="contained"
-            onClick={handleSubmit}
+            onClick={handleShow}
+            hidden={show}
           >
-            Enviar
+            Editar
           </ColorButton>
+        </div>
+        <div className="botao" hidden={show2}>
+          <a className="btn btn-danger" onClick={handleClose}>Cancelar</a>
+          <a className="btn btn-success">Salvar</a>
         </div>
       </div>
     );
