@@ -10,6 +10,7 @@ import UsuarioCreate from '../pages/usuario/usuario_create';
 import UsuarioUpdate from '../pages/usuario/usuario_update';
 import Verba from '../pages/cadastro_verba';
 import Turno from '../pages/cadastro_turno';
+import Quadro_cliente from '../pages/quadro_cliente';
 
 
 const AppRoutes = () => (
@@ -17,12 +18,13 @@ const AppRoutes = () => (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/cliente" element={<Cliente />} />
+      <Route path="/quadro-clientes" element={<Quadro_cliente />} />
       <Route path="/apontamento-horas" element={<ApontamentoHoras />} />
       <Route path="/centro-resultado" element={<CentroResultado />} />
-      <Route path="/verba" element ={<Verba/>}/>
-      <Route path="/turno" element ={<Turno/>}/>      
+      <Route path="/verba" element={<Verba />} />
+      <Route path="/turno" element={<Turno />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/usuario/create" element ={<UsuarioCreate/>}/>
+      <Route path="/signup" element ={<UsuarioCreate/>}/>
       <Route path="/usuario/update" element ={<UsuarioUpdate/>}/>
     </Routes>
   </Container>
