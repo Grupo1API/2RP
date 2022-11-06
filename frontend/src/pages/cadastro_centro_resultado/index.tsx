@@ -1,11 +1,13 @@
+import TextField from "@mui/material/TextField";
 import React, {useState} from "react";
+import {ColorButton} from '../../components/Button/styles';
 import './style.css'
 
 function CentroResultado () {
   const [nome, setNome] = useState("");
   const [numero, setNumero] = useState("");
 
-  async function cadastrarcentro(event: { preventDefault: () => void; }){
+  async function handleSubmit(event: { preventDefault: () => void; }){
     event.preventDefault();
     const dado = {
       nome: nome,
@@ -13,7 +15,7 @@ function CentroResultado () {
     };
 
     try{
-      await fetch('http://localhost:3001/centro-resultado', {
+      await fetch('http://localhost:3001/centro-de-resultados', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,39 +36,43 @@ function CentroResultado () {
 
   return (
     <div className="pagina">
+
       <h2> Cadastro de Centro de Resultado </h2>
+
       {/*  nome */}
-      <div className="form-floating mb-4">
-        <input
-          type="text"
-          className="form-control"
-          id="floatingInput2"
-          placeholder="Nome Completo"
+        <div className="form-floating mb-4">
+        <TextField fullWidth
+          id="outlined-basic" 
+          label="Nome do CR"
           value={nome}
+          required={true}
           onChange={(e) => setNome(e.target.value)}
-        />
-        <label htmlFor="floatingInput2">Nome do CR</label>
-      </div>
+          >
+        </TextField>
+        </div>
 
       {/* numero */}
       <div className="form-floating mb-4">
-        <input
+      <TextField fullWidth
           type="number"
-          className="form-control"
-          id="floatingInput2"
-          placeholder="Matrícula"
+          id="outlined-basic" 
+          label="Número do CR"
+          variant="outlined"
           value={numero}
-          onChange={(e) => setNumero(e.target.value)}
-        />
-        <label htmlFor="floatingInput2">Número do CR</label>
+          required={true}
+          onChange={(e) => setNumero(e.target.value)}>
+        </TextField>
       </div>
 
       {/* Botão */}
       <div className ="form-btn">
-        <button className="btn btn-success"role="button"onClick={cadastrarcentro}>
-          Enviar
-        </button>
-      </div>
+          <ColorButton 
+            variant="contained"
+            onClick={handleSubmit}
+          >
+            Enviar
+          </ColorButton>
+        </div>
     </div>
   );
 };

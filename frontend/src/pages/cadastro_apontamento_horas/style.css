@@ -19,28 +19,29 @@ body {
   padding-top: 1em;
   padding-bottom:1em;
 }
+
+/*campos fullWidth*/
 .form-floating.mb-3{
   width: 100%;
+  text-align:left;
 }
 /*campos centralizados*/
 .form-floating.mb-4{
   margin-left: auto;
   margin-right: auto;
   width: 70%;
+  text-align:left;
+}
+/*colunas das datas*/
+.row.g-2{
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
 }
 
-#floatingTextarea2{
-  height: 100px;
-}
+/*botão*/
 .form-btn{
-  text-align: center;
-}
-.btn.btn-success{
   margin-top: 15px;
-}
-.form-select{
-  width: 100%;
-}
-option{  
-  color:  rgb(97, 96, 96);
+  margin-bottom:15px;
+  text-align: center;
 }

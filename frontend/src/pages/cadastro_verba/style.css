@@ -1,4 +1,4 @@
-#body {
+body {
     background-color: rgb(255, 250, 250);
   }
   .pagina{
@@ -21,18 +21,14 @@
   }
   .form-floating.mb-3{
     width: 100%;
+    text-align:left;
   }
   /*campos centralizados*/
   .form-floating.mb-4{
     margin-left: auto;
     margin-right: auto;
     width: 70%;
-  }
-
-  .floatingSelect{
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
+    text-align:left;
   }
   
   #floatingTextarea2{
@@ -47,7 +43,6 @@
   .form-select{
     width: 100%;
   }
-  
   option{  
     color:  rgb(97, 96, 96);
   }

@@ -1,53 +1,46 @@
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import React, {useState} from "react";
 import {ColorButton} from '../../components/Button/styles';
-import './style.css'
+import "./style.css";
 
-function Cliente(){
-  const [nome, setNome] = useState("");
-  const [cnpj, setCnpj] = useState("");
-  const [contato,setContato] = useState("");
-  const [nome_projeto,setNomeProjeto] = useState("");
-  const [numero_projeto,setNumeroProjeto] = useState("");
+export default function EditCliente({ dados, modalEdit }) {
+  const [nome, setNome] = useState(dados.nome);
+  const [status, setStatus] = useState("");
+  const [cnpj, setCnpj] = useState(dados.cnpj);
+  const [contato, setContato] = useState(dados.contato);
+  const [nome_projeto,setNomeProjeto] = useState(dados.nome_projeto);
+  const [numero_projeto,setNumeroProjeto] = useState(dados.numero_projeto);
+  const [id] = useState(dados.id);
 
-
-  async function handleSubmit(event: { preventDefault: () => void; }){
-    event.preventDefault();
+  async function handleUpdate() {
     const dado = {
       nome: nome,
       cnpj: cnpj,
       contato: contato,
       nome_projeto: nome_projeto,
       numero_projeto: numero_projeto
-
     };
-      try{
-        await fetch('http://localhost:3001/clientes', {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(dado),
-        });
+    try {
+      await fetch(`http://localhost:3001/clientes/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dado),
+      });
 
-        setNome("");
-        setCnpj("");
-        setContato("");
-        setNomeProjeto("");
-        setNumeroProjeto("");
-
-        return;
-      } catch (error) {
-        let message = 'Erro desconhecido'
-        if (error instanceof Error) message = error.message
-        reportError({message})
-      }
+      return;
+    } catch (error) {
+      let message = "Erro desconhecido";
+      if (error instanceof Error) message = error.message;
+      reportError({ message });
     }
+  }
 
-    return(
-      <div className="pagina">
-
-        <h2>Cadastro de Clientes</h2>
+  return (
+    <div className="pagina">
+      <form onSubmit={handleUpdate}>
+        <h2>Edição de Cliente</h2>
 
         {/*  nome */}
         <div className="form-floating mb-4">
@@ -109,15 +102,16 @@ function Cliente(){
 
         {/* Botão */}
         <div className ="form-btn">
-          <ColorButton 
-            variant="contained"
-            onClick={handleSubmit}
+        <ColorButton 
+          type="submit"
+          variant="contained"
+          onClick={handleUpdate}
           >
-            Enviar
-          </ColorButton>
-        </div>
-      </div>
-    );
-  }
+          Editar
+        </ColorButton>
 
-  export default Cliente;
+        </div>
+      </form>
+    </div>
+  );
+}

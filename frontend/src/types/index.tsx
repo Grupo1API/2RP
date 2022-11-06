@@ -1,5 +1,5 @@
 export interface Error { error: string }
-export interface UsuarioInputProps { email: string, senha: string, perfil: string }
+export interface UsuarioInputProps { email: string, senha: string }
 export interface LoginResProps { id: string, email: string, token: string }
 export interface UsuarioResProps { id: string, email: string }
 export interface AuthContextProps {
