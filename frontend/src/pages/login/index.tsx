@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import useAuth from "../../hooks/useAuth";
 //import { useAuth } from "../../hooks";
 import './style.css'
 
@@ -6,17 +7,19 @@ import './style.css'
 export const Login =() =>{
     const [email, setMail] = useState("")
     const [senha, setSenha] = useState("")
-    //const [error, setError] = useState("");
-    /*const {login} = useAuth();*/
+    const [error, setError] = useState("");
+    const {login} = useAuth();
 
-   /* const enviar = async () => {
+    
+    const enviar = async () => {
       setError("");
-      const r = await login({email, senha});
-      if (r.error !== ""){
+      const r = await login({ email, senha });
+      if (r.error !== "") {
         setError(r.error);
       }
-    }*/
-  
+    };
+
+
     const entrar = async (e:any) => {
         e.preventDefault();
         try {
