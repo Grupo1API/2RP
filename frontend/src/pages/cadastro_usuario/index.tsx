@@ -27,7 +27,7 @@ export default function Usuario() {
     };
 
   try{
-    await fetch('http://localhost:3001/signup', {
+    await fetch('http://localhost:3001/usuarios/', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
