@@ -2,6 +2,7 @@ import React from 'react';
 import * as AiIcons from 'react-icons/ai';
 import * as HiIcons from "react-icons/hi";
 import * as RiIcons from "react-icons/ri";
+import * as FaIcons from "react-icons/fa";
 
 export const SidebarData = [
   {
@@ -14,6 +15,12 @@ export const SidebarData = [
     title: 'Apontamento de Horas',
     path: '/apontamento-horas',
     icon: <RiIcons.RiTimeFill />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Aprovação',
+    path: '/aprovacao-horas',
+    icon: <FaIcons.FaBusinessTime />,
     cName: 'nav-text'
   },
   {
