@@ -9,8 +9,9 @@ const VerbasModel = db.define("verbas", {
     primaryKey: true,
   },
   codigo: {
-    // códigos da regra de negócio para classificação de horas extras e sobreviso ({values: ['1601', '1602', '3000', '3001', '1809', '3016']}),
-    type: DataTypes.STRING,
+    type: DataTypes.ENUM({
+      values: ["1601", "1602", "3000", "3001", "1809", "3016"],
+    }),
     allowNull: false,
   },
   descricao: {
@@ -20,7 +21,7 @@ const VerbasModel = db.define("verbas", {
   fator: {
     // fator de multiplicação existe somente para horas extra noturnas correspondente aos códigos 3000 e 3001 ({values: ['1.1428571']})
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   percentual: {
     type: DataTypes.STRING,

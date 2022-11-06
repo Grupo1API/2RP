@@ -21,7 +21,7 @@ const ClassificacaoHorasModel = db.define("ClassificacaoHoras", {
   },
 });
 
-VerbasModel.belongsTo(ClassificacaoHorasModel);
+ClassificacaoHorasModel.belongsTo(VerbasModel);
 ApontamentoHorasModel.belongsTo(VerbasModel);
 
 export default ClassificacaoHorasModel;
