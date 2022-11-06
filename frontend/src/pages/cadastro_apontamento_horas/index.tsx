@@ -53,7 +53,7 @@ function ApontamentoHoras () {
   return (
     <div className="pagina">
 
-      <h2> Apontamento Hora Extra</h2>
+      <h2> Apontamento de Horas</h2>
       
       {/*tipo de apontamento*/}
       <div className="form-floating mb-4">
