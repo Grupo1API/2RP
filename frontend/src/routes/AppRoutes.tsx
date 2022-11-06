@@ -6,8 +6,8 @@ import ApontamentoHoras from '../pages/cadastro_apontamento_horas';
 import CentroResultado from '../pages/cadastro_centro_resultado';
 import Login from '../pages/login';
 import Home from '../pages/home';
-import UsuarioCreate from '../pages/usuario/usuario_create';
-import UsuarioUpdate from '../pages/usuario/usuario_update';
+import Usuario from '../pages/cadastro_usuario';
+import Quadro_Usuario from '../pages/quadro_usuario';
 import Verba from '../pages/cadastro_verba';
 import Turno from '../pages/cadastro_turno';
 import Quadro_cliente from '../pages/quadro_cliente';
@@ -24,8 +24,8 @@ const AppRoutes = () => (
       <Route path="/verba" element={<Verba />} />
       <Route path="/turno" element={<Turno />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element ={<UsuarioCreate/>}/>
-      <Route path="/usuario/update" element ={<UsuarioUpdate/>}/>
+      <Route path="/signup" element ={<Usuario/>}/>
+      <Route path="/quadro-usuarios" element ={<Quadro_Usuario/>}/>
     </Routes>
   </Container>
 );

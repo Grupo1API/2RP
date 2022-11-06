@@ -1,9 +1,9 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Turno from "../../cadastro_turno";
+import { ColorButton } from "../../components/Button/styles";
 //import { useAuth } from "../../../hooks";
 
-export default function UsuarioCreate() {
+export default function Usuario() {
   const [nome,setNome] = useState("");
   const [matricula, setMatricula] = useState("");
   const [email, setMail] = useState("");
@@ -11,7 +11,6 @@ export default function UsuarioCreate() {
   const [role, setRole] = useState("");
   const [turnos,setTurnos] = useState("");
   const [turnoId, setTurnoId] = useState("");
-  const [turno,setTurno] = useState("");
   //const { usuarioCreate } = useAuth();
 
   async function salvar (event: { preventDefault: () => void; }) {
@@ -41,7 +40,7 @@ export default function UsuarioCreate() {
     setMail("");
     setSenha("");
     setRole("");
-    setTurno("");
+    setTurnoId("");
 
     return;
   } catch (error) {
@@ -124,29 +123,6 @@ async function handleChangeRole(event: SelectChangeEvent) {
         </TextField>
       </div>
 
-
-      {/*Turno*/}
-      {/*
-      <div className="form-floating mb-4">
-            <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label" >Escolha o turno</InputLabel>
-                <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={turnoId}
-                    label="Escolha o turno"
-                    onChange={handleChange}
-                >
-                    <MenuItem value={'hora extra'}>Hora extra</MenuItem>
-                    <MenuItem value={'sobreaviso'}>Sobreaviso</MenuItem>
-                    <MenuItem value={'hora extra noturna'}>Hora extra noturna</MenuItem>
-                    <MenuItem value={'adicional noturno'}>Adicional noturno</MenuItem>
-                </Select>
-            </FormControl>
-            </Box>
-        </div>
-*/}
         {/*  email */}
         <div className="form-floating mb-4">
         <TextField fullWidth
@@ -190,13 +166,19 @@ async function handleChangeRole(event: SelectChangeEvent) {
         </Box>
       </div>
 
-      
       {/* Botão */}
-      <div className ="form-btn">
-        <button className="btn btn-success" role="button"  onClick={salvar}>Enviar</button>
-      </div>
+        <div className ="form-btn">
+        <ColorButton 
+          type="submit"
+          variant="contained"
+          onClick={salvar}
+          >
+          Enviar
+        </ColorButton>
+    </div>
     </div>
     </div>
   );
 }
+
 
