@@ -13,7 +13,7 @@ const router = Router();
 router.use("/apontamento-horas", apontamentoHorasRoutes);
 router.use("/centro-de-resultado", centroDeResultados);
 router.use("/classificacao-horas", classificacaoHoras);
-router.use("/cliente", clientes);
+router.use("/clientes", clientes);
 router.use("/turnos", turnos);
 router.use("/usuarios", usuarios);
 router.use("/verbas", verbas);
