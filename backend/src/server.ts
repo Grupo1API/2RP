@@ -1,10 +1,9 @@
+import * as express from "express";
+import * as cors from "cors";
+import router from "./routes/index";
+import { db } from "./database/db";
 
-import * as express from 'express';
-import * as cors from 'cors';
-import { router } from './routes/routes';
-import { db } from './database/db';
-
-const PORT = process.env.PORT || 3002
+const PORT = process.env.PORT || 3002;
 
 const app = express(); // cria o servidor
 
