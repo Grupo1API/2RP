@@ -11,7 +11,7 @@ import verbas from "./VerbasRoutes";
 const router = Router();
 
 router.use("/apontamento-horas", apontamentoHorasRoutes);
-router.use("/centro-de-resultado", centroDeResultados);
+router.use("/centro-de-resultados", centroDeResultados);
 router.use("/classificacao-horas", classificacaoHoras);
 router.use("/clientes", clientes);
 router.use("/turnos", turnos);

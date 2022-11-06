@@ -29,13 +29,12 @@ class CentroDeResultadosController {
   }
 
   async create(req: Request, res: Response) {
-    const { nome, numero, colaboradorId, gestorId, projetoId } = req.body;
+    const { nome, numero, usuarioId, clienteId } = req.body;
     const centroResultado = await CentroDeResultados.create({
       nome,
       numero,
-      colaboradorId,
-      gestorId,
-      projetoId,
+      usuarioId,
+      clienteId,
     });
 
     return res.status(201).json(centroResultado);
