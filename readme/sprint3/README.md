@@ -1,21 +1,18 @@
 <h1>:ballot_box_with_check: SPRINT 3</h1>
 
-<p align="justify">O desenvolvimento nesta sprint foi focado na implementação do gerenciamento dos clientes/projetos, consulta e aprovação de horas apontadas e parametrização.
-LDAP (Lightweight Directory Access Protocol). </p>
+<p align="justify">O desenvolvimento nesta sprint foi focado na implementação do gerenciamento dos clientes/projetos, consulta e aprovação de horas apontadas e parametrização. </p>
 
 <h1>Sumário</h1>
 <a href="#dor">DoR (Definition of Ready)</a>   <br>
-<a href="#backlog_sprint">Backlog Sprint 1</a>   <br>
+<a href="#backlog_sprint">Backlog Sprint 3</a>   <br>
 <a href="#use_cases">Use Cases</a>   <br>
-
-<a href="#burndown_sprint">Burndowm Sprint 2</a>   <br>
+<a href="#burndown_sprint">Burndowm Sprint 3</a>   <br>
 <a href="#dod">DoD (Definition of Done)</a>   <br>
 <a href="#funcionalidades_sprint">Funcionalidades implementadas</a>
 
 <br>
 <h1 id="dor">Definition of Ready</h1>
-
-<h2 id="backlog_sprint>Backlog Sprint 3</h2>
+<h2 id="backlog_sprint">Backlog Sprint 3</h2>
 
 <div id="backlog_sprint" align="center"><img src="./DoR/sprint3-backlog.png" width="700"></h1></div>
 
