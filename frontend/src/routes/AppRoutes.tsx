@@ -12,7 +12,12 @@ import Verba from '../pages/cadastro_verba';
 import Turno from '../pages/cadastro_turno';
 import Quadro_cliente from '../pages/quadro_cliente';
 import Quadro_resultado from '../pages/quadro_centro_resultado';
-//import Aprov_hora_extra from './pages/aprov_hora_extra';
+import Adicional from '../pages/adic_noturno';
+import Fechamento from '../pages/fechamento';
+import Quadro_verba from '../pages/quadro_verba';
+import Parametros from '../pages/parametros';
+import Quadro_turno from '../pages/quadro_turno';
+import Aprov_hora_extra from '../pages/aprov_hora_extra';
 
 
 const AppRoutes = () => (
@@ -29,7 +34,14 @@ const AppRoutes = () => (
       <Route path="/signup" element ={<Usuario/>}/>
       <Route path="/quadro-usuarios" element ={<Quadro_Usuario/>}/>
       <Route path="/quadro-centro-resultado" element={<Quadro_resultado />} />
-     { /*<Route path="/aprov-hora-extra" element={<Aprov_hora_extra />} />*/}
+
+      <Route path="/quadro-verba" element={<Quadro_verba />}/>
+      <Route path="/quadro-turno" element={<Quadro_turno />}/>
+      <Route path="/parametros" element={<Parametros />}/>
+      
+      <Route path="/adicional" element ={<Adicional/>}/>  
+      <Route path="/fechamento" element ={<Fechamento/>}/> 
+     <Route path="/aprov-hora-extra" element={<Aprov_hora_extra />} />
     </Routes>
   </Container>
 );
