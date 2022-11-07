@@ -8,5 +8,7 @@ router.get("/", apontamentoHorasController.findAll);
 router.get("/:apontamentoHoraId", apontamentoHorasController.findOne);
 router.put("/:apontamentoHoraId", apontamentoHorasController.update);
 router.delete("/:apontamentoHoraId", apontamentoHorasController.destroy);
+router.delete("/aprovar/:apontamentoHoraId", apontamentoHorasController.aprovarHora);
+router.delete("/reprovar/:apontamentoHoraId", apontamentoHorasController.reprovarHora);
 
 export default router;

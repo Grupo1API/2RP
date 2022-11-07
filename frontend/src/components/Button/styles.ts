@@ -12,4 +12,15 @@ export const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     },
   }));
 
+  export const VisualizarButton = styled(Button)<ButtonProps>(({ theme }) => ({
+    fontSize: '1rem',
+    fontWeight: 'normal',
+    color: '#ffff',
+      backgroundColor: '#3B7EC4',
+      '&:hover': {
+        color: '#ffff',
+        backgroundColor: '#1166bf',
+      },
+    }));
+
   

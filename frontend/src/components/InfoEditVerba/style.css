@@ -13,6 +13,19 @@ body {
   border-radius: 10px;
   padding: 10px;
 }
+#quadro-usuarios{
+  background-color: white;
+  width: 70em;
+  text-align: center;
+  box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
+  border-radius: 10px;
+  padding: 10px;
+}
+
 .pagina h2{
   text-align: center;
   color: rgb(97, 96, 96);
@@ -44,6 +57,3 @@ body {
 option{  
   color:  rgb(97, 96, 96);
 }
-
-
-

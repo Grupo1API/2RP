@@ -5,7 +5,7 @@ import "./style.css";
 export default function InfoUsuario({ dados }) {
   return (
     <div className="pagina">
-      <h2>Informaçoes do Usuário</h2>
+      <h2>Informações do Usuário</h2>
 
       {/* Turno */}
       <div className="form-floating mb-4">

@@ -53,6 +53,29 @@ class ApontamentoHorasController {
 
     return res.status(201).send();
   }
+
+  async aprovarHora(req: Request, res: Response) {
+    const { apontamentoHoraId } = req.params;
+
+    await ApontamentoHorasModel.update(
+      { statusApontamento: "aprovado" },
+      { where: { id: apontamentoHoraId } }
+    );
+
+    return res.status(201).send();
+  }
+
+
+  async reprovarHora(req: Request, res: Response) {
+    const { apontamentoHoraId } = req.params;
+
+    await ApontamentoHorasModel.update(
+      { statusApontamento: "reprovado" },
+      { where: { id: apontamentoHoraId } }
+    );
+
+    return res.status(201).send();
+}
 }
 
 export default new ApontamentoHorasController();

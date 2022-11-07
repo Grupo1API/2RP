@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ColorButton } from "../../components/Button/styles";
 //import { useAuth } from "../../../hooks";
 
-export default function Usuario() {
+export default function Usuario(dados) {
   const [nome,setNome] = useState("");
   const [matricula, setMatricula] = useState("");
   const [email, setMail] = useState("");
@@ -27,7 +27,7 @@ export default function Usuario() {
     };
 
   try{
-    await fetch('http://localhost:3001/signup', {
+    await fetch('http://localhost:3001/usuarios/', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +93,7 @@ async function handleChangeRole(event: SelectChangeEvent) {
             >
             {turnos && turnos.map((x) => (
             <MenuItem value={x.id}>
-             {`ID: ${x.id}`}
+             {`${x.id}`}
             </MenuItem>
              ))}
           </Select>

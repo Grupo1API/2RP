@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IconContext } from 'react-icons/lib';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { SidebarData } from './SidebarData';
+import { SidebarDataAdmin } from './SidebarData';
 import {Bars, Nav, NavBtn,NavBtnLink} from './NavbarData';
 import './style.css';
 
@@ -26,7 +26,7 @@ function Sidebar() {
           <AiIcons.AiFillHome className='menu-bars' />
         </Link>
       </li>
-      {SidebarData.map((item, index) => {
+      {SidebarDataAdmin.map((item, index) => {
         return (
           <li key={index} className={item.cName}>
             <Link to={item.path}>
@@ -38,15 +38,16 @@ function Sidebar() {
       })}
     </ul>
   </nav>
-  <NavBtn>
-    <NavBtnLink to='/login'>Login</NavBtnLink>
-  </NavBtn>
   {
   /*
   <NavBtn>
+    <NavBtnLink to='/login'>Login</NavBtnLink>
+  </NavBtn>
+ */}
+  <NavBtn>
     <NavBtnLink to='/login'>Logout</NavBtnLink>
   </NavBtn>
-  */}
+ 
   <img className="logo-2rp" src="https://www.2rpnet.com.br/assets/images/2rp-net.svg" alt="logo da empresa"/> 
   </Nav>
 </IconContext.Provider>

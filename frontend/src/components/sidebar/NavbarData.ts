@@ -46,7 +46,7 @@ export const NavMenu = styled('div')`
 export const NavBtn = styled('nav')`
   display: flex;
   align-items: center;
-  margin-right: 24px;
+  margin-right: 1rem;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -55,7 +55,7 @@ export const NavBtn = styled('nav')`
 
 export const NavBtnLink = styled(Link)`
   border-radius: 4px;
-  background: #256ce1;
+  background: #3B7EC4;
   padding: 10px 22px;
   color: #fff;
   outline: none;
@@ -67,7 +67,7 @@ export const NavBtnLink = styled(Link)`
   margin-left: 65rem;
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #010606;
+    background: #1166bf;
+    color: #fff;
   }
 `;

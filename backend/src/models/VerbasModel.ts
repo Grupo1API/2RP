@@ -9,9 +9,8 @@ const VerbasModel = db.define("verbas", {
     primaryKey: true,
   },
   codigo: {
-    type: DataTypes.ENUM({
-      values: ["1601", "1602", "3000", "3001", "1809", "3016"],
-    }),
+    // códigos da regra de negócio para classificação de horas extras e sobreviso ({values: ['1601', '1602', '3000', '3001', '1809', '3016']}),
+    type: DataTypes.STRING,
     allowNull: false,
   },
   fator: {

@@ -10,9 +10,13 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircle";
 import InfoCliente from "../../components/InfoEditCli/InfoCliente";
 import EditCliente from "../../components/InfoEditCli/EditCliente";
-import './style.css'
+import "./style.css";
+import Cliente from "../cadastro_cliente";
+import { ColorButton } from "../../components/Button/styles";
+import { AddCircle } from "@mui/icons-material";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -41,9 +45,8 @@ const useStyles = makeStyles({
   },
   button: {
     display: "flex",
-    boxShadow: "0",
   },
- 
+
   modal: {
     position: "absolute",
     top: "0",
@@ -59,10 +62,15 @@ const useStyles = makeStyles({
   },
   close: {
     position: "absolute",
-    top: "7em",
-    right: "7em",
+    top: "6em",
+    right: "13em",
     color: "red",
-    padding: "1px",
+    padding: "5px",
+  },
+  novo: {
+    position:"absolute",
+    marginLeft:"-90px",
+    color: "#03FD90",
   },
 });
 
@@ -71,6 +79,7 @@ function Quadro_Cliente() {
   const [listaClientes, setListaClientes] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
   const [modalInfo, setModalInfo] = useState(false);
+  const [modalAdd, setModalAdd] = useState(false);
   const [dados, setDados] = useState([]);
 
   useEffect(() => {
@@ -79,7 +88,7 @@ function Quadro_Cliente() {
 
   async function listaCliente() {
     try {
-      const response = await fetch(`http://localhost:3001/clientes`, {
+      const response = await fetch(`http://localhost:3001/cliente/`, {
         method: "GET",
       });
       const data = await response.json();
@@ -92,7 +101,7 @@ function Quadro_Cliente() {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:3001/clientes/${id}`, {
+    await fetch(`http://localhost:3001/cliente/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -106,6 +115,7 @@ function Quadro_Cliente() {
     event.preventDefault();
     setModalEdit(false);
     setModalInfo(false);
+    setModalAdd(false);
   }
 
   return (
@@ -121,9 +131,12 @@ function Quadro_Cliente() {
             <StyledTableCell align="left">Contato</StyledTableCell>
             <StyledTableCell align="left">Projeto</StyledTableCell>
             <StyledTableCell align="left">Nº do Projeto</StyledTableCell>
-            <StyledTableCell align="left"></StyledTableCell>
+            <StyledTableCell align="center">
+            <ColorButton  onClick={() => {setModalAdd(true);}}><AddCircle/>Novo</ColorButton>  
+            </StyledTableCell>
           </TableRow>
         </TableHead>
+
         <TableBody className={classes.body}>
           {listaClientes.map((x: any) => (
             <StyledTableRow key={x.id}>
@@ -136,7 +149,7 @@ function Quadro_Cliente() {
               <StyledTableCell align="left">{x.status}</StyledTableCell>
               <StyledTableCell align="left">{x.contato}</StyledTableCell>
               <StyledTableCell align="left">{x.nome_projeto}</StyledTableCell>
-              <StyledTableCell align="left">{x.numero_projeto}</StyledTableCell>
+              <StyledTableCell align="center">{x.numero_projeto}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"
@@ -180,6 +193,14 @@ function Quadro_Cliente() {
             <CloseIcon fontSize="large" />
           </IconButton>
           <InfoCliente dados={dados} />
+        </div>
+      )}
+      {modalAdd && (
+        <div className={classes.modal}>
+          <IconButton className={classes.close} onClick={handleClose}>
+            <CloseIcon fontSize="large" />
+          </IconButton>
+          <Cliente dados={dados} />
         </div>
       )}
     </div>

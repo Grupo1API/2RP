@@ -1,55 +1,43 @@
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import React, {useState} from "react";
 import {ColorButton} from '../../components/Button/styles';
-import './style.css'
+import "./style.css";
 
-function CentroResultado (dados) {
-  const [nome, setNome] = useState("");
-  const [numero, setNumero] = useState("");
-  const [colaboradorId,setColaboradorId] = useState("");
-  const [gestorId,setGestorId] = useState("");
-  const [projetoId,setProjetoId] = useState("");
+export default function EditCentroResultado({ dados, modalEdit }) {
+  const [nome, setNome] = useState(dados.nome);
+  const [status, setStatus] = useState("");
+  const [numero, setNumero] = useState(dados.numero);
+  const [id] = useState(dados.id);
 
-  async function handleSubmit(event: { preventDefault: () => void; }){
-    event.preventDefault();
+  async function handleUpdate() {
     const dado = {
       nome: nome,
       numero: numero,
-      colaboradorId: colaboradorId,
-      gestorId: gestorId,
-      projetoId:projetoId,
     };
-
-    try{
-      await fetch('http://localhost:3001/centro-de-resultado/', {
-        method: "POST",
+    try {
+      await fetch(`http://localhost:3001/centro-de-resultado/${id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(dado),
       });
 
-      setNome("");
-      setNumero("");
-      setColaboradorId("");
-      setGestorId("");
-      setProjetoId("");
-
       return;
     } catch (error) {
-      let message = 'Erro desconhecido'
-      if (error instanceof Error) message = error.message
-      reportError({message})
+      let message = "Erro desconhecido";
+      if (error instanceof Error) message = error.message;
+      reportError({ message });
     }
   }
 
   return (
     <div className="pagina">
-
-      <h2> Cadastro de Centro de Resultado </h2>
+      <form onSubmit={handleUpdate}>
+        <h2>Edição de Centro de Resultado</h2>
 
       {/*  nome */}
-        <div className="form-floating mb-4">
+      <div className="form-floating mb-4">
         <TextField fullWidth
           id="outlined-basic" 
           label="Nome do CR"
@@ -73,17 +61,19 @@ function CentroResultado (dados) {
         </TextField>
       </div>
 
+
+        
       {/* Botão */}
       <div className ="form-btn">
           <ColorButton 
             variant="contained"
-            onClick={handleSubmit}
+            onClick={handleUpdate}
           >
             Enviar
           </ColorButton>
         </div>
+
+      </form>
     </div>
   );
-};
-
-export default CentroResultado;
+}

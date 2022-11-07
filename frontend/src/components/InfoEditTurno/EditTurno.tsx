@@ -1,50 +1,43 @@
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import React, {useState} from "react";
 import {ColorButton} from '../../components/Button/styles';
-import './style.css'
+import "./style.css";
 
-function Turno(dados){
-  const [entrada_1, setEntrada1] = useState("");
-  const [saida_1, setSaida1] = useState("");
-  const [entrada_2, setEntrada2] = useState("");
-  const [saida_2, setSaida2] = useState("");
+export default function EditTurno({ dados, modalEdit }) {
+    const [entrada_1, setEntrada1] = useState(dados.entrada_1);
+    const [saida_1, setSaida1] = useState(dados.saida_1);
+    const [entrada_2, setEntrada2] = useState(dados.entrada_2);
+    const [saida_2, setSaida2] = useState(dados.saida_2);
+    const [id] = useState(dados.id);
 
-
-  async function handleSubmit(event: { preventDefault: () => void; }){
-    event.preventDefault();
+  async function handleUpdate() {
     const dado = {
-    entrada_1: entrada_1,
-    saida_1: saida_1,
-    entrada_2: entrada_2,
-    saida_2: saida_2,
-
+        entrada_1: entrada_1,
+        saida_1: saida_1,
+        entrada_2: entrada_2,
+        saida_2: saida_2,
     };
-      try{
-        await fetch('http://localhost:3001/turnos/', {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(dado),
-        });
+    try {
+      await fetch(`http://localhost:3001/turnos/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dado),
+      });
 
-        setEntrada1("");
-        setSaida1("");
-        setEntrada2("");
-        setSaida2("");
-
-        return;
-      } catch (error) {
-        let message = 'Erro desconhecido'
-        if (error instanceof Error) message = error.message
-        reportError({message})
-      }
+      return;
+    } catch (error) {
+      let message = "Erro desconhecido";
+      if (error instanceof Error) message = error.message;
+      reportError({ message });
     }
+  }
 
-    return(
-      <div className="pagina">
-
-        <h2>Cadastro de Turnos</h2>
+  return (
+    <div className="pagina">
+      <form onSubmit={handleUpdate}>
+        <h2>Edição de Turno</h2>
 
       {/* Entrada 1 */}
       <div className="row g-2">
@@ -53,7 +46,6 @@ function Turno(dados){
           <TextField fullWidth 
             id="outlined-basic" 
             label="Entrada 1" 
-            placeholder = "00:00"
             variant="outlined"  
             InputLabelProps={{ shrink: true }}
             value={entrada_1}
@@ -69,7 +61,6 @@ function Turno(dados){
             <TextField fullWidth
               id="outlined-basic" 
               label="Saída 1" 
-              placeholder = "00:00"
               variant="outlined"  
               InputLabelProps={{ shrink: true }}
               value={saida_1}
@@ -87,7 +78,6 @@ function Turno(dados){
           <TextField fullWidth
             id="outlined-basic" 
             label="Entrada 2" 
-            placeholder = "00:00"
             variant="outlined"  
             InputLabelProps={{ shrink: true }}
             value={entrada_2}
@@ -103,7 +93,6 @@ function Turno(dados){
             <TextField fullWidth
               id="outlined-basic" 
               label="Saída 2" 
-              placeholder = "00:00"
               variant="outlined"  
               InputLabelProps={{ shrink: true }}
               value={saida_2}
@@ -114,17 +103,18 @@ function Turno(dados){
         </div>
       </div>
 
-        {/* Botão */}
-        <div className ="form-btn">
+        
+      {/* Botão */}
+      <div>
           <ColorButton 
             variant="contained"
-            onClick={handleSubmit}
+            onClick={handleUpdate}
           >
             Enviar
           </ColorButton>
         </div>
-      </div>
-    );
-  }
 
-  export default Turno;
+      </form>
+    </div>
+  );
+}

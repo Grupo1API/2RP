@@ -10,12 +10,11 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
-import InfoUsuario from "../../components/InfoEditUsu/InfoUsuario";
-import EditUsuario from "../../components/InfoEditUsu/EditUsuario";
-import Usuario from "../cadastro_usuario";
-import './style.css'
-import { ColorButton } from "../../components/Button/styles";
-import { AddCircle } from "@mui/icons-material";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircle";
+import CentroResultado from "../cadastro_centro_resultado";
+import InfoCentroResultado from "../../components/InfoEditCentroResultado/InfoCentroResultado";
+import EditCentroResultado from "../../components/InfoEditCentroResultado/EditCentroResultado";
+import "./style.css";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -44,9 +43,8 @@ const useStyles = makeStyles({
   },
   button: {
     display: "flex",
-    boxShadow: "0",
   },
- 
+
   modal: {
     position: "absolute",
     top: "0",
@@ -62,39 +60,40 @@ const useStyles = makeStyles({
   },
   close: {
     position: "absolute",
-    top: "7em",
-    right: "13em",
+    top: "3em",
+    right: "7em",
     color: "red",
-    padding: "1px",
+    padding: "5px",
   },
-  closenovo: {
-    position: "absolute",
-    top: "4em",
-    right: "13em",
-    color: "red",
-    padding: "1px",
+  novo: {
+    position:"absolute",
+    marginLeft:"-90px",
+    color: "#03FD90",
   },
 });
 
-function Quadro_Usuario() {
+function Quadro_resultado() {
   const classes = useStyles();
-  const [listaUsuarios, setListaUsuarios] = useState([]);
+  const [listaCentroResultados, setlistaCentroResultados] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
   const [modalInfo, setModalInfo] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
   const [dados, setDados] = useState([]);
 
   useEffect(() => {
-    listaUsuario();
+    listaCentroResultado();
   }, []);
 
-  async function listaUsuario() {
+  async function listaCentroResultado() {
     try {
-      const response = await fetch(`http://localhost:3001/usuarios`, {
-        method: "GET",
-      });
+      const response = await fetch(
+        `http://localhost:3001/centro-de-resultado/`,
+        {
+          method: "GET",
+        }
+      );
       const data = await response.json();
-      setListaUsuarios(data);
+      setlistaCentroResultados(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -103,14 +102,14 @@ function Quadro_Usuario() {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:3001/usuarios/${id}`, {
+    await fetch(`http://localhost:3001/centro-de-resultado/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-    listaUsuario();
+    listaCentroResultado();
   }
 
   function handleClose(event: { preventDefault: () => void }) {
@@ -121,38 +120,36 @@ function Quadro_Usuario() {
   }
 
   return (
-    <div className="pagina" id="quadro-usuarios">
-      <h2> Quadro de Usuários</h2>
+    <div className="pagina">
+      <h2> Quadro de Centro de Resultados </h2>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             {/* <StyledTableCell align="left">ID</StyledTableCell>*/}
             <StyledTableCell align="left">Nome </StyledTableCell>
-            <StyledTableCell align="left">Matrícula</StyledTableCell>
-            <StyledTableCell align="left">Perfil</StyledTableCell>
-            <StyledTableCell align="left">Status</StyledTableCell>
-            <StyledTableCell align="left">E-mail</StyledTableCell>
-            {/*<StyledTableCell align="left">Senha</StyledTableCell>*/}
-            <StyledTableCell align="left">Turno</StyledTableCell>
-            <StyledTableCell align="center">
-            <ColorButton  onClick={() => {setModalAdd(true);}}><AddCircle/>Novo</ColorButton>  
-            </StyledTableCell>
-
+            <StyledTableCell align="left">Numero</StyledTableCell>  
+            <StyledTableCell align="left">Status</StyledTableCell>          
+            <StyledTableCell></StyledTableCell>
+            
+            <IconButton className={classes.novo}
+              onClick={() => {
+                setModalAdd(true);
+              }}
+            >
+              <AddCircleOutlinedIcon fontSize="large"/>
+            </IconButton>
           </TableRow>
         </TableHead>
+
         <TableBody className={classes.body}>
-          {listaUsuarios.map((x: any) => (
+          {listaCentroResultados.map((x: any) => (
             <StyledTableRow key={x.id}>
               {/*mostra o id na tabela*/}
               {/* <StyledTableCell>{x.id}</StyledTableCell>  */}
-              <StyledTableCell component="th" scope="row">
-                {x.nome}
-              </StyledTableCell>
-              <StyledTableCell align="left">{x.matricula}</StyledTableCell>
-              <StyledTableCell align="left">{x.role}</StyledTableCell>
+              <StyledTableCell component="th" scope="row">{x.nome}</StyledTableCell>
+              <StyledTableCell align="left">{x.numero}</StyledTableCell>
               <StyledTableCell align="left">{x.status}</StyledTableCell>
-              <StyledTableCell align="left">{x.email}</StyledTableCell>
-              <StyledTableCell align="left">{x.turnoId}</StyledTableCell>
+
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"
@@ -173,9 +170,9 @@ function Quadro_Usuario() {
                 >
                   <EditIcon />
                 </IconButton>
+
                 <IconButton color="primary" onClick={() => handleDelete(x.id)}>
                   <DeleteIcon />
-                  
                 </IconButton>
               </StyledTableCell>
             </StyledTableRow>
@@ -187,7 +184,7 @@ function Quadro_Usuario() {
           <IconButton className={classes.close} onClick={handleClose}>
             <CloseIcon fontSize="large" />
           </IconButton>
-          <EditUsuario dados={dados} modalEdit={modalEdit} />
+          <EditCentroResultado dados={dados} modalEdit={modalEdit} />
         </div>
       )}
       {modalInfo && (
@@ -195,19 +192,19 @@ function Quadro_Usuario() {
           <IconButton className={classes.close} onClick={handleClose}>
             <CloseIcon fontSize="large" />
           </IconButton>
-          <InfoUsuario dados={dados} />
+          <InfoCentroResultado dados={dados} />
         </div>
       )}
-            {modalAdd && (
+      {modalAdd && (
         <div className={classes.modal}>
-          <IconButton className={classes.closenovo} onClick={handleClose}>
+          <IconButton className={classes.close} onClick={handleClose}>
             <CloseIcon fontSize="large" />
           </IconButton>
-          <Usuario dados={dados} />
+          <CentroResultado dados={dados} />
         </div>
       )}
     </div>
   );
 }
 
-export default Quadro_Usuario;
+export default Quadro_resultado;

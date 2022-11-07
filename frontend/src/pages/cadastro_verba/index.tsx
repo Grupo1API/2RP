@@ -1,17 +1,15 @@
 import React, {useState} from "react";
 import TextField from "@mui/material/TextField";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import {ColorButton} from '../../components/Button/styles';
-import Box from "@mui/material/Box";
 import './style.css'
+//import InputLabel from '@mui/material/InputLabel';
+//import MenuItem from '@mui/material/MenuItem';
+//import FormControl from '@mui/material/FormControl';
+//import Select, { SelectChangeEvent } from '@mui/material/Select';
+//import Box from "@mui/material/Box";
 
-
-function Verba(){
+function Verba(dados){
   const [codigo, setCodigo] = useState("");
-  const [descricao,setDescricao] = useState("");
   const [fator, setFator] = useState("");
   const [percentual,setPercentual] = useState("");
 
@@ -19,13 +17,12 @@ function Verba(){
     event.preventDefault();
     const dado = {
     codigo: codigo,
-    descricao:descricao,
     fator: fator,
     percentual: percentual,
 
     };
       try{
-        await fetch('http://localhost:3001/verbas', {
+        await fetch('http://localhost:3001/verbas/', {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -34,7 +31,6 @@ function Verba(){
         });
 
         setCodigo("");
-        setDescricao("");
         setFator("");
         setPercentual("");
 
@@ -46,9 +42,10 @@ function Verba(){
       }
     }
 
+      /*
     async function handleChange(event: SelectChangeEvent) {
         setDescricao(event.target.value as string);
-      };
+      };*/
 
     return(
       <div className="pagina">
@@ -56,6 +53,7 @@ function Verba(){
         <h2>Cadastro de Verbas</h2>
 
         {/*Descrição da verba*/}
+        {/*
         <div className="form-floating mb-4">
             <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
@@ -75,15 +73,17 @@ function Verba(){
             </FormControl>
             </Box>
         </div>
+        */}
 
         {/*  código da verba */}
         <div className="form-floating mb-4">
         <TextField fullWidth
           id="outlined-basic" 
           label="Código da Verba"
+          variant="outlined" 
           value={codigo}
           required={true}
-          onChange={(e) => setCodigo(e.target.value)}>
+          onChange={e => setCodigo(e.target.value)}>
         </TextField>
         </div>
 
@@ -95,7 +95,7 @@ function Verba(){
           variant="outlined"
           value={percentual}
           required={true}
-          onChange={(e) => setPercentual(e.target.value)}>
+          onChange={e => setPercentual(e.target.value)}>
           </TextField>
         </div>
 
@@ -106,7 +106,7 @@ function Verba(){
           label="Fator" 
           variant="outlined"
           value={fator}
-          onChange={(e) => setFator(e.target.value)}>
+          onChange={e => setFator(e.target.value)}>
           </TextField>
         </div>
 
@@ -115,6 +115,8 @@ function Verba(){
           <ColorButton 
             variant="contained"
             onClick={handleSubmit}
+           //onClick={handleShow}
+           // hidden={show}
           >
             Enviar
           </ColorButton>

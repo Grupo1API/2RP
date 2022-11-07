@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {ColorButton} from '../../components/Button/styles';
 import './style.css'
 
-function Cliente(){
+function Cliente(dados){
   const [nome, setNome] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [contato,setContato] = useState("");
@@ -22,13 +22,16 @@ function Cliente(){
 
     };
       try{
-        await fetch('http://localhost:3001/clientes', {
+        await fetch('http://localhost:3001/cliente/', {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(dado),
         });
+
+        // definir rota
+        window.location.href='/quadro-clientes'
 
         setNome("");
         setCnpj("");

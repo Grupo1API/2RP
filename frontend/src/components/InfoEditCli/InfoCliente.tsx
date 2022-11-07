@@ -1,62 +1,80 @@
+import TextField from "@material-ui/core/TextField";
 import React from "react";
 import "./style.css";
 
 export default function InfoCliente({ dados }) {
   return (
     <div className="pagina">
-      <h2>Informaçoes do Cliente</h2>
+      <h2>Informações do Cliente</h2>
 
       {/*  nome */}
       <div className="form-floating mb-4">
-        <input
-          type="text"
-          className="form-control"
-          id="floatingInput2"
-          placeholder="Digite a Razão Social"
+        <TextField fullWidth
+          id="outlined-basic" 
+          label="Razão Social"
           value={dados.nome}
           disabled
-        />
-        <label htmlFor="floatingInput2">Razão Social</label>
-      </div>
+        >
+        </TextField>
+        </div>
 
       {/* cnpj */}
       <div className="form-floating mb-4">
-        <input
+      <TextField fullWidth
           type="number"
-          className="form-control"
-          id="floatingInput2"
-          placeholder="XX.XXX.XXX/XXXX-XX"
+          id="outlined-basic" 
+          label="CNPJ" 
           value={dados.cnpj}
           disabled
-        />
-        <label htmlFor="floatingInput2">CNPJ</label>
+        >
+      </TextField>
       </div>
 
       {/*status*/}
       <div className="form-floating mb-4">
-        <input
-          type="texto"
-          className="form-control"
-          id="floatingInput2"
-          placeholder="Contato"
-          value={dados.status}
+        <TextField fullWidth
+          id="outlined-basic" 
+          label="Status" 
           disabled
-        />
-        <label htmlFor="floatingInput2">Status</label>
-      </div>
+          value={dados.status}
+          >
+          </TextField>
+        </div>
 
       {/* contato */}
       <div className="form-floating mb-4">
-        <input
-          type="texto"
-          className="form-control"
-          id="floatingInput2"
-          placeholder="Contato"
-          value={dados.contato}
+        <TextField fullWidth
+          id="outlined-basic" 
+          label="Contato" 
           disabled
-        />
-        <label htmlFor="floatingInput4">Contato</label>
-      </div>
+          value={dados.contato}
+          >
+          </TextField>
+        </div>
+
+    {/*nome do projeto*/}
+    <div className="form-floating mb-4">
+      <TextField fullWidth
+          id="outlined-basic" 
+          label="Nome do Projeto" 
+          disabled
+          value={dados.nome_projeto}
+      >
+      </TextField>
     </div>
+
+
+    {/*número do projeto*/}
+    <div className="form-floating mb-4">
+      <TextField fullWidth
+        id="outlined-basic" 
+        label="Número do Projeto" 
+        disabled
+        value={dados.numero_projeto}
+        >
+      </TextField>
+    </div>
+    </div>
+    
   );
 }
