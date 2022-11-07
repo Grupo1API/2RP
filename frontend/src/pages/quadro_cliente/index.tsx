@@ -15,6 +15,8 @@ import InfoCliente from "../../components/InfoEditCli/InfoCliente";
 import EditCliente from "../../components/InfoEditCli/EditCliente";
 import "./style.css";
 import Cliente from "../cadastro_cliente";
+import { ColorButton } from "../../components/Button/styles";
+import { AddCircle } from "@mui/icons-material";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -60,8 +62,8 @@ const useStyles = makeStyles({
   },
   close: {
     position: "absolute",
-    top: "3em",
-    right: "7em",
+    top: "6em",
+    right: "13em",
     color: "red",
     padding: "5px",
   },
@@ -129,15 +131,9 @@ function Quadro_Cliente() {
             <StyledTableCell align="left">Contato</StyledTableCell>
             <StyledTableCell align="left">Projeto</StyledTableCell>
             <StyledTableCell align="left">Nº do Projeto</StyledTableCell>
-            <StyledTableCell align="center"></StyledTableCell>
-          
-            <IconButton className={classes.novo}
-              onClick={() => {
-                setModalAdd(true);
-              }}
-            >
-              <AddCircleOutlinedIcon fontSize="large"/>
-            </IconButton>
+            <StyledTableCell align="center">
+            <ColorButton  onClick={() => {setModalAdd(true);}}><AddCircle/>Novo</ColorButton>  
+            </StyledTableCell>
           </TableRow>
         </TableHead>
 
@@ -153,7 +149,7 @@ function Quadro_Cliente() {
               <StyledTableCell align="left">{x.status}</StyledTableCell>
               <StyledTableCell align="left">{x.contato}</StyledTableCell>
               <StyledTableCell align="left">{x.nome_projeto}</StyledTableCell>
-              <StyledTableCell align="left">{x.numero_projeto}</StyledTableCell>
+              <StyledTableCell align="center">{x.numero_projeto}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"
