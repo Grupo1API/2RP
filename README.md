@@ -1,76 +1,73 @@
+<span id="topo">
 <p align="center">
 <img src = "./readme/elementos/digital-logo.svg"  width="200"/>
 </p>
+
 <br>
 <br>
+
 <p align="center">
   <a href ="#o-projeto"> Projeto </a>  • 
-  <a href ="#product-backlog">Product Backlog </a>  •
-  <a href ="#proposta"> Proposta </a>  • 
-  <a href ="#cronograma-das-sprints"> Sprints </a>  • 
+  <a href ="#backlogs">Backlogs, Épicos & User Stories </a>  • 
+  <a href ="#modelo-dados">Modelo de Dados </a>  • 
+  <a href ="#cronograma-das-sprints"> Cronograma </a>  • 
   <a href ="#tecnologias-utilizadas"> Tecnologias </a>  •
-  <a href ="#table_equipe"> Equipe </a> 
+  <a href ="#equipe"> Equipe </a> 
  
 </p>
+<span id="o-projeto">
 
-<br>
+## :bookmark_tabs: O Projeto
 
-# O Projeto
+<p align="center"> 
+<img src = "./readme/figma/objetivo.png" width="600"/>
+</p>
 
-<h1 align="center"> 
-<img src = "./readme/figma/objetivo.png" width="600"/></h1>
+→ [Voltar ao topo](#topo)
 
-<br id="product-backlog">
+<span id="backlogs">
 
-## 📋 Product Backlog
+## :dart: Backlogs, Épicos & User Stories
 
-<h1 align="center">
-<img src = "./readme/figma/product-backlog.png" width="550"/></h1>
+<p align="center">
+<img src = "./readme/figma/product-backlog.png" width="550"/>
+<img src = "./readme/figma/sprints-backlog.png" width="550"/>
+<img src = "./readme/figma/epicos-user-stories.png" width="550"/>
+<img src = "./readme/figma/user-stories.png" width="550"/>	
+</p>
 
-<br id="proposta">
+→ [Voltar ao topo](#topo)
 
-## 🎯 Proposta
+<span id="modelo-dados">
 
-### **Desenvolver um sistema WEB que atenda as necessidades da empresa:**<br><br>
+## :scroll: Modelo de Dados Conceitual
 
-### **Requisitos funcionais**
+<h5 align="center"><img src = "https://github.com/Grupo1API/2RP/blob/main/readme/elementos/modelo_conceitual.jpg" width="80%"></h5>
 
-- <img src = "./readme/elementos/feito.jpeg" /> Apontamento de horas extras;
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Classificação das horas;
-- <img src = "./readme/elementos/feito.jpeg" /> Lançamento de horas de sobreaviso;
-- <img src = "./readme/elementos/feito.jpeg" /> Cadastro de clientes e CRs;
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Integração com o login 2RP;
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Integração para consumir os dados: matrícula, nome completo, turno;
-- <img src = "./readme/elementos/feito.jpeg" /> Perfis de usuário (administrador, gestor e colaborador);
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Recurso para aprovação de horas extras executadas;
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Tela de parametrização de sistema;
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Aplicar regras de horas extras e sobreavisos na extração (classificação de HEs e cálculo do sobreaviso considerando as HEs conflitantes);
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Extração de relatório csv de todos os colaboradores com as horas trabalhadas;
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Dashboard com acompanhamento em tempo real das horas extras executadas com filtro cliente, CR e colaborador;
+## :scroll: Modelo Lógico
 
-### **Requisitos não funcionais**
+<h5 align="center"><img src = "https://github.com/Grupo1API/2RP/blob/main/readme/elementos/modelo_logico.jpg" width="80%"></h5>
 
-- <img src = "./readme/elementos/a_fazer.jpeg" /> Responsividade;
+→ [Voltar ao topo](#topo)
 
-<h1 align="center">
-<br id="cronograma-das-sprints">
+<span id="cronograma-das-sprints">
 
 ## 📆 Cronograma das Sprints
 
-- <img src = "./readme/elementos/feito.jpeg" /> Kick-Off - 16/08/2022
-- <img src = "./readme/elementos/feito.jpeg" /><a href="https://github.com/Grupo1API/2RP/tree/main/readme/sprint1" target="_blank">Sprint 1 </a>- 29/08/2022 a 18/09/2022
-- <img src = "./readme/elementos/feito.jpeg" /><a href="https://github.com/Grupo1API/2RP/tree/main/readme/sprint2" target="_blank">Sprint 2 </a>- 19/09/2022 a 09/10/2022
-- <img src = "./readme/elementos/a_fazer.jpeg" />Sprint 3 - 13/10/2022 a 06/11/2022
-- <img src = "./readme/elementos/a_fazer.jpeg" />Sprint 4 - 07/11/2022 a 27/11/2022
-- <img src = "./readme/elementos/a_fazer.jpeg" />Feira de Soluções - 08/12/2022
+<div align="center">
 
-<br>
+| Sprint | Previsão de entrega | Status           | Histórico |
+|:--:|:----------:|:-------------------|:-------------------------------------------------:|
+| 01 | 18/09/2022 | ✔️ Concluída    | [Relatório](https://github.com/Grupo1API/2RP/blob/main/readme/sprint1/README.md) |
+| 02 | 09/10/2022 | ✔️ Concluída    | [Relatório](https://github.com/Grupo1API/2RP/tree/main/readme/sprint2/README.md) |
+| 03 | 06/11/2022 | ✔️ Concluída    | [Relatório](https://github.com/Grupo1API/2RP/tree/main/readme/sprint3/README.md) |
+| 04 | 27/11/2022 | 🚧 Em andamento | -- |
 
-<br>
-<h1 align="center"> 
-<img src = "./readme/figma/cronograma.png" width="800"/></h1>
+</div>
 
-<div id="tecnologias-utilizadas">
+→ [Voltar ao topo](#topo)
+
+<span id="tecnologias-utilizadas">
 
 ## 🖥️ Tecnologias Utilizadas
 
@@ -79,62 +76,25 @@
 - **Front-end:** HTML, CSS, TypeScript, React;
 - **Ferramentas:** Visual Studio Code, Figma, Git e Github;
 
-<h1 align="center"> 
+<p align="center"> 
   <img src = "./readme/figma/tecnologias.png" width="600"/>
-</h1>
+</p>
+
+→ [Voltar ao topo](#topo)
 
 ## 👨‍💻 Equipe
 
-<div id="table_equipe" align="center" width="400">
-    <table>
-      <tr id="head_table">
-        <th>Nome</th>
-        <th>Função</th>
-        <th>LinkedIn</th>
-        <th>GitHub</th>
-        <th>Avatar</th>
-      </tr>
-	    <tr id="linha_table">
-        <td>Juliana Maria</td>
-        <td>Scrum Master</td>
-        <td><a href="https://www.linkedin.com/in/juliana-maria-a0b0a0124">@LinkedIn</a></td>
-        <td><a href="https://github.com/JulianaMaria-Lab">@GitHub</a></td>
-        <td><img src = "./readme/team/juliana.jpeg" width="40"></td>
-      </tr>
-	    <tr id="linha_table">
-        <td>Douglas Queiroz</td>
-        <td>Product Owner</td>
-        <td><a href="https://www.linkedin.com/in/douglas-queiroz-3b9a72212/">@LinkedIn</a></td>
-        <td><a href="https://github.com/douglaswe">@GitHub</a></td>
-        <td> <img src = "./readme/team/douglas.jpeg" width="40"></td>
-      </tr>
-	    <tr id="linha_table">
-        <td>Francisco Quirino</td>
-        <td>Desenvolvedor</td>
-        <td><a href="https://www.linkedin.com/in/francisco-quirino-4087281b1">@LinkedIn</a></td>
-        <td><a href="https://github.com/ciscoquirino">@GitHub</a></td>
-        <td><img src = "./readme/team/francisco.jpeg" width="40"></td>
-      </tr>
-      <tr id="linha_table">
-        <td>Vitória Moura</td>
-        <td>Desenvolvedora</td>
-        <td><a href="https://www.linkedin.com/in/vit%C3%B3ria-moura-6393391b0/">@LinkedIn</a></td>
-        <td><a href="https://github.com/vitoriasaturnino">@GitHub</a></td>
-        <td><img src = "./readme/team/vitoria.jpeg" width="40"></td>
-      </tr>
-      <tr id="linha_table">
-        <td>Eduardo Pereira Carvalho</td>
-        <td>Desenvolvedor</td>
-        <td><a href="https://www.linkedin.com/in/eduardo-carvalho-0a1411213/">@LinkedIn</a></td>
-        <td><a href="https://github.com/EduardoPereiraCarvalho">@GitHub</a></td>
-        <td><img src = "./readme/team/eduardo.jpeg" width="40"></td>
-      </tr>
-      <tr id="linha_table">
-        <td>Guilherme Alves Cursino</td>
-        <td>Desenvolvedor</td>
-        <td><a href="https://www.linkedin.com/in/guilherme-cursino-679410213/">@LinkedIn</a></td>
-        <td><a href="https://github.com/guilherme0066">@GitHub</a></td>
-        <td><img src = "./readme/team/guilherme.jpeg" width="40"></td>
-      </tr>
-    </table>
-  </div>
+<span id="equipe">
+<div align="center">
+
+|    Nome     | Função    |      LinkedIn                |      GitHub    |
+|:-----------: |:------|:----------------------------|---------------:|
+| Douglas Queiroz | Product Owner | [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/douglas-queiroz-3b9a72212/) | [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/douglaswe) |
+| Juliana Maria | Scrum Mater | [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juliana-maria-a0b0a0124) | [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/JulianaMaria-Lab) | 
+| Vitória Moura | Dev Team | [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vit%C3%B3ria-moura-6393391b0/) | [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vitoriasaturnino) | 
+| Eduardo Carvalho | Dev Team | [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eduardo-carvalho-0a1411213/) | [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/EduardoPereiraCarvalho) | 
+| Guilherme Cursino | Dev Team | [![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/guilherme-cursino-679410213/) | [![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/guilherme0066) | 
+
+</div>
+
+→ [Voltar ao topo](#topo)
