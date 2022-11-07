@@ -12,7 +12,10 @@ import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
 import InfoUsuario from "../../components/InfoEditUsu/InfoUsuario";
 import EditUsuario from "../../components/InfoEditUsu/EditUsuario";
+import Usuario from "../cadastro_usuario";
 import './style.css'
+import { ColorButton } from "../../components/Button/styles";
+import { AddCircle } from "@mui/icons-material";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -60,7 +63,14 @@ const useStyles = makeStyles({
   close: {
     position: "absolute",
     top: "7em",
-    right: "7em",
+    right: "13em",
+    color: "red",
+    padding: "1px",
+  },
+  closenovo: {
+    position: "absolute",
+    top: "4em",
+    right: "13em",
     color: "red",
     padding: "1px",
   },
@@ -71,6 +81,7 @@ function Quadro_Usuario() {
   const [listaUsuarios, setListaUsuarios] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
   const [modalInfo, setModalInfo] = useState(false);
+  const [modalAdd, setModalAdd] = useState(false);
   const [dados, setDados] = useState([]);
 
   useEffect(() => {
@@ -106,6 +117,7 @@ function Quadro_Usuario() {
     event.preventDefault();
     setModalEdit(false);
     setModalInfo(false);
+    setModalAdd(false);
   }
 
   return (
@@ -122,7 +134,10 @@ function Quadro_Usuario() {
             <StyledTableCell align="left">E-mail</StyledTableCell>
             {/*<StyledTableCell align="left">Senha</StyledTableCell>*/}
             <StyledTableCell align="left">Turno</StyledTableCell>
-            <StyledTableCell align="left"></StyledTableCell>
+            <StyledTableCell align="center">
+            <ColorButton  onClick={() => {setModalAdd(true);}}><AddCircle/>Novo</ColorButton>  
+            </StyledTableCell>
+
           </TableRow>
         </TableHead>
         <TableBody className={classes.body}>
@@ -181,6 +196,14 @@ function Quadro_Usuario() {
             <CloseIcon fontSize="large" />
           </IconButton>
           <InfoUsuario dados={dados} />
+        </div>
+      )}
+            {modalAdd && (
+        <div className={classes.modal}>
+          <IconButton className={classes.closenovo} onClick={handleClose}>
+            <CloseIcon fontSize="large" />
+          </IconButton>
+          <Usuario dados={dados} />
         </div>
       )}
     </div>
