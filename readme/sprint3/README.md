@@ -1,6 +1,7 @@
+<span id="topo">
 <h1>:ballot_box_with_check: SPRINT 3</h1>
 
-<p align="justify">O desenvolvimento nesta sprint foi focado na implementação do gerenciamento dos clientes/projetos, consulta e aprovação de horas apontadas e parametrização. </p>
+<p align="justify">O desenvolvimento nesta sprint foi focado na implementação do gerenciamento dos clientes/projetos (unificados em um cadastro), consulta e aprovação de horas apontadas e cadastro/gerenciamento dos parâmetros: verbas salariais e turnos. </p>
 
 <h1>Sumário</h1>
 <a href="#dor">DoR (Definition of Ready)</a>   <br>
@@ -16,7 +17,10 @@
 
 <div id="backlog_sprint" align="center"><img src="./DoR/sprint3-backlog.png" width="700"></h1></div>
 
+
 <br>
+
+→ [Voltar ao topo](#topo)
 
 <h2 id="use_cases">Use Cases</h2>
 
@@ -24,47 +28,58 @@
 
 <br>
 
-<h2 id="burndown_sprint">Burndown da Sprint<h2>
+→ [Voltar ao topo](#topo)
+
+<h2 id="burndown_sprint">Burndown da Sprint</h2>
 <div align="center">
 <img align="center" src="./DoD/burndown.png" width="600"/>
 </div>
 
 <br>
 
-<h1 id="dod">Definition of Done<h1>
+→ [Voltar ao topo](#topo)
 
+<br>
+<h1 id="dod">Definition of Done</h1>
 <h2 id="funcionalidades_sprint">Funcionalidades da Sprint</h2>
 
 <h3 align="center">Quadro de exibição de Clientes/Projetos</h3>
 <img align="center" src="./DoD/quadro_clientes.png"/>
 
 <br>
+<br>
 
 <h3 align="center">Gerenciamento de Clientes/Projetos</h3>
 <img align="center" src="./DoD/gerenciamento.gif"/>
 
-
+<br>
 <br>
 
 <h3 align="center">Página de Parametrização</h3>
 <img align="center" src="./DoD/parametrizacao.png"/>
 
 <br>
+<br>
 
 <h3 align="center">Cadastro e Gerenciamento de Turnos</h3>
 <img align="center" src="./DoD/turno.gif"/>
 
+<br>
 <br>
 
 <h3 align="center">Cadastro e Gerenciamento de Verbas</h3>
 <img align="center" src="./DoD/verba.gif"/>
 
 <br>
-
-<h3 align="center">Quadro de exibição de Horas Apontadas</h3>
-<img align="center" src="./DoD/quadro_horas.gif"/>
-
 <br>
 
-<h3 align="center">Aprovação de Horas Apontadas</h3>
+<h3 align="center">Quadro de exibição e Aprovação de Horas Apontadas</h3>
 <img align="center" src="./DoD/aprovacao.gif"/>
+
+<br>
+<br>
+<br>
+
+→ [Voltar ao topo](#topo)
+
+
