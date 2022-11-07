@@ -87,7 +87,7 @@ function Quadro_resultado() {
   async function listaCentroResultado() {
     try {
       const response = await fetch(
-        `http://localhost:3001/centro-de-resultado/`,
+        `http://localhost:3001/centro-de-resultados/`,
         {
           method: "GET",
         }
@@ -102,7 +102,7 @@ function Quadro_resultado() {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:3001/centro-de-resultado/${id}`, {
+    await fetch(`http://localhost:3001/centro-de-resultados/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

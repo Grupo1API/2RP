@@ -88,7 +88,7 @@ function Quadro_Cliente() {
 
   async function listaCliente() {
     try {
-      const response = await fetch(`http://localhost:3001/cliente/`, {
+      const response = await fetch(`http://localhost:3001/clientes/`, {
         method: "GET",
       });
       const data = await response.json();
@@ -101,7 +101,7 @@ function Quadro_Cliente() {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:3001/cliente/${id}`, {
+    await fetch(`http://localhost:3001/clientes/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

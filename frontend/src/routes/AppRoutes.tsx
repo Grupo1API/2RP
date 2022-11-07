@@ -34,14 +34,13 @@ const AppRoutes = () => (
       <Route path="/signup" element ={<Usuario/>}/>
       <Route path="/quadro-usuarios" element ={<Quadro_Usuario/>}/>
       <Route path="/quadro-centro-resultado" element={<Quadro_resultado />} />
-
       <Route path="/quadro-verba" element={<Quadro_verba />}/>
       <Route path="/quadro-turno" element={<Quadro_turno />}/>
       <Route path="/parametros" element={<Parametros />}/>
-      
+      <Route path="/aprov-hora-extra" element={<Aprov_hora_extra />} />
+
       <Route path="/adicional" element ={<Adicional/>}/>  
       <Route path="/fechamento" element ={<Fechamento/>}/> 
-     <Route path="/aprov-hora-extra" element={<Aprov_hora_extra />} />
     </Routes>
   </Container>
 );
