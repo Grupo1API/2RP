@@ -13,14 +13,9 @@ const VerbasModel = db.define("verbas", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  descricao: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   fator: {
     // fator de multiplicação existe somente para horas extra noturnas correspondente aos códigos 3000 e 3001 ({values: ['1.1428571']})
     type: DataTypes.STRING,
-    allowNull: false,
   },
   percentual: {
     type: DataTypes.STRING,

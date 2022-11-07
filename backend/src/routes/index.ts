@@ -17,7 +17,7 @@ router.use("/classificacao-horas", classificacaoHoras);
 router.use("/cliente", clientes);
 router.use("/turnos", turnos);
 router.use("/usuarios", usuarios);
-router.post("/verbas", verbas);
+router.use("/verbas", verbas);
 
 // login
 router.post("/login", UsuariosController.login);
