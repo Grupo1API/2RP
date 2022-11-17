@@ -10,7 +10,8 @@
   <a href ="#o-projeto"> Projeto </a>  • 
   <a href ="#backlogs">Backlogs, Épicos & User Stories </a>  • 
   <a href ="#modelo-dados">Modelo de Dados </a>  • 
-  <a href ="#cronograma-das-sprints"> Cronograma </a>  • 
+  <a href ="#cronograma-das-sprints"> Cronograma </a>  •
+  <a href ="#codigo"> Código do projeto </a>  • 
   <a href ="#tecnologias-utilizadas"> Tecnologias </a>  •
   <a href ="#equipe"> Equipe </a> 
  
@@ -64,6 +65,16 @@
 | 04 | 27/11/2022 | 🚧 Em andamento | -- |
 
 </div>
+
+→ [Voltar ao topo](#topo)
+
+<span id="codigo">
+
+## 	:computer: Código do Projeto
+
+### :desktop_computer: [Front-end ](https://github.com/Grupo1API/2RP/tree/main/frontend)
+
+### :gear: [Back-end ](https://github.com/Grupo1API/2RP/tree/main/backend)
 
 → [Voltar ao topo](#topo)
 
