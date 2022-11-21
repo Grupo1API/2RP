@@ -15,7 +15,7 @@ import InfoCentroResultado from "../../components/InfoEditCentroResultado/InfoCe
 import EditCentroResultado from "../../components/InfoEditCentroResultado/EditCentroResultado";
 import "./style.css";
 import { ColorButton } from "../../components/Button/styles";
-import { AddCircle } from "@mui/icons-material";
+import { AddCircle, NoMeals } from "@mui/icons-material";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -80,9 +80,11 @@ function Quadro_resultado() {
   const [modalInfo, setModalInfo] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
   const [dados, setDados] = useState([]);
-  const [clienteId, setClienteId] = useState("");
-  const [projetoId, setProjetoId] = useState("");
+  const [cliente, setCliente] = useState("");
+  const [projeto, setProjeto] = useState("");
+  const [colaborador,setColaborador] = useState("");
   const [gestor, setGestor] = useState("");
+
   useEffect(() => {
     listaCentroResultado();
   }, []);
@@ -98,28 +100,31 @@ function Quadro_resultado() {
       const data = await response.json();
       setlistaCentroResultados(data);
       console.log(data);
-      setlistaCentroResultados(data.usuario.nome); //colaborador
+      setColaborador(data.colaboradores.nome); //colaborador
+      setGestor(data.gestor.nome)
     } catch (error) {
       console.log(error.message);
     }
   }
+/*
+   async function listaCentroResultado() {
+     try {
+       const response = await fetch(
+         `http://localhost:3001/centro-de-resultados/${clienteId}`,
+         {
+           method: "GET",
+         }
+       );
+       const data = await response.json();
+       setlistaCentroResultados(data);
+       setClienteId(data.usuario.nome);
+       console.log(data);
+     } catch (error) {
+       console.log(error.message);
+     }
+   }
+   */
 
-  // async function listaCentroResultado() {
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:3001/centro-de-resultados/${clienteId}`,
-  //       {
-  //         method: "GET",
-  //       }
-  //     );
-  //     const data = await response.json();
-  //     setlistaCentroResultados(data);
-  //     setClienteId(data.usuario.nome);
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // }
   async function handleDelete(id) {
     const data = {
       id: id,
@@ -176,8 +181,8 @@ function Quadro_resultado() {
               </StyledTableCell>
               <StyledTableCell align="left">{x.numero}</StyledTableCell>
               <StyledTableCell align="left">{x.status}</StyledTableCell>
-              <StyledTableCell align="left">{x.usuario.nome}</StyledTableCell>
-              <StyledTableCell align="left">{}</StyledTableCell>
+              <StyledTableCell align="left">{x.gestor.nome}</StyledTableCell>
+              <StyledTableCell align="left">{x.colaboradores.nome}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"
