@@ -1,3 +1,4 @@
+import { MenuItem, Select , FormControl , InputLabel} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import React, {useState} from "react";
 import {ColorButton} from '../../components/Button/styles';
@@ -9,8 +10,22 @@ function Cliente(dados){
   const [contato,setContato] = useState("");
   const [nome_projeto,setNomeProjeto] = useState("");
   const [numero_projeto,setNumeroProjeto] = useState("");
+  // useEffect(() => {
+  //   listaGestor();
+  // }, []);
 
 
+   async function listaGestor() {
+    try {
+      const response = await fetch(`http://localhost:3001/ex:gestores/`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      setListaClientes(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  } 
   async function handleSubmit(event: { preventDefault: () => void; }){
     event.preventDefault();
     const dado = {
@@ -46,7 +61,8 @@ function Cliente(dados){
         reportError({message})
       }
     }
-
+    const gestor:string[] =["gabriel","jose", "silvio"]
+    const [listaGestores, setListaGestores] = useState([]);
     return(
       <div className="pagina">
 
@@ -110,6 +126,22 @@ function Cliente(dados){
           </TextField>
         </div>
 
+        <div>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-standard-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          label="Age"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+            {gestor.map(x => <MenuItem  key={x} value={x}>{x}</MenuItem>) }
+        </Select>
+      </FormControl>
+        </div>
+
         {/* Botão */}
         <div className ="form-btn">
           <ColorButton 
@@ -124,3 +156,10 @@ function Cliente(dados){
   }
 
   export default Cliente;
+
+  // Trocar para gestor
+
+
+
+
+  
