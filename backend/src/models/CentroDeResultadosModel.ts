@@ -26,7 +26,18 @@ const CentroDeResultados = db.define("centro_de_resultados", {
   },
 });
 
-CentroDeResultados.belongsTo(UsuariosModel, { foreignKey: "usuarioId" });
+CentroDeResultados.belongsTo(UsuariosModel, {
+  as: 'colaboradores',
+  foreignKey: 'usuarioId'
+});
+
+
+CentroDeResultados.belongsTo(UsuariosModel, {
+  as: 'gestor',
+  foreignKey: 'gestorId'
+});
+
+
 CentroDeResultados.belongsTo(ClientesModel, { foreignKey: "clienteId" });
 
 export default CentroDeResultados;
