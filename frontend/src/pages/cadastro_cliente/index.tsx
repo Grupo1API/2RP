@@ -10,13 +10,7 @@ function Cliente(dados){
   const [contato,setContato] = useState("");
   const [nome_projeto,setNomeProjeto] = useState("");
   const [numero_projeto,setNumeroProjeto] = useState("");
-  // useEffect(() => {
-  //   listaGestor();
-  // }, []);
 
-
-
-  
 
   async function handleSubmit(event: { preventDefault: () => void; }){
     event.preventDefault();
