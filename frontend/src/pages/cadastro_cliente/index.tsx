@@ -1,6 +1,6 @@
 import { MenuItem, Select , FormControl , InputLabel} from "@mui/material";
 import TextField from "@mui/material/TextField";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ColorButton} from '../../components/Button/styles';
 import './style.css'
 
@@ -15,17 +15,9 @@ function Cliente(dados){
   // }, []);
 
 
-   async function listaGestor() {
-    try {
-      const response = await fetch(`http://localhost:3001/ex:gestores/`, {
-        method: "GET",
-      });
-      const data = await response.json();
-      setListaClientes(data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  } 
+
+  
+
   async function handleSubmit(event: { preventDefault: () => void; }){
     event.preventDefault();
     const dado = {
