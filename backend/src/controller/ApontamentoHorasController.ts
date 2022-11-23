@@ -20,14 +20,30 @@ class ApontamentoHorasController {
     return horaExtra ? res.status(200).json(horaExtra) : res.status(204).send();
   }
 
+  async findById(req: Request, res: Response) {
+    const { apontamentoHoraId } = req.params;
+    const horaExtra = await ApontamentoHorasModel.findAll({
+      where: {
+        id: apontamentoHoraId,
+      },
+    });
+  
+    return horaExtra ? res.status(200).json(horaExtra) : res.status(204).send();
+  }
+  
+  
+
+
   async create(req: Request, res: Response) {
-    const { tipo_apontamento, horario_inicio, horario_fim, justificativa } =
+    const { tipo_apontamento, horario_inicio, horario_fim, justificativa,gestorId,projetoId } =
       req.body;
     const horaExtra = await ApontamentoHorasModel.create({
       tipo_apontamento,
       horario_inicio,
       horario_fim,
       justificativa,
+      gestorId,
+      projetoId,
     });
 
     return res.status(201).json(horaExtra);
