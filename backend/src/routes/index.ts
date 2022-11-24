@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import UsuariosController from "../controller/UsuariosController";
+import sessao from "../middlewares/sessao";
 import apontamentoHorasRoutes from "./ApontamentoHorasRoutes";
 import centroDeResultados from "./CentroDeResultadosRoutes";
 import classificacaoHoras from "./ClassificacaoHorasRoutes";
@@ -13,13 +14,13 @@ const router = Router();
 // login
 router.post("/login", UsuariosController.login);
 
-router.use("/apontamento-horas", apontamentoHorasRoutes);
-router.use("/centro-de-resultados", centroDeResultados);
-router.use("/classificacao-horas", classificacaoHoras);
-router.use("/clientes", clientes);
-router.use("/turnos", turnos);
-router.use("/usuarios", usuarios);
-router.use("/verbas", verbas);
+router.use("/apontamento-horas", sessao, apontamentoHorasRoutes);
+router.use("/centro-de-resultados", sessao, centroDeResultados);
+router.use("/classificacao-horas", sessao, classificacaoHoras);
+router.use("/clientes", sessao, clientes);
+router.use("/turnos", sessao, turnos);
+router.use("/usuarios", sessao, usuarios);
+router.use("/verbas", sessao, verbas);
 
 //aceita qualquer método HTTP ou URL
 router.use((req: Request, res: Response) =>
