@@ -11,6 +11,8 @@ export default function Usuario(dados) {
   const [role, setRole] = useState("");
   const [turnos,setTurnos] = useState("");
   const [turnoId, setTurnoId] = useState("");
+  const [crId, setCrId] = useState("");
+  const [cr,setCr] = useState("");
   //const { usuarioCreate } = useAuth();
 
   async function salvar (event: { preventDefault: () => void; }) {
@@ -23,6 +25,7 @@ export default function Usuario(dados) {
       email: email,
       senha: senha,
       role:role,
+      crId:crId
 
     };
 
@@ -41,6 +44,7 @@ export default function Usuario(dados) {
     setSenha("");
     setRole("");
     setTurnoId("");
+    setCrId("");
 
     return;
   } catch (error) {
@@ -50,9 +54,11 @@ export default function Usuario(dados) {
   }
 }
 
+
+
 useEffect(() => {
   const buscaTurno = async () => {
-    const responseTurno = await fetch(`http://localhost:3001/turnos`,{
+    const responseTurno = await fetch(`http://localhost:3001/turnos/`,{
       method:'GET'
     });
     
@@ -63,12 +69,29 @@ useEffect(() => {
   buscaTurno();
 }, [turnoId]);
 
+useEffect(() => {
+  const buscaCr = async () => {
+    const responseCr = await fetch(`http://localhost:3001/centro-de-resultados`,{
+      method:'GET'
+    });
+    
+    const cr = await responseCr.json();
+    console.log(cr)
+    setCr(cr);
+  };
+  buscaCr();
+}, [crId]);
+
 async function handleChange(event: SelectChangeEvent) {
-  setTurnoId(event.target.value as string);
+  setTurnoId(event.target.value);
 };
 
 async function handleChangeRole(event: SelectChangeEvent) {
   setRole(event.target.value as string);
+};
+
+async function handleChangeCr(event: SelectChangeEvent) {
+  setCrId(event.target.value);
 };
 
   return (
@@ -164,6 +187,30 @@ async function handleChangeRole(event: SelectChangeEvent) {
               </Select>
           </FormControl>
         </Box>
+      </div>
+
+      {/* Centro de Resultado */}
+      <div className="form-floating mb-4">
+      <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth variant="outlined" className="select input">
+        <InputLabel id="demo-simple-select-outlined-label">
+                  Centro de Resultado
+        </InputLabel>
+          <Select
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            value={crId}
+            onChange={handleChangeCr}
+            label="Turno"
+            >
+            {cr && cr.map((y,nome) => (
+            <MenuItem value={y.id}>
+             {`${y.nome}`}
+            </MenuItem>
+             ))}
+          </Select>
+      </FormControl>
+      </Box>
       </div>
 
       {/* Botão */}
