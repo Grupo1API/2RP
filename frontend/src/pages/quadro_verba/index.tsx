@@ -124,7 +124,7 @@ function Quadro_verba (){
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            {/* <StyledTableCell align="left">ID</StyledTableCell>*/}
+            <StyledTableCell align="left">Descrição</StyledTableCell>
             <StyledTableCell align="left">Código </StyledTableCell>
             <StyledTableCell align="left">Percentual</StyledTableCell>
             <StyledTableCell align="left">Fator</StyledTableCell>
@@ -145,9 +145,8 @@ function Quadro_verba (){
         <TableBody className={classes.body}>
           {listaVerbas.map((x: any) => (
             <StyledTableRow key={x.id}>
-              {/*mostra o id na tabela*/}
-              {/* <StyledTableCell>{x.id}</StyledTableCell>  */}
-              <StyledTableCell component="th" scope="row">{x.codigo}</StyledTableCell>
+              <StyledTableCell component="th" scope="row">{x.descricao}</StyledTableCell>
+              <StyledTableCell align="left">{x.codigo}</StyledTableCell>
               <StyledTableCell align="left">{x.percentual}</StyledTableCell>
               <StyledTableCell align="left">{x.fator}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
