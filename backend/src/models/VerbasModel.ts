@@ -8,6 +8,9 @@ const VerbasModel = db.define("verbas", {
     allowNull: false,
     primaryKey: true,
   },
+  descricao:{
+    type: DataTypes.STRING,
+  },
   codigo: {
     // códigos da regra de negócio para classificação de horas extras e sobreviso ({values: ['1601', '1602', '3000', '3001', '1809', '3016']}),
     type: DataTypes.STRING,
@@ -21,10 +24,31 @@ const VerbasModel = db.define("verbas", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  status: {
-    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+  horario_inicio: {
+    type: DataTypes.TIME,
     allowNull: false,
-    defaultValue: "ativo",
+  },
+  horario_fim: {
+    type: DataTypes.TIME,
+    allowNull: false,
+  },
+  dia_semana:{
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: false,
+    //defaultValue: [],
+  },
+  status: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: 'ativo',
+    validate: {
+        customValidator: (value: string) => {
+            const enums = ['ativo', 'inativo']
+            if (!enums.includes(value)) {
+                throw new Error('not a valid option')
+            }
+        } 
+    }
   },
 });
 
