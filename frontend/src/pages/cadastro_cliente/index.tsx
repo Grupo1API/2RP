@@ -1,5 +1,6 @@
+import { MenuItem, Select , FormControl , InputLabel} from "@mui/material";
 import TextField from "@mui/material/TextField";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ColorButton} from '../../components/Button/styles';
 import './style.css'
 
@@ -46,7 +47,8 @@ function Cliente(dados){
         reportError({message})
       }
     }
-
+    const gestor:string[] =["gabriel","jose", "silvio"]
+    const [listaGestores, setListaGestores] = useState([]);
     return(
       <div className="pagina">
 
@@ -110,6 +112,22 @@ function Cliente(dados){
           </TextField>
         </div>
 
+        <div>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-standard-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          label="Age"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+            {gestor.map(x => <MenuItem  key={x} value={x}>{x}</MenuItem>) }
+        </Select>
+      </FormControl>
+        </div>
+
         {/* Botão */}
         <div className ="form-btn">
           <ColorButton 
@@ -124,3 +142,10 @@ function Cliente(dados){
   }
 
   export default Cliente;
+
+  // Trocar para gestor
+
+
+
+
+  

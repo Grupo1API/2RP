@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, ChangeEvent } from 'react';
 import './style.css'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import {ColorButton} from '../../components/Button/styles';
+import Button from '@mui/material/Button';
 
 function ApontamentoHoras () { 
 
@@ -15,13 +16,97 @@ function ApontamentoHoras () {
   const [justificativa, setJustificativa] = useState("");
   const [tipoApontamento,setTipoApontamento] = useState('');
 
+
+  // Lista Gestores
+const[gestores, setGestores] = useState([]);
+
+
+async function listaGestor() {
+ try {
+   const response = await fetch(`http://localhost:3001/usuarios`, {
+     method: "GET",
+   });
+   const data = await response.json();
+   setGestores(data);
+ } catch (error) {
+   console.log(error.message);
+ }
+} 
+
+useEffect(() => {
+ listaGestor();
+}, []); console.log(gestores)
+
+
+
+const [gestor, setGestor] = React.useState<string>('');
+const [open, setOpen] = React.useState(false);
+
+const handleChanges = (event: SelectChangeEvent<typeof gestor>) => {
+  setGestor(event.target.value);
+};
+
+const handleClose = () => {
+  setOpen(false);
+};
+
+const handleOpen = () => {
+  setOpen(true);
+};
+
+// Lista Cliente/Projeto
+const[clientes, setClientes] = useState([]);
+
+
+async function listaCliente() {
+ try {
+   const response = await fetch(`http://localhost:3001/clientes`, {
+     method: "GET",
+   });
+   const data = await response.json();
+   setClientes(data);
+ } catch (error) {
+   console.log(error.message);
+ }
+} 
+
+useEffect(() => {
+ listaCliente();
+}, []); console.log(clientes)
+
+
+
+const [cliente, setCliente] = React.useState<string>('');
+
+const [open1, setOpen1] = React.useState(false);
+const handleChanges1 = (event: SelectChangeEvent<typeof cliente>) => {
+  setCliente(event.target.value);
+};
+
+
+
+
+
+const handleClose1 = () => {
+  setOpen1(false);
+};
+
+const handleOpen1 = () => {
+  setOpen1(true);
+};
+
+//------------------------------------
+
   async function handleSubmit(event){
+    console.log("o flow")
     event.preventDefault();
     const dado = {
         horario_inicio: horario_inicio, 
         horario_fim: horario_fim,
         justificativa: justificativa, 
-        tipo_apontamento: tipoApontamento
+        tipo_apontamento: tipoApontamento,
+        gestorId: parseFloat(gestor),
+        projetoId: parseInt(cliente)
     };
   
     try{
@@ -30,6 +115,7 @@ function ApontamentoHoras () {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dado)
         });
+        console.log("aqui");
         console.log(response.json);
         // definir rota
         window.location.href='/apontamento-horas'
@@ -41,6 +127,7 @@ function ApontamentoHoras () {
 
       return;
       } catch (error) {
+        console.log("nao foi")
         console.error(error.message)
       }
     };
@@ -118,6 +205,54 @@ function ApontamentoHoras () {
               onChange={e => setJustificativa(e.target.value)}
             />
         </div>
+
+      <div className="form-floating mb-4">
+        <Button sx={{ display: 'block', mt: 2 }} onClick={handleOpen}>
+          Open the select
+        </Button>
+        <FormControl sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="demo-controlled-open-select-label">Gestor</InputLabel>
+          <Select
+            labelId="demo-controlled-open-select-label"
+            id="demo-controlled-open-select"
+            open={open}
+            onClose={handleClose}
+            onOpen={handleOpen}
+            label="Gestor"
+            onChange={handleChanges}
+            value={gestor}
+
+          >
+           {gestores.map((y: any) => (
+           <MenuItem value={y.id} key={y.id}>{y.nome}</MenuItem>
+           ))}
+          </Select>
+        </FormControl>
+      </div>
+
+      <div className="form-floating mb-4">
+        <Button sx={{ display: 'block', mt: 2 }} onClick={handleOpen1}>
+          Open the select
+        </Button>
+        <FormControl sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="demo-controlled-open-select-label">Cliente</InputLabel>
+          <Select
+            labelId="demo-controlled-open-select-label"
+            id="demo-controlled-open-select"
+            open={open1}
+            onClose={handleClose1}
+            onOpen={handleOpen1}
+            label="Cliente"
+            onChange={handleChanges1}
+            value={cliente}
+
+          >
+           {clientes.map((z: any) => (
+           <MenuItem value={z.id} key={z.id}>{z.nome}</MenuItem>
+           ))}
+          </Select>
+        </FormControl>
+      </div>
 
       {/* Botão */}
         <div className ="form-btn">

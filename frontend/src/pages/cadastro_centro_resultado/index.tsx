@@ -10,6 +10,43 @@ function CentroResultado (dados) {
   const [gestorId,setGestorId] = useState("");
   const [projetoId,setProjetoId] = useState("");
 
+//   // Lista Gestores
+// const[gestores, setGestores] = useState([]);
+
+
+// async function listaGestor() {
+//  try {
+//    const response = await fetch(`http://localhost:3001/usuarios`, {
+//      method: "GET",
+//    });
+//    const data = await response.json();
+//    setGestores(data);
+//  } catch (error) {
+//    console.log(error.message);
+//  }
+// } 
+
+// useEffect(() => {
+//  listaGestor();
+// }, []); console.log(gestores)
+
+
+
+// const [gestor, setGestor] = React.useState<string>('');
+// const [open, setOpen] = React.useState(false);
+
+// const handleChanges = (event: SelectChangeEvent<typeof gestor>) => {
+//   setGestor(event.target.value);
+// };
+
+// const handleClose = () => {
+//   setOpen(false);
+// };
+
+// const handleOpen = () => {
+//   setOpen(true);
+// };
+
   async function handleSubmit(event: { preventDefault: () => void; }){
     event.preventDefault();
     const dado = {
@@ -72,6 +109,30 @@ function CentroResultado (dados) {
           onChange={(e) => setNumero(e.target.value)}>
         </TextField>
       </div>
+
+      {/* <div className="form-floating mb-4">
+        <Button sx={{ display: 'block', mt: 2 }} onClick={handleOpen}>
+          Open the select
+        </Button>
+        <FormControl sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="demo-controlled-open-select-label">Gestor</InputLabel>
+          <Select
+            labelId="demo-controlled-open-select-label"
+            id="demo-controlled-open-select"
+            open={open}
+            onClose={handleClose}
+            onOpen={handleOpen}
+            label="Gestor"
+            onChange={handleChanges}
+            value={gestor}
+
+          >
+           {gestores.map((y: any) => (
+           <MenuItem value={y.id} key={y.id}>{y.nome}</MenuItem>
+           ))}
+          </Select>
+        </FormControl>
+      </div> */}
 
       {/* Botão */}
       <div className ="form-btn">
