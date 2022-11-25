@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import {ColorButton} from '../../components/Button/styles';
+import Button from '@mui/material/Button';
 
 function ApontamentoHoras () { 
 
@@ -14,6 +15,84 @@ function ApontamentoHoras () {
   const [horario_fim, setHorarioFim] = useState("");
   const [justificativa, setJustificativa] = useState("");
   const [tipoApontamento,setTipoApontamento] = useState('');
+  // Lista Gestores
+  const [gestores, setGestores] = useState([]);  
+  const [gestor, setGestor] = React.useState<string | number>('');
+  const [open, setOpen] = React.useState(false);
+  // Lista Cliente/Projeto
+  const [clientes, setClientes] = useState([]);
+  const [cliente, setCliente] = React.useState<string | number>('');
+  const [open1, setOpen1] = React.useState(false);
+
+
+async function listaGestor() {
+ try {
+   const response = await fetch(`http://localhost:3001/usuarios///`, {
+     method: "GET",
+   });
+   const data = await response.json();
+   
+setGestores(data);
+
+
+ } catch (error) {
+   console.log(error.message);
+ }
+} 
+
+useEffect(() => {
+ listaGestor();
+}, []); console.log(gestores)
+
+
+
+//gestor//
+
+const handleChanges = (event: SelectChangeEvent<typeof gestor>) => {
+  setGestor(event.target.value);
+};
+
+const handleClose = () => {
+  setOpen(false);
+};
+
+const handleOpen = () => {
+  setOpen(true);
+};
+
+
+async function listaCliente() {
+ try {
+   const response = await fetch(`http://localhost:3001/clientes`, {
+     method: "GET",
+   });
+   const data = await response.json();
+   setClientes(data);
+
+ } catch (error) {
+   console.log(error.message);
+ }
+} 
+
+useEffect(() => {
+ listaCliente();
+}, []); console.log(clientes)
+
+//cliente//
+
+const handleChanges1 = (event: SelectChangeEvent<typeof cliente>) => {
+  setCliente(event.target.value);
+};
+
+const handleClose1 = () => {
+  setOpen1(false);
+};
+
+const handleOpen1 = () => {
+  setOpen1(true);
+};
+
+//------------------------------------
 
   async function handleSubmit(event){
     event.preventDefault();
@@ -21,7 +100,9 @@ function ApontamentoHoras () {
         horario_inicio: horario_inicio, 
         horario_fim: horario_fim,
         justificativa: justificativa, 
-        tipo_apontamento: tipoApontamento
+        tipo_apontamento: tipoApontamento,
+        gestorId: gestor,
+        projetoId: cliente
     };
   
     try{
@@ -119,6 +200,53 @@ function ApontamentoHoras () {
             />
         </div>
 
+              {/*Gestor*/}
+      <div className="form-floating mb-4">
+        <Box sx={{ minWidth: 120 }}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Gestor</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            open={open}
+            onClose={handleClose}
+            onOpen={handleOpen}
+            label="Gestor"
+            onChange={handleChanges}
+            value={gestor}
+
+          >
+           {gestores.map((y: any) => (
+           <MenuItem value={y.id} key={y.id}>{y.nome}</MenuItem>
+           ))}
+          </Select>
+        </FormControl>
+        </Box>
+      </div>
+      
+      {/*cliente/projeto */}
+      <div className="form-floating mb-4">
+      <Box sx={{ minWidth: 120 }}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Projeto/Cliente</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            open={open1}
+            onClose={handleClose1}
+            onOpen={handleOpen1}
+            label="Projeto/Cliente"
+            onChange={handleChanges1}
+            value = {cliente}
+          >
+           {clientes.map((x: any) => (
+           <MenuItem value={x.id} key={x.id}>{x.nome}</MenuItem>
+           ))}
+          </Select>
+        </FormControl>
+        </Box>
+      </div>
+
       {/* Botão */}
         <div className ="form-btn">
           <ColorButton 
@@ -133,3 +261,4 @@ function ApontamentoHoras () {
 }
 
 export default ApontamentoHoras;
+
