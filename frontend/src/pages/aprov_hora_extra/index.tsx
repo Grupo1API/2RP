@@ -6,11 +6,11 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@mui/material/TableRow";
 import CancelIcon from '@mui/icons-material/Cancel';
-import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ApontamentoHoras from "../cadastro_apontamento_horas";
 import './style.css'
+import moment from "moment";
+import { formatarDataHora } from "../../functions/formatarDataHora";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -75,14 +75,63 @@ const useStyles = makeStyles({
   },
 });
 
-{/* Funções */}
-
 function Aprov_hora_extra () {
   const classes = useStyles();
   const [listaAprovs, setListaAprovs] = useState([]);
   const [dados, setDados] = useState([]);
+  const [listaUsuarios, setListaUsuarios] = useState([]);
+  const [listaCentroResultados, setlistaCentroResultados] = useState([]);
+  const[clientes, setClientes] = useState([]);  // Lista Cliente/Projeto
 
- useEffect(() => {
+useEffect(() => {
+  listaCliente();
+  }, []); console.log(clientes)
+
+async function listaCliente() {
+ try {
+   const response = await fetch(`http://localhost:3001/clientes`, {
+     method: "GET",
+   });
+   const data = await response.json();
+   setClientes(data);
+ } catch (error) {
+   console.log(error.message);
+ }
+} 
+
+  useEffect(() => {
+    listaUsuario();
+  }, []);
+
+  async function listaUsuario() {
+    try {
+      const response = await fetch(`http://localhost:3001/usuarios`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      setListaUsuarios(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  useEffect(() => {
+    listaCentroResultado();
+  }, []);
+
+  async function listaCentroResultado() {
+    try {
+      const response = await fetch(`http://localhost:3001/quadro-centro-resultado`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      setlistaCentroResultados(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  useEffect(() => {
     listaAprov();
   }, []);
 
@@ -98,6 +147,7 @@ function Aprov_hora_extra () {
       console.log(error.message);
     }
   }
+  
   async function handleAprove(id) {
     const data = {
       id: id,
@@ -135,6 +185,10 @@ function Aprov_hora_extra () {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
+            <StyledTableCell align="left">Usuario </StyledTableCell>
+          
+            <StyledTableCell align="left">Gestor </StyledTableCell>
+            <StyledTableCell align="left">Projeto </StyledTableCell>
             <StyledTableCell align="left">Tipo </StyledTableCell>
             <StyledTableCell align="left">Horário Início</StyledTableCell>
             <StyledTableCell align="left">Horário FIm</StyledTableCell>
@@ -146,10 +200,32 @@ function Aprov_hora_extra () {
 
         <TableBody className={classes.body}>
           {listaAprovs.map((x: any) => (
-            <StyledTableRow key={x.id}>
+           x.statusApontamento.includes("aprovado") ? 
+              <div></div>
+            : 
+    
+              <StyledTableRow key={x.id}>
+              <StyledTableCell align="left">{listaUsuarios.map((y: any) => (
+                  <div key={y.id}>
+                    {y.id === x.usuarioId ? <p>{y.nome}</p> : <div></div>}
+                  </div>
+              ))}</StyledTableCell>
+                
+              <StyledTableCell align="left">{listaUsuarios.map((z: any) => (
+                  <div key={z.id}>
+                      {z.id === x.gestorId && z.role === "gestor" ? <p>{z.nome} </p> : <div></div>}
+                  </div>
+              ))}</StyledTableCell> 
+              <StyledTableCell align="left">
+                {clientes.map((c:any) => (
+                  <div key={c.id}>
+                    {c.id === x.projetoId ? <p>{c.nome_projeto}</p> : <div></div> }
+                  </div>
+                ))}
+                </StyledTableCell>               
               <StyledTableCell component="th" scope="row">{x.tipo_apontamento}</StyledTableCell>
-              <StyledTableCell align="left">{x.horario_inicio}</StyledTableCell>
-              <StyledTableCell align="left">{x.horario_fim}</StyledTableCell>
+              <StyledTableCell align="left">{formatarDataHora(x.horario_inicio)}</StyledTableCell>
+              <StyledTableCell align="left">{formatarDataHora(x.horario_fim)}</StyledTableCell>
               <StyledTableCell align="left">{x.justificativa}</StyledTableCell>
               <StyledTableCell align="left">{x.statusApontamento}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
@@ -161,7 +237,8 @@ function Aprov_hora_extra () {
               </IconButton>
 
               </StyledTableCell>
-            </StyledTableRow>
+              </StyledTableRow>
+                        
           ))}
           </TableBody>
       </Table>
@@ -171,3 +248,4 @@ function Aprov_hora_extra () {
 }
 
 export default Aprov_hora_extra;
+
