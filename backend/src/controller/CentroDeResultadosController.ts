@@ -7,8 +7,6 @@ class CentroDeResultadosController {
   async findAll(req: Request, res: Response) {
     const centroResultados = await CentroDeResultados.findAll({
       include: [
-      { model: UsuariosModel, attributes: ['id','nome','role'], as: 'colaboradores' },
-      { model: UsuariosModel ,attributes: ['id','nome','role'], as: 'gestor' }, 
       { model: ClientesModel , as: 'cliente'}],
     });
 
@@ -21,8 +19,6 @@ class CentroDeResultadosController {
     const { centroDeResultadoId } = req.params;
     const centroResultado = await CentroDeResultados.findOne({
       include: [
-        { model: UsuariosModel,attributes: ['id','role'] ,as: 'colaboradores' },
-        { model: UsuariosModel ,attributes:['id','role'], as: 'gestor' },
         {model: ClientesModel , as: 'cliente'}], 
       where: {
         id: centroDeResultadoId,
@@ -35,17 +31,15 @@ class CentroDeResultadosController {
   }
 
   async create(req: Request, res: Response) {
-    const { nome, numero, usuarioId, gestorId,clienteId } = req.body;
+    const { nome, numero, clienteId } = req.body;
     const centroResultado = await CentroDeResultados.create({
       nome,
       numero,
-      usuarioId,
       clienteId,
-      gestorId
     },{
     include:[
-      { model: UsuariosModel,attributes: ['id'] ,as: 'colaboradores' },
-      { model: UsuariosModel ,attributes:['id'], as: 'gestor' }]
+      { model: ClientesModel , attributes:['id'], as: 'cliente' }
+    ]
     }
     );
 
