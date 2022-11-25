@@ -11,8 +11,8 @@ import verbas from "./VerbasRoutes";
 
 const router = Router();
 
-// login
 router.post("/login", UsuariosController.login);
+router.post("/logout", UsuariosController.logout);
 
 router.use("/apontamento-horas", sessao, apontamentoHorasRoutes);
 router.use("/centro-de-resultados", sessao, centroDeResultados);

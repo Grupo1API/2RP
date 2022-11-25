@@ -90,7 +90,8 @@ class UsuariosController {
             maxAge: 1 * 24 * 60 * 60,
             httpOnly: true,
           });
-          console.log("user", JSON.stringify(user, null, 2));
+
+          // TODO: remover quando for pra prod
           console.log(token);
 
           return res.status(201).send(user);
@@ -100,6 +101,17 @@ class UsuariosController {
       } else {
         return res.status(401).send("Falha na autenticação");
       }
+    } catch (error) {
+      // FIX-ME: tratar oerro e mandar pro front para não estourar no servidor
+      console.log(error);
+    }
+  }
+
+  async logout(req: Request, res: Response) {
+    try {
+      res.cookie("jwt", null);
+
+      return res.status(201).send("Até mais!");
     } catch (error) {
       console.log(error);
     }
