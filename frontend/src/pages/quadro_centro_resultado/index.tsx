@@ -80,10 +80,7 @@ function Quadro_resultado() {
   const [modalInfo, setModalInfo] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
   const [dados, setDados] = useState([]);
-  const [cliente, setCliente] = useState("");
-  const [projeto, setProjeto] = useState("");
-  const [colaborador,setColaborador] = useState("");
-  const [gestor, setGestor] = useState("");
+  const [listaUsuarios, setListaUsuarios] = useState([]);
 
   useEffect(() => {
     listaCentroResultado();
@@ -98,19 +95,34 @@ function Quadro_resultado() {
         }
       );
       const data = await response.json();
+
       setlistaCentroResultados(data);
       console.log(data);
-      setColaborador(data.colaboradores.nome); //colaborador
-      setGestor(data.gestor.nome)
     } catch (error) {
       console.log(error.message);
     }
   }
+
+  async function listaUsuario() {
+    try {
+      const response = await fetch(`http://localhost:3001/usuarios`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      setListaUsuarios(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  useEffect(() => {
+    listaUsuario();
+  }, []);
 /*
    async function listaCentroResultado() {
      try {
        const response = await fetch(
-         `http://localhost:3001/centro-de-resultados/${clienteId}`,
+         `http://localhost:3001/centro-de-resultados/`,
          {
            method: "GET",
          }
@@ -174,15 +186,22 @@ function Quadro_resultado() {
         <TableBody className={classes.body}>
           {listaCentroResultados.map((x: any) => (
             <StyledTableRow key={x.id}>
-              {/*mostra o id na tabela*/}
-              {/* <StyledTableCell>{x.id}</StyledTableCell>  */}
+
               <StyledTableCell component="th" scope="row">
                 {x.nome}
               </StyledTableCell>
               <StyledTableCell align="left">{x.numero}</StyledTableCell>
               <StyledTableCell align="left">{x.status}</StyledTableCell>
-              <StyledTableCell align="left">{x.gestor.nome}</StyledTableCell>
-              <StyledTableCell align="left">{x.colaboradores.nome}</StyledTableCell>
+              <StyledTableCell align="left">{listaUsuarios.map((z: any) => (
+                  <div key={z.id}>
+                  {z.crId === x.id && z.role === "gestor" ? <p>{z.nome} </p> : <div></div>}
+              </div>
+              ))}</StyledTableCell>
+              <StyledTableCell align="left">{listaUsuarios.map((z: any) => (
+                  <div key={z.id}>
+                  {z.crId === x.id && z.role === "colaborador" ? <p>{z.nome} </p> : <div></div>}
+              </div>
+              ))}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"

@@ -6,8 +6,6 @@ import './style.css'
 function CentroResultado (dados) {
   const [nome, setNome] = useState("");
   const [numero, setNumero] = useState("");
-  const [colaboradorId,setColaboradorId] = useState("");
-  const [gestorId,setGestorId] = useState("");
   const [projetoId,setProjetoId] = useState("");
 
   async function handleSubmit(event: { preventDefault: () => void; }){
@@ -15,11 +13,9 @@ function CentroResultado (dados) {
     const dado = {
       nome: nome,
       numero: numero,
-      colaboradorId: colaboradorId,
-      gestorId: gestorId,
       projetoId:projetoId,
     };
-
+    
     try{
       await fetch('http://localhost:3001/centro-de-resultado/', {
         method: "POST",
@@ -31,9 +27,8 @@ function CentroResultado (dados) {
 
       setNome("");
       setNumero("");
-      setColaboradorId("");
-      setGestorId("");
       setProjetoId("");
+
 
       return;
     } catch (error) {
