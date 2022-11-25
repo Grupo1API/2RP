@@ -57,13 +57,6 @@ class UsuariosController {
       const user = await UsuariosModel.create(data);
 
       if (user) {
-        let token = jwt.sign({ id: user.id }, "lbkjbefkjbwekfkewfk", {
-          expiresIn: 1 * 24 * 60 * 60 * 1000,
-        });
-
-        res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60, httpOnly: true });
-        console.log(token);
-
         return res.status(201).send(user);
       } else {
         return res.status(409).send("Details are not correct");
@@ -86,15 +79,15 @@ class UsuariosController {
             expiresIn: 1 * 24 * 60 * 60 * 1000,
           });
 
-          res.cookie("jwt", token, {
-            maxAge: 1 * 24 * 60 * 60,
-            httpOnly: true,
-          });
+          // res.cookie("jwt", token, {
+          //   maxAge: 1 * 24 * 60 * 60,
+          //   httpOnly: true,
+          // });
 
           // TODO: remover quando for pra prod
           console.log(token);
 
-          return res.status(201).send(user);
+          return res.status(201).send({ token: token });
         } else {
           return res.status(401).send("Falha na autenticação");
         }
