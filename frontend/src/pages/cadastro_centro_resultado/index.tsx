@@ -11,6 +11,7 @@ function CentroResultado (dados) {
   const [projetoId,setProjetoId] = useState("");
 
   async function handleSubmit(event: { preventDefault: () => void; }){
+
     event.preventDefault();
     const dado = {
       nome: nome,
@@ -19,15 +20,18 @@ function CentroResultado (dados) {
       gestorId: gestorId,
       projetoId:projetoId,
     };
-
+    const token = localStorage.getItem("user")
     try{
       await fetch('http://localhost:3001/centro-de-resultado/', {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+       }),
+          body: JSON.stringify(dado),
         },
-        body: JSON.stringify(dado),
-      });
+      );
 
       setNome("");
       setNumero("");

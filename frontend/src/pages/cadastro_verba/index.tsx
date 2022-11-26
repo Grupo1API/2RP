@@ -21,12 +21,15 @@ function Verba(dados){
     percentual: percentual,
 
     };
+    const token = localStorage.getItem("user")
       try{
         await fetch('http://localhost:3001/verbas/', {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: new Headers({
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+         }),
           body: JSON.stringify(dado),
         });
 

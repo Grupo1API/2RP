@@ -19,12 +19,15 @@ function Turno(dados){
     saida_2: saida_2,
 
     };
+    const token = localStorage.getItem("user")
       try{
         await fetch('http://localhost:3001/turnos/', {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: new Headers({
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+         }),
           body: JSON.stringify(dado),
         });
 

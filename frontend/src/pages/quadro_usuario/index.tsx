@@ -89,9 +89,15 @@ function Quadro_Usuario() {
   }, []);
 
   async function listaUsuario() {
+    const token = localStorage.getItem("user")
     try {
       const response = await fetch(`http://localhost:3001/usuarios`, {
         method: "GET",
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+       }),
       });
       const data = await response.json();
       setListaUsuarios(data);
@@ -100,16 +106,21 @@ function Quadro_Usuario() {
     }
   }
   async function handleDelete(id) {
+    const token = localStorage.getItem("user")
     const data = {
       id: id,
     };
     await fetch(`http://localhost:3001/usuarios/${id}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
+      headers: new Headers({
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+     }),
+        body: JSON.stringify(data),
       },
-      body: JSON.stringify(data),
-    });
+
+    );
     listaUsuario();
   }
 

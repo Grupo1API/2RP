@@ -87,27 +87,40 @@ function Quadro_Cliente() {
   }, []);
 
   async function listaCliente() {
+    const token = localStorage.getItem("user")
     try {
       const response = await fetch(`http://localhost:3001/clientes/`, {
         method: "GET",
-      });
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+       }),
+      }
+    );
       const data = await response.json();
       setListaClientes(data);
     } catch (error) {
       console.log(error.message);
     }
   }
+
   async function handleDelete(id) {
+    const token = localStorage.getItem("user")
     const data = {
       id: id,
     };
     await fetch(`http://localhost:3001/clientes/${id}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
+      headers: new Headers({
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+     }),
+        body: JSON.stringify(data),
       },
-      body: JSON.stringify(data),
-    });
+
+    );
     listaCliente();
   }
 

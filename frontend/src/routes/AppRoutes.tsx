@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import Cliente from '../pages/cadastro_cliente';
 import ApontamentoHoras from '../pages/cadastro_apontamento_horas';
+import ClassificacaoHoras from '../pages/classificacao_horas';
 import CentroResultado from '../pages/cadastro_centro_resultado';
 import Login from '../pages/login';
 import Home from '../pages/home';
@@ -27,6 +28,7 @@ const AppRoutes = () => (
       <Route path="/cliente" element={<Cliente />} />
       <Route path="/quadro-clientes" element={<Quadro_cliente />} />
       <Route path="/apontamento-horas" element={<ApontamentoHoras />} />
+      <Route path="/classificacao-horas" element={<ClassificacaoHoras />} />
       <Route path="/centro-resultado" element={<CentroResultado />} />
       <Route path="/verba" element={<Verba />} />
       <Route path="/turno" element={<Turno />} />

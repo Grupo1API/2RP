@@ -22,9 +22,15 @@ const[gestores, setGestores] = useState([]);
 
 
 async function listaGestor() {
+  const token = localStorage.getItem("user")
  try {
    const response = await fetch(`http://localhost:3001/usuarios`, {
      method: "GET",
+     headers: new Headers({
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+   }),
    });
    const data = await response.json();
    setGestores(data);
@@ -59,9 +65,15 @@ const[clientes, setClientes] = useState([]);
 
 
 async function listaCliente() {
+  const token = localStorage.getItem("user")
  try {
    const response = await fetch(`http://localhost:3001/clientes`, {
      method: "GET",
+     headers: new Headers({
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+   }),
    });
    const data = await response.json();
    setClientes(data);
@@ -98,7 +110,7 @@ const handleOpen1 = () => {
 //------------------------------------
 
   async function handleSubmit(event){
-    console.log("o flow")
+
     event.preventDefault();
     const dado = {
         horario_inicio: horario_inicio, 
@@ -108,14 +120,18 @@ const handleOpen1 = () => {
         gestorId: parseFloat(gestor),
         projetoId: parseInt(cliente)
     };
-  
+    const token = localStorage.getItem("user")
     try{
       const response = await fetch('http://localhost:3001/apontamento-horas', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+       }),
         body: JSON.stringify(dado)
         });
-        console.log("aqui");
+      
         console.log(response.json);
         // definir rota
         window.location.href='/apontamento-horas'
