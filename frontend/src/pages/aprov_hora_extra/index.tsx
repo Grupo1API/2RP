@@ -11,7 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ApontamentoHoras from "../cadastro_apontamento_horas";
 import './style.css'
-import { formatarDataHora } from "../../formatacaoHoras/formatar";
+import { formatarDataHora } from "../../functions/formatarDataHora";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -76,7 +76,6 @@ const useStyles = makeStyles({
   },
 });
 
-{/* Funções */}
 
 function Aprov_hora_extra () {
   const classes = useStyles();
@@ -84,7 +83,7 @@ function Aprov_hora_extra () {
   const [dados, setDados] = useState([]);
   const [listaUsuarios, setListaUsuarios] = useState([]);
 // Lista Cliente/Projeto
-const[clientes, setClientes] = useState([]);
+  const[clientes, setClientes] = useState([]);
 
 
 async function listaCliente() {
