@@ -5,11 +5,17 @@ import { Link } from 'react-router-dom';
 import { SidebarDataAdmin } from './SidebarData';
 import {Bars, Nav, NavBtn,NavBtnLink} from './NavbarData';
 import './style.css';
+import { useCookies } from "react-cookie";
 
 function Sidebar() {
   const [sidebar, setSidebar] = useState(false);
-
+  const [cookies, removeCookie] = useCookies(["user"]);
   const showSidebar = () => setSidebar(!sidebar);
+
+  const logout = () => {
+    removeCookie("user", null);
+    return window.location.href='/login'
+  }
 
   return (
   <IconContext.Provider value={{ color: '#fff' }}>
@@ -45,7 +51,7 @@ function Sidebar() {
   </NavBtn>
  */}
   <NavBtn>
-    <NavBtnLink to='/login'>Logout</NavBtnLink>
+    <button onClick={logout}>Logout</button>
   </NavBtn>
  
   <img className="logo-2rp" src="https://www.2rpnet.com.br/assets/images/2rp-net.svg" alt="logo da empresa"/> 

@@ -89,14 +89,6 @@ class UsuariosController {
       );
 
       if (user) {
-        let token = jwt.sign({ id: user.id }, "lbkjbefkjbwekfkewfk", {
-          expiresIn: 1 * 24 * 60 * 60 * 1000,
-        });
-
-        res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60, httpOnly: true });
-        console.log("user", JSON.stringify(user, null, 2));
-        console.log(token);
-
         return res.status(201).send(user);
       } else {
         return res.status(409).send("Details are not correct");
@@ -119,20 +111,32 @@ class UsuariosController {
             expiresIn: 1 * 24 * 60 * 60 * 1000,
           });
 
-          res.cookie("jwt", token, {
-            maxAge: 1 * 24 * 60 * 60,
-            httpOnly: true,
-          });
-          console.log("user", JSON.stringify(user, null, 2));
+          // res.cookie("jwt", token, {
+          //   maxAge: 1 * 24 * 60 * 60,
+          //   httpOnly: true,
+          // });
+
+          // TODO: remover quando for pra prod
           console.log(token);
 
-          return res.status(201).send(user);
+          return res.status(201).send({ token: token });
         } else {
-          return res.status(401).send("Authentication failed");
+          return res.status(401).send("Falha na autenticação");
         }
       } else {
-        return res.status(401).send("Authentication failed");
+        return res.status(401).send("Falha na autenticação");
       }
+    } catch (error) {
+      // FIX-ME: tratar oerro e mandar pro front para não estourar no servidor
+      console.log(error);
+    }
+  }
+
+  async logout(req: Request, res: Response) {
+    try {
+      res.cookie("jwt", null);
+
+      return res.status(201).send("Até mais!");
     } catch (error) {
       console.log(error);
     }
