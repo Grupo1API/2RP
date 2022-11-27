@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import ApontamentoHorasModel from "../models/ApontamentoHorasModel";
 import ClientesModel from "../models/ClientesModel";
 import UsuariosModel from "../models/UsuariosModel";
+import * as jwt from "jsonwebtoken";
 
 class ApontamentoHorasController {
   async findAll(req: Request, res: Response) {
@@ -34,16 +35,21 @@ class ApontamentoHorasController {
   }
 
   async create(req: Request, res: Response) {
-    const { tipo_apontamento, horario_inicio, horario_fim, justificativa, usuarioId, gestorId, projetoId } =
+    const { tipo_apontamento, horario_inicio, horario_fim, justificativa, gestorId, projetoId } =
       req.body;
-    const horaExtra = await ApontamentoHorasModel.create({
+      const user = req.headers.authorization;
+      const token:any = user?.split(" ")
+      const decoded:any = jwt.verify(token[1], 'lbkjbefkjbwekfkewfk');
+      const usuario = decoded.id;
+
+      const horaExtra = await ApontamentoHorasModel.create({
       tipo_apontamento,
       horario_inicio,
       horario_fim,
       justificativa,
-      usuarioId,
       gestorId,
-      projetoId
+      projetoId,
+      usuarioId: usuario
     },
     {
       include: [
