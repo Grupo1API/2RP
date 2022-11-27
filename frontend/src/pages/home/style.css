@@ -36,14 +36,35 @@
     height: 80px;
     padding-bottom: 15px;
 }
-.grafico{
-    margin-top: 50px;
+
+.select input{
+    height: 1000px;
+    display: flex;
 }
 
+    .sectionGrafico {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+    }
+    .sectionGrafico {
+      margin: 80px 10px 50px ;
+    }
+   
+    
+    .filtro{
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      gap: 10px;
+    }
+
+    
 @media (min-width: 450px)
-    {
-        .home {
-            width: 30%;
-            height: auto;
-        }
-    } 
+{
+    .home {
+        width: 30%;
+        height: auto;
+    }
+} 

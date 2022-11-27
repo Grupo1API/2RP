@@ -81,7 +81,7 @@ function Aprov_hora_extra () {
   const classes = useStyles();
   const [listaAprovs, setListaAprovs] = useState([]);
   const [dados, setDados] = useState([]);
-
+  
  useEffect(() => {
     listaAprov();
   }, []);
@@ -93,6 +93,7 @@ function Aprov_hora_extra () {
       });
    
       const data = await response.json();
+     
       setListaAprovs(data);
     } catch (error) {
       console.log(error.message);
