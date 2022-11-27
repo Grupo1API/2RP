@@ -13,7 +13,7 @@ function Sidebar() {
   const showSidebar = () => setSidebar(!sidebar);
 
   const logout = () => {
-    removeCookie("user", null);
+    removeCookie("user", "");
     return window.location.href='/login'
   }
 
