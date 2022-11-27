@@ -75,7 +75,7 @@ class UsuariosController {
         const isSame = await bcrypt.compare(senha, user.senha);
 
         if (isSame) {
-          let token = jwt.sign({ id: user.id }, "lbkjbefkjbwekfkewfk", {
+          let token = jwt.sign({ id: user.id, role: user.role }, "lbkjbefkjbwekfkewfk", {
             expiresIn: 1 * 24 * 60 * 60 * 1000,
           });
 
