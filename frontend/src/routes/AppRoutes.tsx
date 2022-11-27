@@ -18,7 +18,7 @@ import Quadro_verba from '../pages/quadro_verba';
 import Parametros from '../pages/parametros';
 import Quadro_turno from '../pages/quadro_turno';
 import Aprov_hora_extra from '../pages/aprov_hora_extra';
-
+import ClassificacaoHoras from '../pages/classificacao_horas';
 
 const AppRoutes = () => (
   <Container>
@@ -27,6 +27,7 @@ const AppRoutes = () => (
       <Route path="/cliente" element={<Cliente />} />
       <Route path="/quadro-clientes" element={<Quadro_cliente />} />
       <Route path="/apontamento-horas" element={<ApontamentoHoras />} />
+      <Route path="/classificacao-horas" element={<ClassificacaoHoras />} />
       <Route path="/centro-resultado" element={<CentroResultado />} />
       <Route path="/verba" element={<Verba />} />
       <Route path="/turno" element={<Turno />} />

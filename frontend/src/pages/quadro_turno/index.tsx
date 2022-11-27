@@ -88,9 +88,15 @@ function Quadro_turno(){
   }, []);
 
   async function listaTurno() {
+    const token = localStorage.getItem("user")
     try {
       const response = await fetch(`http://localhost:3001/turnos/`, {
         method: "GET",
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+       })
       });
       const data = await response.json();
       setListaTurnos(data);
@@ -99,14 +105,17 @@ function Quadro_turno(){
     }
   }
   async function handleDelete(id) {
+    const token = localStorage.getItem("user")
     const data = {
       id: id,
     };
     await fetch(`http://localhost:3001/turnos/${id}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: new Headers({
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+     }),
       body: JSON.stringify(data),
     });
     listaTurno();

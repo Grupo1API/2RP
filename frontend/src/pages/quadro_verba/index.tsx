@@ -87,9 +87,15 @@ function Quadro_verba (){
   }, []);
 
   async function listaVerba() {
+    const token = localStorage.getItem("user")
     try {
       const response = await fetch(`http://localhost:3001/verbas/`, {
         method: "GET",
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+       })
       });
       const data = await response.json();
       setListaVerbas(data);
@@ -98,14 +104,17 @@ function Quadro_verba (){
     }
   }
   async function handleDelete(id) {
+    const token = localStorage.getItem("user")
     const data = {
       id: id,
     };
     await fetch(`http://localhost:3001/verbas/${id}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: new Headers({
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+     }),
       body: JSON.stringify(data),
     });
     listaVerba();
