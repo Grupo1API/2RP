@@ -20,37 +20,154 @@ import Quadro_turno from '../pages/quadro_turno';
 import Aprov_hora_extra from '../pages/aprov_hora_extra';
 import PrivateRoute from './PrivateRoutes';
 
-
 const AppRoutes = () => (
   <Container>
     <Routes>
-    <Route
+      <Route path="/login" element={ <Login />} />
+
+      <Route
         path="/"
         element={
-          <PrivateRoute roles={['Administrador']}>
+          <PrivateRoute roles={["administrador", "gestor", "colaborador"]}>
             <Home />
           </PrivateRoute>
         }
       />
 
-      <Route path="/" element={<Home />} />
-      <Route path="/cliente" element={<Cliente />} />
-      <Route path="/quadro-clientes" element={<Quadro_cliente />} />
-      <Route path="/apontamento-horas" element={<ApontamentoHoras />} />
-      <Route path="/centro-resultado" element={<CentroResultado />} />
-      <Route path="/verba" element={<Verba />} />
-      <Route path="/turno" element={<Turno />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element ={<Usuario/>}/>
-      <Route path="/quadro-usuarios" element ={<Quadro_Usuario/>}/>
-      <Route path="/quadro-centro-resultado" element={<Quadro_resultado />} />
-      <Route path="/quadro-verba" element={<Quadro_verba />}/>
-      <Route path="/quadro-turno" element={<Quadro_turno />}/>
-      <Route path="/parametros" element={<Parametros />}/>
-      <Route path="/aprov-hora-extra" element={<Aprov_hora_extra />} />
+      <Route
+        path="/cliente"
+        element={
+          <PrivateRoute roles={["administrador"]}>
+            <Cliente />
+          </PrivateRoute>
+        }
+      />
 
-      <Route path="/adicional" element ={<Adicional/>}/>  
-      <Route path="/fechamento" element ={<Fechamento/>}/> 
+      <Route
+        path="/quadro-clientes"
+        element={
+          <PrivateRoute roles={["administrador", "gestor"]}>
+            <Quadro_cliente />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/apontamento-horas"
+        element={
+          <PrivateRoute roles={["administrador", "gestor", "colaborador"]}>
+            <ApontamentoHoras />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/centro-resultado"
+        element={
+          <PrivateRoute roles={["administrador", "gestor"]}>
+            <CentroResultado />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/verba"
+        element={
+          <PrivateRoute roles={["administrador"]}>
+            <Verba />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/tuno"
+        element={
+          <PrivateRoute roles={["administrador"]}>
+           <Turno />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/create"
+        element={
+          <PrivateRoute roles={["administrador"]}>
+            <Usuario/>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/quadro-usuarios"
+        element={
+          <PrivateRoute roles={["administrador"]}>
+            <Quadro_Usuario/>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/quadro-centro-resultado"
+        element={
+          <PrivateRoute roles={["administrador", "gestor"]}>
+            <Quadro_resultado />
+          </PrivateRoute>
+        }
+      />    
+
+      <Route
+        path="/quadro-verba"
+        element={
+          <PrivateRoute roles={["administrador"]}>
+            <Quadro_verba />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/quadro-turno"
+        element={
+          <PrivateRoute roles={["administrador"]}>
+            <Quadro_turno />
+          </PrivateRoute>
+        }
+      />  
+
+      <Route
+        path="/parametros"
+        element={
+          <PrivateRoute roles={["administrador"]}>
+            <Parametros />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/aprov-hora-extra"
+        element={
+          <PrivateRoute roles={["administrador", "gestor"]}>
+            <Aprov_hora_extra />
+          </PrivateRoute>
+        }
+      />
+      
+      <Route
+        path="/adicional"
+        element={
+          <PrivateRoute roles={["administrador", "gestor", "colaborador"]}>
+            <Adicional />
+          </PrivateRoute>
+        }
+      />
+
+       <Route
+        path="/fechamento"
+        element={
+          <PrivateRoute roles={["administrador"]}>
+            <Fechamento/>
+          </PrivateRoute>
+        }
+      /> 
     </Routes>
   </Container>
 );
