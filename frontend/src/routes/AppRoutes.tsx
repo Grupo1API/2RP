@@ -27,7 +27,7 @@ const AppRoutes = () => (
     <Route
         path="/"
         element={
-          <PrivateRoute>
+          <PrivateRoute roles={['Administrador']}>
             <Home />
           </PrivateRoute>
         }
