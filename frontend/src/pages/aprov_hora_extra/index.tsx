@@ -165,6 +165,7 @@ async function listaCliente() {
       });
    
       const data = await response.json();
+     
       setListaAprovs(data);
     } catch (error) {
       console.log(error.message);
