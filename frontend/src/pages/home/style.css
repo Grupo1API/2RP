@@ -36,6 +36,9 @@
     height: 80px;
     padding-bottom: 15px;
 }
+.grafico{
+    margin-top: 50px;
+}
 
 @media (min-width: 450px)
     {

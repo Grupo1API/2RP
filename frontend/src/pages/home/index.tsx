@@ -22,85 +22,88 @@ function Example() {
   const [variavelY, setVariavelY] = useState();
   const [legenda, setLegenda] = useState();
   const [listaCentroResultados, setlistaCentroResultados] = useState([]);
+  const [listaAprovs, setListaAprovs] = useState([]);
+  const [dados, setDados] = useState([]);
+  const [horario_inicio, setHorarioInicio] = useState("");
+  const [horario_fim, setHorarioFim] = useState("");
 
-  // useEffect(() => {
-  //   listaCentroResultado();
-  // }, []);
+ useEffect(() => {
+    listaAprov();
+  }, []);
 
-  // async function listaCentroResultado() {
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:3001/centro-de-resultados/`,
-  //       {
-  //         method: "GET",
-  //       }
-  //     );
-  //     const data = await response.json();
-  //     setlistaCentroResultados(data);
-  //     console.log(data);
+  async function listaAprov() {
+    try {
+      const response = await fetch(`http://localhost:3001/apontamento-horas/`, {
+        method: "GET",
+      });
+   
+      const data = await response.json();
+      setListaAprovs(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // }
-  // const teste = listaCentroResultados.map((x:any) => {
-  // return{
-  //   name: (x.nome),
-  //   uv: (x.status),
-  // };
-  // });
 
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+  const teste = listaAprovs.map((x:any) => {
+  return{
+    name: (x.tipo_apontamento),
+    uv: (x.id),
+    
+  };
+  });
+
+  // const data = [
+  //   {
+  //     name: "Page A",
+  //     uv: 4000,
+     
+      
+  //   },
+  //   {
+  //     name: "Page B",
+  //     uv: 30000,
+    
+      
+  //   },
+  //   {
+  //     name: "Page C",
+  //     uv: 200,
+     
+      
+  //   },
+  //   {
+  //     name: "Page D",
+  //     uv: 280,
+     
+      
+  //   },
+  //   {
+  //     name: "Page E",
+  //     uv: 180,
+   
+      
+  //   },
+  //   {
+  //     name: "Page F",
+  //     uv: 230,
+  
+      
+  //   },
+  //   {
+  //     name: "Page G",
+  //     uv: 34000,
+      
+      
+  //   },
+  // ];
 
   return (
-    <AreaChart
-      width={730}
-      height={250}
-      //data={variavelY ? variavelY : teste}
-      data={variavelY ? variavelY : data}
+    <AreaChart className="grafico"
+      width={1200}
+      height={750}
+      //data={variavelY ? variavelY : data}
+      data={variavelY ? variavelY : teste}
       margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
     >
       <defs>
@@ -119,20 +122,13 @@ function Example() {
       <Tooltip />
       <Area
         type="monotone"
-        name={legenda ? legenda : "teste2"}
+        name={legenda ? legenda : "teste12"}
         dataKey="uv"
         stroke="#8884d8"
         fillOpacity={1}
         fill="url(#colorUv)"
       />
-      <Area
-        type="monotone"
-        name={legenda ? legenda : "teste2"}
-        dataKey="pv"
-        stroke="#82ca9d"
-        fillOpacity={1}
-        fill="url(#colorPv)"
-      />
+      
     </AreaChart>
   );
 }
