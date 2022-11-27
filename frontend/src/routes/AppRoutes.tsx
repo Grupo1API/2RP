@@ -18,11 +18,21 @@ import Quadro_verba from '../pages/quadro_verba';
 import Parametros from '../pages/parametros';
 import Quadro_turno from '../pages/quadro_turno';
 import Aprov_hora_extra from '../pages/aprov_hora_extra';
+import PrivateRoute from './PrivateRoutes';
 
 
 const AppRoutes = () => (
   <Container>
     <Routes>
+    <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        }
+      />
+
       <Route path="/" element={<Home />} />
       <Route path="/cliente" element={<Cliente />} />
       <Route path="/quadro-clientes" element={<Quadro_cliente />} />
