@@ -34,9 +34,15 @@ function Example() {
   }, []);
 
   async function listaAprov() {
+    const token = localStorage.getItem("user")
     try {
       const response = await fetch(`http://localhost:3001/apontamento-horas/`, {
         method: "GET",
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+       })
       });
 
       const data = await response.json();
