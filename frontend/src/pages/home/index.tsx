@@ -46,6 +46,8 @@ function Example() {
     }
   }
 
+
+  
   const teste = listaAprovs.map((x: any) => {
     return {
       name: x.tipo_apontamento,
@@ -53,43 +55,7 @@ function Example() {
     };
   });
 
-  // const data = [
-  //   {
-  //     name: "Page A",
-  //     uv: 4000,
-
-  //   },
-  //   {
-  //     name: "Page B",
-  //     uv: 30000,
-
-  //   },
-  //   {
-  //     name: "Page C",
-  //     uv: 200,
-
-  //   },
-  //   {
-  //     name: "Page D",
-  //     uv: 280,
-
-  //   },
-  //   {
-  //     name: "Page E",
-  //     uv: 180,
-
-  //   },
-  //   {
-  //     name: "Page F",
-  //     uv: 230,
-
-  //   },
-  //   {
-  //     name: "Page G",
-  //     uv: 34000,
-
-  //   },
-  // ];
+ 
 
   return (
     <div>
@@ -97,44 +63,50 @@ function Example() {
         <div className="sectionGrafico">
           <div>
             <h2>Filtro</h2>
+          
             <div className="filtro">
               <TextField
                 type="text"
                 required
-                placeholder="CPF/CNPJ da Unidade"
+                placeholder="Cliente"
                 //value={cpf_cnpjUnidade}
                 // onChange={(e) => setCpf_cnpjUnidade(e.target.value)}
-                label="CPF/CNPJ da Unidade"
+                label="Cliente"
                 //onBlur={buscaUnidade}
                 variant="outlined"
                 className="input"
               />
               <TextField
                 type="text"
-                placeholder="Unidade"
+                placeholder="CR"
                 // value={unidade}
                 disabled
                 className="input"
-                label="Unidade"
+                label="CR"
                 variant="outlined"
               />
               <FormControl variant="outlined" className="select input">
-                <InputLabel id="demo-simple-select-outlined-label">
-                  Contratos
+                <InputLabel id="demo">
+                  Colaboradores
                 </InputLabel>
                 <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
+                  labelId="demo"
+                  id="demo"
                   //  value={contratoId}
                   //  onChange={(e) => setContratoId(e.target.value)}
-                  label="Contratos"
+                  label="Colaboradores"
                 >
                   {listaAprovs &&
                     listaAprovs.map((x: any) => (
-                      <MenuItem value={x.id}>{`ID: ${x.id} `}</MenuItem>
+                      <MenuItem
+                        value={x.id}
+                      >{`ID: ${x.id} / Tipo de apontamento: ${x.tipo_apontamento}`}</MenuItem>
                     ))}
                 </Select>
               </FormControl>
+              <br /> 
+             
+             
               <Button
                 // onClick={listaRelatorioAgua}
                 type="button"
@@ -157,7 +129,6 @@ function Example() {
           <AreaChart
             width={1200}
             height={750}
-            //data={variavelY ? variavelY : data}
             data={variavelY ? variavelY : teste}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
           >
