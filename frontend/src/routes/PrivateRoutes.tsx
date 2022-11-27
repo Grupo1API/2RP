@@ -1,29 +1,29 @@
 import React from 'react';
 import { Navigate, Route, useLocation, BrowserRouter as Router } from 'react-router-dom';
+import { useCookies } from "react-cookie";
+import jwt_decode from "jwt-decode";
 
 const PrivateRoute = ({
   children,
-  roles,
+  roles
 }: {
   children: JSX.Element;
-  roles: Array<string>;
+  roles: Array<string>
 }) => {
+  const [cookies] = useCookies(["user"]);
+  const usuario: any = cookies.user ? jwt_decode(cookies.user) : null;
+  
   let location = useLocation();
-
-  // TODO: Verificar se o cookie existe e pegar a role do usuario
-  let logado = true;
-  let usuario = {
-    role: 'Administrador'
-  }
 
   const userHasRequiredRole = usuario && roles.includes(usuario.role) ? true : false;
 
-  if (!logado) {
+  if (!usuario) {
     return <Navigate to="/login" state={{ from: location }} />;
   }
 
-  if (logado && !userHasRequiredRole) {
+  if (usuario && !userHasRequiredRole) {
     return <Navigate to="/login" state={{ from: location }} />;
+    //<AccessDenied />; // build your won access denied page (sth like 404)
   }
 
   return children;
