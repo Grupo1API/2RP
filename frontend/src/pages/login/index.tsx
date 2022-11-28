@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 //import { useAuth } from "../../hooks";
 import "./style.css";
@@ -9,16 +8,7 @@ export const Login = () => {
   const [email, setMail] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
-  const { login } = useAuth();
   const [cookies, setCookie] = useCookies(["user"]);
-
-  const enviar = async () => {
-    setError("");
-    const r = await login({ email, senha });
-    if (r.error !== "") {
-      setError(r.error);
-    }
-  };
 
   type Entrar = {
     token: string;
@@ -53,26 +43,6 @@ export const Login = () => {
       }
     }
   };
-
-  // const entrar = async (e: any) => {
-  //   e.preventDefault();
-  //   try {
-  //     const body = { email, senha };
-  //     const response = fetch("http://localhost:3001/login", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(body),
-  //     }).then((response) => {
-  //       console.log("uhueheue");
-  //       console.log(response);
-  //     });
-  //     // Cookies.set("jwt", response.body.token);
-  //     // definir rota
-  //     // window.location.href='/'
-  //   } catch (err: any) {
-  //     console.error(err.message);
-  //   }
-  // };
 
   const cancelar = () => {
     setMail("");
