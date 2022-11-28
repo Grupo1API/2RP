@@ -4,16 +4,16 @@
 
 <h1>Sumário</h1>
 <a href="#dor">DoR (Definition of Ready)</a>   <br>
-<a href="#backlog_sprint">Backlog Sprint 1</a>   <br>
+<a href="#backlog_sprint">Backlog Sprint 4</a>   <br>
 <a href="#use_cases">Use Cases</a>   <br>
-<a href="#burndown_sprint">Burndowm Sprint 2</a>   <br>
+<a href="#burndown_sprint">Burndowm Sprint 4</a>   <br>
 <a href="#dod">DoD (Definition of Done)</a>   <br>
 <a href="#funcionalidades_sprint">Funcionalidades implementadas</a>
 
 <br>
 <h1 id="dor">Definition of Ready</h1>
 
-<h2 id="backlog_sprint>Backlog Sprint 4</h2>
+<h2 id="backlog_sprint"> Backlog Sprint 4</h2>
 
 <div id="backlog_sprint" align="center"><img src="./DoR/sprint4-backlog.png" width="700"></h1></div>
 
