@@ -21,11 +21,15 @@ class verbasController {
   }
 
   async create(req: Request, res: Response) {
-    const { codigo, fator, percentual } = req.body;
+    const { descricao,codigo, fator, percentual,horario_inicio,horario_fim,dia_semana } = req.body;
     const verba = await VerbasModel.create({
+      descricao,
       codigo,
       fator,
       percentual,
+      horario_inicio,
+      horario_fim,
+      dia_semana,
     });
 
     return res.status(201).json(verba);
@@ -33,8 +37,11 @@ class verbasController {
 
   async update(req: Request, res: Response) {
     const { verbaId } = req.params;
+    
 
-    await VerbasModel.update(req.body, { where: { id: verbaId } });
+    await VerbasModel.update(
+      req.body, { 
+      where: { id: verbaId } });
 
     return res.status(201).send();
   }

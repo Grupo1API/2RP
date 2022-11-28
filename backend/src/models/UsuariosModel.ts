@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import { db } from "../database/db";
+import CentroDeResultados from "./CentroDeResultadosModel";
 import TurnosModel from "./TurnosModel";
 
 interface UserAttributes {
@@ -11,6 +12,7 @@ interface UserAttributes {
   senha: string;
   status: string;
   turnoId: Number;
+  crId:Number;
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
@@ -39,11 +41,17 @@ const UsuariosModel = db.define<UserInstance>("usuarios", {
     unique: true,
   },
   role: {
-    type: DataTypes.ENUM({
-      values: ["administrador", "gestor", "colaborador"],
-    }),
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "colaborador",
+    defaultValue: 'colaborador',
+    validate: {
+        customValidator: (value: string) => {
+            const enums = ['colaborador', 'gestor','administrador']
+            if (!enums.includes(value)) {
+                throw new Error('not a valid option')
+            }
+        } 
+    }
   },
   email: {
     type: DataTypes.STRING,
@@ -55,16 +63,28 @@ const UsuariosModel = db.define<UserInstance>("usuarios", {
     allowNull: false,
   },
   status: {
-    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "ativo",
+    defaultValue: 'ativo',
+    validate: {
+        customValidator: (value: string) => {
+            const enums = ['ativo', 'inativo']
+            if (!enums.includes(value)) {
+                throw new Error('not a valid option')
+            }
+        } 
+    }
   },
   turnoId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  crId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
 });
 
-UsuariosModel.belongsTo(TurnosModel, { foreignKey: "turnoId" });
+UsuariosModel.belongsTo(TurnosModel, {as:'turno', foreignKey: "turnoId" });
 
 export default UsuariosModel;

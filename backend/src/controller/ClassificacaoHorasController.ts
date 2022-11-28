@@ -1,9 +1,15 @@
 import { Request, Response } from "express";
+import ApontamentoHorasModel from "../models/ApontamentoHorasModel";
 import ClassificacaoHorasModel from "../models/ClassificacaoHorasModel";
+import VerbasModel from "../models/VerbasModel";
 
 class ClassificacaoHorasController {
   async findAll(req: Request, res: Response) {
-    const ClassificacaoHoras = await ClassificacaoHorasModel.findAll();
+    const ClassificacaoHoras = await ClassificacaoHorasModel.findAll(
+      {include: [
+        { model: VerbasModel, as: 'verba' },
+        { model: ApontamentoHorasModel, as: 'apontamento' }]}
+    );
 
     return ClassificacaoHoras.length > 0
       ? res.status(200).json(ClassificacaoHoras)
@@ -12,6 +18,9 @@ class ClassificacaoHorasController {
   async findOne(req: Request, res: Response) {
     const { classificacaoHoraId } = req.params;
     const classificacaoHora = await ClassificacaoHorasModel.findOne({
+      include: [
+        { model: VerbasModel, as: 'verba' },
+        { model: ApontamentoHorasModel, as: 'apontamento' }],
       where: {
         id: classificacaoHoraId,
       },
@@ -23,9 +32,16 @@ class ClassificacaoHorasController {
   }
 
   async create(req: Request, res: Response) {
-    const { quantidadeHoras } = req.body;
+    const { quantidadeHoras, verbaId,apontamentoId } = req.body;
     const classificacaoHora = await ClassificacaoHorasModel.create({
       quantidadeHoras,
+      verbaId,
+      apontamentoId
+
+    },{
+      include: [
+        { model: VerbasModel, as: 'verba' },
+        { model: ApontamentoHorasModel, as: 'apontamento' }]
     });
 
     return res.status(201).json(classificacaoHora);

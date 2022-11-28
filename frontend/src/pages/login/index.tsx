@@ -31,6 +31,7 @@ export const Login = () => {
         path: "/",
       });
 
+      localStorage.setItem("user", data.token)
       return window.location.href='/';
     } catch (error) {
       if (axios.isAxiosError(error)) {

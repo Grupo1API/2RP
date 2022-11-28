@@ -2,24 +2,50 @@ import { Request, Response } from "express";
 import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 import UsuariosModel from "../models/UsuariosModel";
+import CentroDeResultados from "../models/CentroDeResultadosModel";
+import TurnosModel from "../models/TurnosModel";
 
 class UsuariosController {
   async findAll(req: Request, res: Response) {
-    const usuarios = await UsuariosModel.findAll();
+    const usuarios = await UsuariosModel.findAll(
+      {include:[{ model: CentroDeResultados , attributes:['id'] , as: 'centro_de_resultado' },
+      { model: TurnosModel , as: 'turno' }
+
+    
+    ]}
+  );
 
     return usuarios.length > 0
       ? res.status(200).json(usuarios)
       : res.status(204).send();
   }
+
   async findOne(req: Request, res: Response) {
     const { usuarioId } = req.params;
     const usuario = await UsuariosModel.findOne({
+      include:[{ model: CentroDeResultados , attributes:['id'] , as: 'centro_de_resultado' },
+      { model: TurnosModel , as: 'turno' }],
       where: {
         id: usuarioId,
       },
     });
 
     return usuario ? res.status(200).json(usuario) : res.status(204).send();
+  }
+
+  ////método para obter colaboradores de role = 'gestor'////
+  async findAllGestor(req: Request, res: Response) {
+    const usuarios = await UsuariosModel.findAll(
+      {include:[{ model: CentroDeResultados , attributes:['id'] , as: 'centro_de_resultado' },
+      { model: TurnosModel , as: 'turno' }],
+     where:{
+    role: "gestor"}
+  }
+  );
+
+    return usuarios.length > 0
+      ? res.status(200).json(usuarios)
+      : res.status(204).send();
   }
 
   async update(req: Request, res: Response) {
@@ -32,7 +58,7 @@ class UsuariosController {
 
   async create(req: Request, res: Response) {
     try {
-      const { role, nome, matricula, email, senha, status, turnoId } = req.body;
+      const { role, nome, matricula, email, senha, status, turnoId,crId } = req.body;
 
       type Data = {
         role: string;
@@ -42,6 +68,7 @@ class UsuariosController {
         senha: string;
         status: string;
         turnoId: Number;
+        crId: Number;
       };
 
       const data: Data = {
@@ -52,9 +79,14 @@ class UsuariosController {
         senha: await bcrypt.hash(senha, 10),
         status,
         turnoId,
+        crId
       };
 
-      const user = await UsuariosModel.create(data);
+      const user = await UsuariosModel.create(data,
+        {include:[
+          { model: CentroDeResultados , attributes:['id'] , as: 'centro_de_resultado' },
+          { model: TurnosModel , as: 'turno' }]}
+      );
 
       if (user) {
         return res.status(201).send(user);

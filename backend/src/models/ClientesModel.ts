@@ -18,9 +18,17 @@ const ClientesModel = db.define("clientes", {
     unique: true,
   },
   status: {
-    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "ativo",
+    defaultValue: 'ativo',
+    validate: {
+        customValidator: (value: string) => {
+            const enums = ['ativo', 'inativo']
+            if (!enums.includes(value)) {
+                throw new Error('not a valid option')
+            }
+        } 
+    }
   },
   contato: {
     type: DataTypes.STRING,
@@ -35,9 +43,17 @@ const ClientesModel = db.define("clientes", {
     allowNull: false,
   },
   status_projeto: {
-    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "ativo",
+    defaultValue: 'ativo',
+    validate: {
+        customValidator: (value: string) => {
+            const enums = ['ativo', 'inativo']
+            if (!enums.includes(value)) {
+                throw new Error('not a valid option')
+            }
+        } 
+    }
   },
 });
 

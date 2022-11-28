@@ -2,7 +2,6 @@ import { DataTypes } from "sequelize";
 import { db } from "../database/db";
 import ClientesModel from "./ClientesModel";
 import UsuariosModel from "./UsuariosModel";
-import VerbasModel from "./VerbasModel";
 
 const ApontamentoHorasModel = db.define("apontamento_horas", {
   id: {
@@ -11,10 +10,19 @@ const ApontamentoHorasModel = db.define("apontamento_horas", {
     allowNull: false,
     primaryKey: true,
   },
+
   tipo_apontamento: {
-    type: DataTypes.ENUM({ values: ["hora extra", "sobreaviso"] }),
+    type: DataTypes.STRING,
     allowNull: false,
     defaultValue: "hora extra",
+    validate: {
+        customValidator: (value: string) => {
+            const enums = ["hora extra", "sobreaviso"]
+            if (!enums.includes(value)) {
+                throw new Error('not a valid option')
+            }
+        } 
+    }
   },
   horario_inicio: {
     type: DataTypes.DATE,
@@ -28,21 +36,37 @@ const ApontamentoHorasModel = db.define("apontamento_horas", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+
   statusApontamento: {
-    type: DataTypes.ENUM({ values: ["aprovado", "reprovado","pendente"] }),
+    type: DataTypes.STRING,
     allowNull: false,
     defaultValue: "pendente",
+    validate: {
+        customValidator: (value: string) => {
+            const enums = ["aprovado", "reprovado","pendente"]
+            if (!enums.includes(value)) {
+                throw new Error('not a valid option')
+            }
+        } 
+    }
   },
   status: {
-    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "ativo",
+    defaultValue: 'ativo',
+    validate: {
+        customValidator: (value: string) => {
+            const enums = ['ativo', 'inativo']
+            if (!enums.includes(value)) {
+                throw new Error('not a valid option')
+            }
+        } 
+    }
   },
 });
 
-ApontamentoHorasModel.belongsTo(VerbasModel, { foreignKey: "verbaId" });
-ApontamentoHorasModel.belongsTo(UsuariosModel, { foreignKey: "usuarioId" });
-ApontamentoHorasModel.belongsTo(UsuariosModel, { foreignKey: "gestorId" });
-ApontamentoHorasModel.belongsTo(ClientesModel, { foreignKey: "projetoId" });
+ApontamentoHorasModel.belongsTo(UsuariosModel, { as: 'colaborador',foreignKey: "usuarioId" });
+ApontamentoHorasModel.belongsTo(UsuariosModel, {as: 'gestor', foreignKey: "gestorId" });
+ApontamentoHorasModel.belongsTo(ClientesModel, {as: 'projeto', foreignKey: "projetoId" });
 
 export default ApontamentoHorasModel;

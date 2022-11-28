@@ -25,10 +25,19 @@ const TurnosModel = db.define("turnos", {
     allowNull: false,
   },
   status: {
-    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "ativo",
+    defaultValue: 'ativo',
+    validate: {
+        customValidator: (value: string) => {
+            const enums = ['ativo', 'inativo']
+            if (!enums.includes(value)) {
+                throw new Error('not a valid option')
+            }
+        } 
+    }
   },
+
 });
 
 export default TurnosModel;

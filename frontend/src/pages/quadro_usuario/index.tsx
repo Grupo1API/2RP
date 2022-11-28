@@ -83,15 +83,49 @@ function Quadro_Usuario() {
   const [modalInfo, setModalInfo] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
   const [dados, setDados] = useState([]);
+  const [listaCentroResultados, setlistaCentroResultados] = useState([]);
+
+  useEffect(() => {
+    listaCentroResultado();
+  }, []);
+
+  async function listaCentroResultado() {
+    const token = localStorage.getItem("user")
+    try {
+      const response = await fetch(
+        `http://localhost:3001/centro-de-resultados/`,
+        {
+          method: "GET",
+               headers: new Headers({
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+   })
+        }
+      );
+      const data = await response.json();
+
+      setlistaCentroResultados(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   useEffect(() => {
     listaUsuario();
   }, []);
 
   async function listaUsuario() {
+    const token = localStorage.getItem("user")
     try {
       const response = await fetch(`http://localhost:3001/usuarios`, {
         method: "GET",
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+       })
       });
       const data = await response.json();
       setListaUsuarios(data);
@@ -100,14 +134,17 @@ function Quadro_Usuario() {
     }
   }
   async function handleDelete(id) {
+    const token = localStorage.getItem("user")
     const data = {
       id: id,
     };
     await fetch(`http://localhost:3001/usuarios/${id}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: new Headers({
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+     }),
       body: JSON.stringify(data),
     });
     listaUsuario();
@@ -130,10 +167,12 @@ function Quadro_Usuario() {
             <StyledTableCell align="left">Nome </StyledTableCell>
             <StyledTableCell align="left">Matrícula</StyledTableCell>
             <StyledTableCell align="left">Perfil</StyledTableCell>
-            <StyledTableCell align="left">Status</StyledTableCell>
+
             <StyledTableCell align="left">E-mail</StyledTableCell>
             {/*<StyledTableCell align="left">Senha</StyledTableCell>*/}
             <StyledTableCell align="left">Turno</StyledTableCell>
+            <StyledTableCell align="left">Centro de Resultado</StyledTableCell>
+            <StyledTableCell align="left">Status</StyledTableCell>
             <StyledTableCell align="center">
             <ColorButton  onClick={() => {setModalAdd(true);}}><AddCircle/>Novo</ColorButton>  
             </StyledTableCell>
@@ -150,9 +189,15 @@ function Quadro_Usuario() {
               </StyledTableCell>
               <StyledTableCell align="left">{x.matricula}</StyledTableCell>
               <StyledTableCell align="left">{x.role}</StyledTableCell>
-              <StyledTableCell align="left">{x.status}</StyledTableCell>
+
               <StyledTableCell align="left">{x.email}</StyledTableCell>
               <StyledTableCell align="left">{x.turnoId}</StyledTableCell>
+              <StyledTableCell align="left">{listaCentroResultados.map((z: any) => (
+                  <div key={z.id}>
+                  {z.id === x.crId ? <p>{z.nome} </p> : <div></div>}
+              </div>
+              ))}</StyledTableCell>
+              <StyledTableCell align="left">{x.status}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"

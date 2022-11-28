@@ -87,9 +87,15 @@ function Quadro_verba (){
   }, []);
 
   async function listaVerba() {
+    const token = localStorage.getItem("user")
     try {
       const response = await fetch(`http://localhost:3001/verbas/`, {
         method: "GET",
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+       })
       });
       const data = await response.json();
       setListaVerbas(data);
@@ -98,14 +104,17 @@ function Quadro_verba (){
     }
   }
   async function handleDelete(id) {
+    const token = localStorage.getItem("user")
     const data = {
       id: id,
     };
     await fetch(`http://localhost:3001/verbas/${id}`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: new Headers({
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+     }),
       body: JSON.stringify(data),
     });
     listaVerba();
@@ -124,7 +133,7 @@ function Quadro_verba (){
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            {/* <StyledTableCell align="left">ID</StyledTableCell>*/}
+            <StyledTableCell align="left">Descrição</StyledTableCell>
             <StyledTableCell align="left">Código </StyledTableCell>
             <StyledTableCell align="left">Percentual</StyledTableCell>
             <StyledTableCell align="left">Fator</StyledTableCell>
@@ -145,9 +154,8 @@ function Quadro_verba (){
         <TableBody className={classes.body}>
           {listaVerbas.map((x: any) => (
             <StyledTableRow key={x.id}>
-              {/*mostra o id na tabela*/}
-              {/* <StyledTableCell>{x.id}</StyledTableCell>  */}
-              <StyledTableCell component="th" scope="row">{x.codigo}</StyledTableCell>
+              <StyledTableCell component="th" scope="row">{x.descricao}</StyledTableCell>
+              <StyledTableCell align="left">{x.codigo}</StyledTableCell>
               <StyledTableCell align="left">{x.percentual}</StyledTableCell>
               <StyledTableCell align="left">{x.fator}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>

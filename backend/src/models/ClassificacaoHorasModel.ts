@@ -15,13 +15,21 @@ const ClassificacaoHorasModel = db.define("ClassificacaoHoras", {
     allowNull: false,
   },
   status: {
-    type: DataTypes.ENUM({ values: ["ativo", "inativo"] }),
+    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "ativo",
+    defaultValue: 'ativo',
+    validate: {
+        customValidator: (value: string) => {
+            const enums = ['ativo', 'inativo']
+            if (!enums.includes(value)) {
+                throw new Error('not a valid option')
+            }
+        } 
+    }
   },
 });
 
-ClassificacaoHorasModel.belongsTo(VerbasModel);
-ApontamentoHorasModel.belongsTo(VerbasModel);
+ClassificacaoHorasModel.belongsTo(VerbasModel, {as: 'verba', foreignKey: 'verbaId'});
+ClassificacaoHorasModel.belongsTo(ApontamentoHorasModel,{as: 'apontamento', foreignKey:'apontamentoId'});
 
 export default ClassificacaoHorasModel;
