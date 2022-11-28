@@ -51,7 +51,7 @@ function Sidebar() {
   </NavBtn>
  */}
   <NavBtn>
-    <button onClick={logout}>Logout</button>
+    <NavBtnLink onClick={logout} to={'/login'}>Logout</NavBtnLink>
   </NavBtn>
  
   <img className="logo-2rp" src="https://www.2rpnet.com.br/assets/images/2rp-net.svg" alt="logo da empresa"/> 
