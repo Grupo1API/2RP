@@ -62,7 +62,7 @@
 | 01 | 18/09/2022 | ✔️ Concluída    | [Relatório](https://github.com/Grupo1API/2RP/blob/main/readme/sprint1/README.md) |
 | 02 | 09/10/2022 | ✔️ Concluída    | [Relatório](https://github.com/Grupo1API/2RP/tree/main/readme/sprint2/README.md) |
 | 03 | 06/11/2022 | ✔️ Concluída    | [Relatório](https://github.com/Grupo1API/2RP/tree/main/readme/sprint3/README.md) |
-| 04 | 27/11/2022 | 🚧 Em andamento | -- |
+| 04 | 27/11/2022 | ✔️ Concluída    | [Relatório](https://github.com/Grupo1API/2RP/tree/main/readme/sprint4/README.md) |
 
 </div>
 

@@ -46,12 +46,6 @@ function Sidebar() {
         })}
       </ul>
     </nav>
-    {
-    /*
-    <NavBtn>
-      <NavBtnLink to='/login'>Login</NavBtnLink>
-    </NavBtn>
-   */}
    <NavBtn>
     <NavBtnLink onClick={logout} to={'/login'}>Logout</NavBtnLink>
   </NavBtn>

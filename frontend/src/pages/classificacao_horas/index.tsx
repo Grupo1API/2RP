@@ -9,7 +9,9 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import IconButton from "@material-ui/core/IconButton";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import './style.css'
-import moment from 'moment';
+import converterData from '../../functions/converterData'
+import obterDiaSemana from '../../functions/obterDiaSemana'
+import diferencaEntreHorarios from '../../functions/diferencaEntreHorarios'
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -191,34 +193,6 @@ function classific_horas () {
       </div>
 
   );
-}
-
-
-function diferencaEntreHorarios (data1:string , data2:string){
-  var inicio  = moment(data1);
-  var fim = moment(data2);
-
-  var ms = moment.duration(fim.diff(inicio));
-  var d = moment.duration(ms);
-  var s = moment.duration((inicio.diff(fim))).hours(); //retornando resultado da hora negativa
-  var p = Math.abs(s) //transformar valor em positivo
-  console.log(ms);
-  console.log(d);
-  console.log(p)
-  //'YYYY-MM-DD Thh:mm:ss.sssZ'
-  return p;
-  }
-
-  function converterData (horario: Date){
-    var data =  moment.utc(horario).format('MM/DD/YYYY, hh:mm:ss') //definir o formato da data desejado
-    return data;
-  }
-
-  function obterDiaSemana(data:Date){
-   var data1 = moment(data).day() //retorna o dia da semana correspondente da data em numeros (0 - 6 / (Sunday-to-Saturday))
-   var data2 = moment.weekdays(data1) //transforma o numero em string do dia da semana correspondente
-    console.log(data2);
-   return(data2)
 }
 
 export default classific_horas;
