@@ -32,43 +32,50 @@ export const SidebarDataAdmin = [
     title: 'Home',
     path: '/',
     icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roles: ["administrador", "gestor", "colaborador"]
   },
   {
     title: 'Controle de Ponto',
     path: '/apontamento-horas',
     icon: <BsIcons.BsFillCalendarFill />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roles: ["administrador", "gestor", "colaborador"]
   },
   {
     title: 'Aprovação',
     path: '/aprov-hora-extra',
     icon: <FaIcons.FaBusinessTime />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roles: ["administrador", "gestor"]
   },
   {
     title: 'Cliente',
     path: '/quadro-clientes',
     icon: <GoIcons.GoPerson />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roles: ["administrador", "gestor"]
   },
   {
     title: 'Centro de Resultado',
     path: '/quadro-centro-resultado',
     icon: <AiIcons.AiFillProject />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roles: ["administrador", "gestor"]
   },
   {
     title: 'Parametrização',
     path: '/parametros',
     icon: <AiIcons.AiOutlineForm />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roles: ["administrador"]
   },
   {
     title: 'Relatórios',
     path: '/relatorios',
     icon: <HiIcons.HiDocument />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    roles: ["administrador"]
   },
 ];
 
@@ -96,5 +103,5 @@ export const SidebarDataGestor = [
     path: '/relatorios',
     icon: <HiIcons.HiDocument />,
     cName: 'nav-text'
-  }
+  }
 ];
