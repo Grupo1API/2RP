@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IconContext } from 'react-icons/lib';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import { SidebarDataAdmin } from './SidebarData';
+import { SidebarData } from './SidebarData';
 import {Bars, Nav, NavBtn,NavBtnLink} from './NavbarData';
 import './style.css';
 import { useCookies } from "react-cookie";
@@ -34,7 +34,7 @@ function Sidebar() {
             <AiIcons.AiFillHome className='menu-bars' />
           </Link>
         </li>
-        {SidebarDataAdmin.filter((item) => item.roles.includes(usuario?.role)).map((item, index) => {
+        {SidebarData.filter((item) => item.roles.includes(usuario?.role)).map((item, index) => {
           return (
             <li key={index} className={item.cName}>
               <Link to={item.path}>
