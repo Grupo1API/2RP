@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@mui/material/TableRow";
-import CancelIcon from '@mui/icons-material/Cancel';
-import IconButton from "@material-ui/core/IconButton";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import './style.css'
 import converterData from '../../functions/converterData'
-import obterDiaSemana from '../../functions/obterDiaSemana'
 import diferencaEntreHorarios from '../../functions/diferencaEntreHorarios'
+import verificaDia from "../../functions/verificaDia";
+
+
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -19,7 +18,8 @@ const StyledTableCell = withStyles((theme) => ({
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 16,
+    fontSize: 14,
+    alignItems: "center",
   },
 }))(TableCell);
 
@@ -78,9 +78,63 @@ const useStyles = makeStyles({
 
 {/* Funções */}
 
-function classific_horas () {
+function Classificacao () {
   const classes = useStyles();
   const [listaAprovs, setListaAprovs] = useState([]);
+  const [listaVerbas, setListaVerbas] = useState([]);
+  const [listaUsuarios, setListaUsuarios] = useState([]);
+  const [listaCentroResultados, setlistaCentroResultados] = useState([]);
+  const [listaClientes, setListaClientes] = useState([]);
+
+
+  useEffect(() => {
+    listaCliente();
+  }, []);
+
+  async function listaCliente() {
+    const token = localStorage.getItem("user")
+    try {
+      const response = await fetch(`http://localhost:3001/clientes/`, {
+        method: "GET",
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+       })
+      });
+      const data = await response.json();
+      setListaClientes(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  useEffect(() => {
+    listaCentroResultado();
+  }, []);
+
+  async function listaCentroResultado() {
+    const token = localStorage.getItem("user")
+    try {
+      const response = await fetch(
+        `http://localhost:3001/centro-de-resultados/`,
+        {
+          method: "GET",
+          headers: new Headers({
+      'Authorization': `Bearer ${token}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+   })
+        }
+      );
+      const data = await response.json();
+
+      setlistaCentroResultados(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
  useEffect(() => {
     listaAprov();
@@ -104,95 +158,152 @@ function classific_horas () {
       console.log(error.message);
     }
   }
-  async function handleAprove(id) {
-    const token = localStorage.getItem("user")
-    const data = {
-      id: id,
-    };
-    await fetch(`http://localhost:3001/apontamento-horas/aprovar/${id}`, {
-      method: "DELETE",
-      headers: new Headers({
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-     }),
-        body: JSON.stringify(data),
-      },
 
-    );
-    listaAprov();
-  }
+  useEffect(() => {
+    listaVerba();
+  }, []);
 
-  async function handleReprove(id) {
+  async function listaVerba() {
     const token = localStorage.getItem("user")
-    const data = {
-      id: id,
-    };
-    await fetch(`http://localhost:3001/apontamento-horas/reprovar/${id}`, {
-      method: "DELETE",
-      headers: new Headers({
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-     }),
-        body: JSON.stringify(data),
+    try {
+      const response = await fetch(`http://localhost:3001/verbas/`, {
+        method: "GET",
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+       })
       });
-    listaAprov();
+      const data = await response.json();
+      setListaVerbas(data);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
-  
+
+  useEffect(() => {
+    listaUsuario();
+  }, []);
+
+  async function listaUsuario() {
+    const token = localStorage.getItem("user")
+    try {
+      const response = await fetch(`http://localhost:3001/usuarios`, {
+        method: "GET",
+        headers: new Headers({
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+       })
+      });
+      const data = await response.json();
+      setListaUsuarios(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
 
   return (
-      <div className="pagina" id ="aprovacao">
-      <h2> Classificação de Horas Apontadas</h2>
-
+    <div className="pagina" id="classificacao">
+      <h2>Horas Classificadas</h2>
 
       <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell align="left">Tipo </StyledTableCell>
-            <StyledTableCell align="left">Horário Início</StyledTableCell>
-            <StyledTableCell align="left">Horário FIm</StyledTableCell>
-            <StyledTableCell align="left">Justificativa</StyledTableCell>
-            <StyledTableCell align="left">Verba</StyledTableCell>
-            <StyledTableCell align="left">Status</StyledTableCell>
-            <StyledTableCell align="center">Total de Horas</StyledTableCell>
-            <StyledTableCell align="center">Teste de Dia</StyledTableCell>
-            <StyledTableCell align="center">Ação</StyledTableCell>
-          </TableRow>
-        </TableHead>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell align="left">CR</StyledTableCell>
+                <StyledTableCell align="left">Cliente</StyledTableCell>
+                <StyledTableCell align="left">Projeto</StyledTableCell>
+                <StyledTableCell align="left">Colaborador</StyledTableCell>
+                <StyledTableCell align="left">Modalidade</StyledTableCell>
+                <StyledTableCell align="left">Horário Início</StyledTableCell>
+                <StyledTableCell align="left">Horário FIm</StyledTableCell>
+                <StyledTableCell align="left">Justificativa</StyledTableCell>
+                <StyledTableCell align="left">Verba</StyledTableCell>
+                <StyledTableCell align="left">Status</StyledTableCell>
+                <StyledTableCell align="center">Total de Horas</StyledTableCell>
+              </TableRow>
+            </TableHead>
 
-        <TableBody className={classes.body}>
-          {listaAprovs.map((x: any) => (
-            <StyledTableRow key={x.id}>
-              <StyledTableCell component="th" scope="row">{x.tipo_apontamento}</StyledTableCell>
-              <StyledTableCell align="left">{converterData(x.horario_inicio)}</StyledTableCell>
-              <StyledTableCell align="left">{converterData(x.horario_fim)}</StyledTableCell>
-              <StyledTableCell align="left">{x.justificativa}</StyledTableCell>
-              <StyledTableCell align="left">{x.verba}</StyledTableCell>
-              <StyledTableCell align="left">{x.statusApontamento}</StyledTableCell>
+            <TableBody className={classes.body}>
+
+              {listaAprovs.map((ap: any) => (
+                <StyledTableRow key={ap.id}>
+
+                  {/*CR*/}
+                  <StyledTableCell align="left">
+                    {listaCentroResultados.map((cr: any) => listaUsuarios.map((u: any) => (
+                      <div key={u.id}>
+                        {cr.id === u.crId && u.id === ap.usuarioId ? <p>{cr.nome}</p> : <div></div>}
+                      </div>
+                    ))
+                    )}
+                  </StyledTableCell>
 
 
-              <StyledTableCell align="left">{diferencaEntreHorarios(x.horario_inicio,x.horario_fim)}</StyledTableCell>
-              <StyledTableCell align="left">{obterDiaSemana(x.horario_fim)}</StyledTableCell>
+                  {/*Cliente*/}
+                  <StyledTableCell align="left">
+                    {listaClientes.map((cli: any) => listaCentroResultados.map((cr: any) => listaUsuarios.map((u: any) => (
+                      <div key={u.id}>
+                        {cr.id === u.crId && u.id === ap.usuarioId && cli.id === cr.clienteId ? <p>{cli.nome}</p> : <div></div>}
+                      </div>))
+                    ))}
+                  </StyledTableCell>
 
 
-              <StyledTableCell align="left" className={classes.button}>
-              <IconButton className={classes.aprovar} onClick={() => handleAprove(x.id)}>
-                  <CheckCircleIcon />
-              </IconButton>
-              <IconButton className={classes.reprovar} onClick={() => handleReprove(x.id)}>
-                  <CancelIcon />
-              </IconButton>
+                  {/*Projeto*/}
+                  <StyledTableCell align="left">
+                    {listaClientes.map((cli: any) => listaCentroResultados.map((cr: any) => listaUsuarios.map((u: any) => (
+                      <div key={u.id}>
+                        {cr.id === u.crId && u.id === ap.usuarioId && cli.id === cr.clienteId ? <p>{cli.nome_projeto}</p> : <div></div>}
+                      </div>))
+                    ))}
+                  </StyledTableCell>
 
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
-          </TableBody>
-      </Table>
+                  {/*Colaborador*/}
+                  <StyledTableCell align="left">{listaUsuarios.map((u: any) => (
+                    <div key={u.id}>
+                      {ap.usuarioId === u.id ? <p>{u.nome}</p> : <div></div>}
+                    </div>
+                  ))}</StyledTableCell>
 
-      </div>
+                  <StyledTableCell component="th" scope="row">{ap.tipo_apontamento}</StyledTableCell>
 
-  );
+                  <StyledTableCell align="left">{converterData(ap.horario_inicio)}</StyledTableCell>
+
+                  <StyledTableCell align="left">{converterData(ap.horario_fim)}</StyledTableCell>
+
+                  <StyledTableCell align="left">{ap.justificativa}</StyledTableCell>
+
+                  {/*Verba*/}
+                  <StyledTableCell align="left">
+
+                    {listaVerbas.map((verba: any) => (
+                      <div key={verba.id}>
+                        {verificaDia(verba.dia_semana, ap.horario_inicio) === true ?
+                          <p>{verba.codigo}</p> : <div></div>}
+                      </div>
+                    ))}
+
+                  </StyledTableCell>
+
+                  <StyledTableCell align="left">{ap.statusApontamento}</StyledTableCell>
+                  <StyledTableCell align="left" text-align="center" id="horas">
+                    {diferencaEntreHorarios(ap.horario_inicio, ap.horario_fim)}
+                   
+                  </StyledTableCell>
+
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+
+            
+        </div>
+      
+  )
 }
 
-export default classific_horas;
+
+export default Classificacao;
+

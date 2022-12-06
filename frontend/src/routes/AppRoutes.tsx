@@ -18,6 +18,7 @@ import Quadro_verba from '../pages/quadro_verba';
 import Parametros from '../pages/parametros';
 import Quadro_turno from '../pages/quadro_turno';
 import Aprov_hora_extra from '../pages/aprov_hora_extra';
+import Classificacao from '../pages/classificacao_horas';
 import PrivateRoute from './PrivateRoutes';
 
 const AppRoutes = () => (
@@ -147,6 +148,15 @@ const AppRoutes = () => (
         element={
           <PrivateRoute roles={["administrador", "gestor"]}>
             <Aprov_hora_extra />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/classificacao"
+        element={
+          <PrivateRoute roles={["administrador"]}>
+            <Classificacao />
           </PrivateRoute>
         }
       />

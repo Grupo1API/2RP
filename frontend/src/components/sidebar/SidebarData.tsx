@@ -51,11 +51,11 @@ export const SidebarData = [
     roles: ["administrador"]
   },
   {
-    title: 'Relatórios',
-    path: '/relatorios',
+    title: 'Horas Classificadas',
+    path: '/classificacao',
     icon: <HiIcons.HiDocument />,
     cName: 'nav-text',
-    roles: []
+    roles: ["administrador"]
   },
 ];
 
