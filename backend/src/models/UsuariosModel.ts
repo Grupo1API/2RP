@@ -22,6 +22,7 @@ interface UserInstance
     UserAttributes {
   createdAt?: Date;
   updatedAt?: Date;
+  gestorId?: Number;
 }
 
 const UsuariosModel = db.define<UserInstance>("usuarios", {

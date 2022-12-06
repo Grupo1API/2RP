@@ -34,9 +34,15 @@ class ApontamentoHorasController {
     return horaExtra ? res.status(200).json(horaExtra) : res.status(204).send();
   }
 
+
+
   async create(req: Request, res: Response) {
-    const { tipo_apontamento, horario_inicio, horario_fim, justificativa, gestorId, projetoId } =
-      req.body;
+    const { tipo_apontamento, horario_inicio, horario_fim, justificativa,usuarioId, gestorId, projetoId } =
+      req.body 
+    
+
+
+
       const user = req.headers.authorization;
       const token:any = user?.split(" ")
       const decoded:any = jwt.verify(token[1], 'lbkjbefkjbwekfkewfk');

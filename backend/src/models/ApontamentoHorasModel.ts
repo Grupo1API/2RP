@@ -63,7 +63,11 @@ const ApontamentoHorasModel = db.define("apontamento_horas", {
         } 
     }
   },
-});
+  gestorId:{
+    type:DataTypes.INTEGER,
+},
+}
+)
 
 ApontamentoHorasModel.belongsTo(UsuariosModel, { as: 'colaborador',foreignKey: "usuarioId" });
 ApontamentoHorasModel.belongsTo(UsuariosModel, {as: 'gestor', foreignKey: "gestorId" });
